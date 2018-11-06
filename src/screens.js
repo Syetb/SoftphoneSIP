@@ -6,4 +6,9 @@ export function registerScreens() {
     Navigation.registerComponent('SignIn', () => require('./views/SignIn').default);
     Navigation.registerComponent('SignUp', () => require('./views/SignUp').default);
     Navigation.registerComponent('Screen2', () => require('./views/Screen2').default);
+
+    Navigation.registerComponent('DialUp', () => require('./views/DialUp').default);
+    Navigation.registerComponent('Contacts', () => require('./views/Contacts').default);
+    Navigation.registerComponent('Profile', () => require('./views/Profile').default);
+    Navigation.registerComponent('Recents', () => require('./views/Recents').default);
 }

@@ -36,12 +36,55 @@ export const goToAuth = () => Navigation.setRoot({
 
 export const goHome = () => Navigation.setRoot({
     root:{
-        stack: {
-            id: 'App',
+        bottomTabs: {
+            id: 'AppBottomTabsId',
             children: [
                 {
                     component: {
-                        name: 'Home',
+                        name: 'DialUp',
+                        options: {
+                            bottomTab: {
+                                fontSize: 12,
+                                text: 'DialUP',
+                                icon: require('./assets/images/dialup.png')
+                            }
+                        }
+                    }
+                },
+                {
+                    component: {
+                        name: 'Contacts',
+                        options: {
+                            bottomTab: {
+                                fontSize: 12,
+                                text: 'Contacts',
+                                icon: require('./assets/images/contacts.png')
+                            }
+                        }
+                    }
+                },
+                {
+                    component: {
+                        name: 'Profile',
+                        options: {
+                            bottomTab: {
+                                fontSize: 12,
+                                text: 'Profile',
+                                icon: require('./assets/images/profile.png')
+                            }
+                        }
+                    }
+                },
+                {
+                    component: {
+                        name: 'Recents',
+                        options: {
+                            bottomTab: {
+                                fontSize: 12,
+                                text: 'Recents',
+                                icon: require('./assets/images/recents.png')
+                            }
+                        }
                     }
                 }
             ]

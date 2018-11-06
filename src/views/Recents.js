@@ -4,19 +4,19 @@ import {
     Text,
     Button,
     StyleSheet,
-    AsyncStorage
+    AsyncStorage,
 } from 'react-native'
 import { Navigation } from 'react-native-navigation'
-import { goToAuth } from '../navigation'
+import { goToAuth } from "../navigation";
 
-import { USER_KEY } from '../config'
+import { USER_KEY } from "../config";
 
-export default class Home extends React.Component {
+export default class Recents extends React.Component {
     static get options() {
         return {
             topBar: {
                 title: {
-                    text: 'Home'
+                    text: 'Recents'
                 },
             }
         };
@@ -32,7 +32,7 @@ export default class Home extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Hello from Home screen.</Text>
+                <Text>Recents</Text>
                 <Button
                     onPress={this.logout}
                     title="Sign Out"
