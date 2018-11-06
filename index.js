@@ -14,21 +14,8 @@ registerScreens();
 Navigation.events().registerAppLaunchedListener(() => {
     Navigation.setRoot({
         root: {
-            stack: {
-                children: [
-                    {
-                        component: {
-                            name: 'blog.PostsList',
-                            options: {
-                                topBar: {
-                                    title: {
-                                        text: 'Blog'
-                                    }
-                                }
-                            }
-                        }
-                    }
-                ],
+            component: {
+                name: 'Initializing'
             }
         }
     });
