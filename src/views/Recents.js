@@ -16,8 +16,11 @@ export default class Recents extends React.Component {
         return {
             topBar: {
                 title: {
-                    text: 'Recents'
+                    text: 'My Screen'
                 },
+                drawBehind: true,
+                visible: false,
+                animate: false
             }
         };
     }

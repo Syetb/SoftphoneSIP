@@ -16,8 +16,11 @@ export default class Contacts extends React.Component {
         return {
             topBar: {
                 title: {
-                    text: 'Contacts'
+                    text: 'My Screen'
                 },
+                drawBehind: true,
+                visible: false,
+                animate: false
             }
         };
     }

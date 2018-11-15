@@ -16,11 +16,17 @@ export default class DialUp extends React.Component {
         return {
             topBar: {
                 title: {
-                    text: 'DialUp'
+                    text: 'My Screen'
                 },
+                drawBehind: true,
+                visible: false,
+                animate: false
             }
         };
     }
+
+    static navigatorButtons = { leftButtons: [ { id: 'sideMenu' } ] };
+
     logout = async () => {
         try {
             await AsyncStorage.removeItem(USER_KEY)

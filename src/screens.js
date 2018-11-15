@@ -11,4 +11,8 @@ export function registerScreens() {
     Navigation.registerComponent('Contacts', () => require('./views/Contacts').default);
     Navigation.registerComponent('Profile', () => require('./views/Profile').default);
     Navigation.registerComponent('Recents', () => require('./views/Recents').default);
+
+    Navigation.registerComponent('SideMenu', () => require('./views/SideMenu').default);
+    Navigation.registerComponent('Settings', () => require('./views/Settings').default);
+    Navigation.registerComponent('About', () => require('./views/About').default);
 }

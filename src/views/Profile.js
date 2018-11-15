@@ -16,8 +16,11 @@ export default class Profile extends React.Component {
         return {
             topBar: {
                 title: {
-                    text: 'Profile'
+                    text: 'My Screen'
                 },
+                drawBehind: true,
+                visible: false,
+                animate: false
             }
         };
     }
