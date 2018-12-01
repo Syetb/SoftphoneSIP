@@ -24,6 +24,15 @@ export default class Recents extends React.Component {
             }
         };
     }
+
+    static navigatorButtons = {
+        leftButtons: [
+            {
+                id: 'SideMenuId'
+            }
+        ]
+    };
+
     logout = async () => {
         try {
             await AsyncStorage.removeItem(USER_KEY)

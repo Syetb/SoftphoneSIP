@@ -15,4 +15,6 @@ export function registerScreens() {
     Navigation.registerComponent('SideMenu', () => require('./views/SideMenu').default);
     Navigation.registerComponent('Settings', () => require('./views/Settings').default);
     Navigation.registerComponent('About', () => require('./views/About').default);
+
+    Navigation.registerComponent('TopBar', () => require('./views/TopBar').default);
 }

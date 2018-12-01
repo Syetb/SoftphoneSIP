@@ -29,6 +29,30 @@ export default class SideMenu extends React.Component {
         };
     }
 
+    constructor(props){
+        super(props);
+    }
+
+    componentDidMount(){
+
+        // Navigation.showOverlay({
+        //     component: {
+        //         name: 'TopBar',
+        //         passProps: {
+        //         },
+        //         options: {
+        //             overlay: {
+        //                 interceptTouchOutside: false,
+        //             },
+        //             layout: {
+        //                 backgroundColor: 'transparent',
+        //                 orientation: ['portrait'],
+        //             }
+        //         }
+        //     }
+        // });
+    }
+
     navigateToScreen = (screenName) => () => {
         console.log('navigateToScreen executed! :)')
 
@@ -38,6 +62,16 @@ export default class SideMenu extends React.Component {
                 name: screenName,
             }
         });
+    }
+
+    goToAccountsScreen = () => {
+        console.log('goToAccountsScreen executed! :)')
+        console.log(this.props.componentId)
+        Navigation.push(this.props.componentId, {
+            component: {
+                name: 'Settings',
+            }
+        })
     }
 
     render () {
@@ -59,7 +93,7 @@ export default class SideMenu extends React.Component {
                             Section 2
                         </Text>
                         <View style={styles.navSectionStyle}>
-                            <Text style={styles.navItemStyle} onPress={this.navigateToScreen('Settings')}>
+                            <Text style={styles.navItemStyle} onPress={this.goToAccountsScreen()}>
                                 Settings
                             </Text>
                             <Text style={styles.navItemStyle}>

@@ -92,109 +92,201 @@ export const goHomez = () => Navigation.setRoot({
     }
 });
 
-export const goHome = () => Navigation.setRoot({
-    root: {
-        sideMenu: {
-            id: "sideMenu",
-            left: {
-                component: {
-                    id: "SideMenuId",
-                    name: "SideMenu"
+export const goHome = () => {
+
+    Navigation.setDefaultOptions({
+        layout: {
+            orientation: 'portrait'
+        },
+        statusBar: {
+            backgroundColor: '#1c4b20',
+            visible: true
+        },
+        topBar: {
+            visible: true,
+            animate: false,
+            hideOnScroll: true,
+            drawBehind: true,
+            title: {
+                color: "#0f0f0f"
+            }
+        },
+        bottomTabs: {
+            titleDisplayMode: 'alwaysShow',
+            backgroundColor: '#3f51b5',
+            drawBehind: true,
+        },
+        bottomTab: {
+            textColor: '#fff',
+            selectedTextColor: '#428412',
+        }
+    });
+
+    Navigation.setRoot({
+        root: {
+            sideMenu: {
+                id: "sideMenu",
+                left: {
+                    component: {
+                        id: "SideMenuId",
+                        name: "SideMenu"
+                    },
+                    visible: true
                 },
-                visible: true
-            },
-            center: {
-                bottomTabs: {
-                    children: [
-                        {
-                            stack: {
-                                children: [
-                                    {
-                                        component: {
-                                            name: 'DialUp',
-                                            passProps: {
-                                                text: 'This is tab 1'
-                                            }
-                                        }
-                                    }
-                                ],
-                                options: {
-                                    bottomTab: {
-                                        text: 'DialUp',
-                                        icon: require('./assets/images/dialup.png'),
-                                        testID: 'FIRST_TAB_BAR_BUTTON'
-                                    }
-                                }
+                center: {
+                    bottomTabs: {
+                        id: 'tabs',
+                        options: {
+                            topbar: {
+                                visible: true,
                             }
                         },
-                        {
-                            stack: {
-                                children: [
-                                    {
-                                        component: {
-                                            name: 'Contacts',
-                                            passProps: {
-                                                text: 'This is tab 2'
+                        children: [
+                            {
+                                stack: {
+                                    id: 'tab1',
+                                    children: [
+                                        {
+                                            component: {
+                                                name: 'DialUp',
+                                                passProps: {
+                                                    text: 'This is tab 1',
+                                                    myFunction: () => 'Hello from a function!'
+                                                },
+                                                options: {
+                                                    topBar: {
+                                                        visible: true,
+                                                        animate: false,
+                                                        title: {
+                                                            text: 'React Native Navigation!',
+                                                            color: "#0f0f0f"
+                                                        },
+                                                        leftButtons: {
+                                                            id: 'hamburgerButtom',
+                                                            icon: require('./assets/images/dialup.png')
+                                                        }
+                                                    },
+                                                    bottomTab: {
+                                                        text: 'DialUp',
+                                                        icon: require('./assets/images/dialup.png'),
+                                                        selectedIcon: require('./assets/images/dialup.png'),
+                                                        testID: 'FIRST_TAB_BAR_BUTTON'
+                                                    }
+                                                },
                                             }
                                         }
-                                    }
-                                ],
-                                options: {
-                                    bottomTab: {
-                                        text: 'Contacts',
-                                        icon: require('./assets/images/contacts.png'),
-                                        testID: 'SECOND_TAB_BAR_BUTTON'
-                                    }
+                                    ],
                                 }
-                            }
-                        },
-                        {
-                            stack: {
-                                children: [
-                                    {
-                                        component: {
-                                            name: 'Profile',
-                                            passProps: {
-                                                text: 'This is tab 3'
+                            },
+                            {
+                                stack: {
+                                    id: 'tab2',
+                                    children: [
+                                        {
+                                            component: {
+                                                name: 'Contacts',
+                                                passProps: {
+                                                    text: 'This is tab 2'
+                                                }
                                             }
                                         }
-                                    }
-                                ],
-                                options: {
-                                    bottomTab: {
-                                        text: 'Profile',
-                                        icon: require('./assets/images/profile.png'),
-                                        testID: 'THIRD_TAB_BAR_BUTTON'
-                                    }
-                                }
-                            }
-                        },
-                        {
-                            stack: {
-                                children: [
-                                    {
-                                        component: {
-                                            name: 'Recents',
-                                            passProps: {
-                                                text: 'This is tab 4'
+                                    ],
+                                    options: {
+                                        topBar: {
+                                            visible: true,
+                                            animate: false,
+                                            title: {
+                                                text: 'Contacts!',
+                                                color: "#0f0f0f"
                                             }
+                                        },
+                                        bottomTab: {
+                                            text: 'Contacts',
+                                            icon: require('./assets/images/contacts.png'),
+                                            testID: 'SECOND_TAB_BAR_BUTTON'
                                         }
                                     }
-                                ],
-                                options: {
-                                    bottomTab: {
-                                        text: 'Recents',
-                                        icon: require('./assets/images/recents.png'),
-                                        testID: 'FOURTH_TAB_BAR_BUTTON'
+                                }
+                            },
+                            {
+                                stack: {
+                                    id: 'tab3',
+                                    children: [
+                                        {
+                                            component: {
+                                                name: 'Profile',
+                                                passProps: {
+                                                    text: 'This is tab 3'
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    options: {
+                                        topBar: {
+                                            visible: true,
+                                            animate: false,
+                                            title: {
+                                                text: 'Profile!',
+                                                color: "#0f0f0f"
+                                            },
+                                            leftButtons: {
+                                                id: 'hamburgerButtom',
+                                                icon: require('./assets/images/dialup.png')
+                                            }
+                                        },
+                                        bottomTab: {
+                                            text: 'Profile',
+                                            icon: require('./assets/images/profile.png'),
+                                            testID: 'THIRD_TAB_BAR_BUTTON'
+                                        }
                                     }
                                 }
-                            }
-                        },
-                    ]
+                            },
+                            {
+                                stack: {
+                                    id: 'tab4',
+                                    children: [
+                                        {
+                                            component: {
+                                                name: 'Recents',
+                                                passProps: {
+                                                    text: 'This is tab 4',
+                                                    myFunction: () => 'Hello from a function!'
+                                                },
+                                                options: {
+                                                    topBar: {
+                                                        visible: true,
+                                                        animate: false,
+                                                        title: {
+                                                            text: 'Recents!',
+                                                            color: "#0f0f0f"
+                                                        },
+                                                        leftButtons: {
+                                                            id: 'hamburgerButtom',
+                                                            icon: require('./assets/images/dialup.png')
+                                                        }
+                                                    },
+                                                    bottomTab: {
+                                                        text: 'Recents',
+                                                        icon: require('./assets/images/recents.png'),
+                                                        selectedIcon: require('./assets/images/recents.png'),
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    options: {
+                                        bottomTabs: {
+                                            titleDisplayMode: 'alwaysShow',
+                                            testID: 'BOTTOM_TABS_ELEMENT'
+                                        }
+                                    }
+                                }
+                            },
+                        ]
+                    }
                 }
             }
         }
-    }
-});
-
-export const goSettings = () => Navigation.setRoot();
+    });
+};

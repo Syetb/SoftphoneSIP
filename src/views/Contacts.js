@@ -19,11 +19,24 @@ export default class Contacts extends React.Component {
                     text: 'My Screen'
                 },
                 drawBehind: true,
-                visible: false,
-                animate: false
+                // visible: false,
+                animate: false,
+                leftButtons: {
+                    id: 'hamburgerButtom',
+                    icon: require('../assets/images/dialup.png')
+                }
             }
         };
     }
+
+    static navigatorButtons = {
+        leftButtons: [
+            {
+                id: 'SideMenuId'
+            }
+        ]
+    };
+
     logout = async () => {
         try {
             await AsyncStorage.removeItem(USER_KEY)

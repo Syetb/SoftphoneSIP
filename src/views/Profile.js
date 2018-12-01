@@ -12,18 +12,14 @@ import { goToAuth } from "../navigation";
 import { USER_KEY } from "../config";
 
 export default class Profile extends React.Component {
-    static get options() {
-        return {
-            topBar: {
-                title: {
-                    text: 'My Screen'
-                },
-                drawBehind: true,
-                visible: false,
-                animate: false
+    static navigatorButtons = {
+        leftButtons: [
+            {
+                id: 'SideMenuId'
             }
-        };
-    }
+        ]
+    };
+
     logout = async () => {
         try {
             await AsyncStorage.removeItem(USER_KEY)

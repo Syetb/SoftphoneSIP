@@ -25,7 +25,13 @@ export default class DialUp extends React.Component {
         };
     }
 
-    static navigatorButtons = { leftButtons: [ { id: 'sideMenu' } ] };
+    static navigatorButtons = {
+        leftButtons: [
+            {
+                id: 'SideMenuId'
+            }
+        ]
+    };
 
     logout = async () => {
         try {
