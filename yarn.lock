@@ -4956,10 +4956,10 @@ react-native-blur@^3.1.1:
   dependencies:
     prop-types "^15.5.10"
 
-react-native-navigation@^2.0.2641:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-2.1.1.tgz#0da4f936ea80b8269d705342164b869166f34d66"
-  integrity sha512-50SP3TnVeYLaC/MXld7FsH0GiGkbfFzIlFdAF8lpHjMVtY5/ZwQeDWWhwBKveucuDNt0vwGsTokxUB/bDjLidg==
+react-native-navigation@^2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-2.1.3.tgz#064465773aa2766d9e8f3001da0a2ef98c4cb3a9"
+  integrity sha512-CtjDhw7eaDWCqfhK6Fq6IUDq3agl3oGDd8SNaPF7318tLni1qTmmFdz/3CpoNlegNWhAMAjNu+ONDAbe7ksADw==
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.x.x"
