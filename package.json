@@ -7,6 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "jssip": "^3.2.16",
     "react": "16.6.0-alpha.8af6728",
     "react-native": "0.57.4",
     "react-native-navigation": "^2.1.3",
