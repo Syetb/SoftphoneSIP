@@ -22,11 +22,11 @@ export default class Screen2 extends React.Component {
 
     registerWebRTCPeer() {
         // Create our JsSIP instance and run it:
-        const socket = new JsSIP.WebSocketInterface('wss://192.168.1.133:8089/ws');     // poner aviso si el servidor ws no es alcanzable
+        const socket = new JsSIP.WebSocketInterface('wss://192.168.0.133:8089/ws');     // poner aviso si el servidor ws no es alcanzable
         const configuration = {
             sockets  : [ socket ],
-            uri      : 'sip:webrtc_client@192.168.1.133',
-            password : '5678'
+            uri      : 'sip:webrtc_client@192.168.0.133',
+            password : '0987'
         };
 
         const ua = new JsSIP.UA(configuration);
