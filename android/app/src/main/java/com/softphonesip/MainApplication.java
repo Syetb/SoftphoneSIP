@@ -5,6 +5,8 @@ import android.support.annotation.Nullable;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.carusto.ReactNativePjSip.PjSipModulePackage;
+import com.carusto.ReactNativePjSip.PjSipModulePackage;
 import com.oney.WebRTCModule.WebRTCModulePackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -30,6 +32,8 @@ import java.util.List;
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new PjSipModulePackage(),
+            new PjSipModulePackage(),
             new WebRTCModulePackage()
       );
     }
