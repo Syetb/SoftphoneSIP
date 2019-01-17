@@ -4975,9 +4975,9 @@ react-lifecycles-compat@2.0.0:
   integrity sha512-txfpPCQYiazVdcbMRhatqWKcAxJweUu2wDXvts5/7Wyp6+Y9cHojqXHsLPEckzutfHlxZhG8Oiundbmp8Fd6eQ==
 
 react-native-animatable@^1.1.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/react-native-animatable/-/react-native-animatable-1.3.0.tgz#b5c3940fc758cfd9b2fe54613a457c4b6962b46e"
-  integrity sha512-GGYEYvderfzPZcPnw7xov4nlRmi9d6oqcIzx0fGkUUsMshOQEtq5IEzFp3np0uTB9n8/gZIZcdbUPggVlVydMg==
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/react-native-animatable/-/react-native-animatable-1.3.1.tgz#f004a7e9de6838d0fbf210d642593cff7affd9ef"
+  integrity sha512-NoE6OAgCrhggWBRV6rBJup5vLAGoTjx168Tku1RZmjUGIdYRAyGesP/MoqvxiNJjhTAgwYx2LT63VTT1xO8g4Q==
   dependencies:
     prop-types "^15.5.10"
 
@@ -4987,6 +4987,11 @@ react-native-blur@^3.1.1:
   integrity sha512-r7zNQISL7kQX5ocQEet5QVOBzoXP+Nr3dO7Wql+fV6rebx/8I7eAUHnfITDx12WoOmRpiJjbt/4xF5gTEll6Uw==
   dependencies:
     prop-types "^15.5.10"
+
+react-native-interactable@1.0.0-alpha.1:
+  version "1.0.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/react-native-interactable/-/react-native-interactable-1.0.0-alpha.1.tgz#6459bcc29b392a9671e644d03f1728f3bf3051b5"
+  integrity sha512-n4bxPRFbgJFWwBvO/gqKi1TrizD3IskOsiixZQAG28BSaKYHSIOX82yHh1Ngd0DDNWEcucXTJyHmrgUDHI10cQ==
 
 react-native-navigation@^2.1.3:
   version "2.1.3"
@@ -4999,22 +5004,26 @@ react-native-navigation@^2.1.3:
     react-lifecycles-compat "2.0.0"
     tslib "1.9.3"
 
-react-native-pjsip-assac@^2.8.5:
-  version "2.8.5"
-  resolved "https://registry.yarnpkg.com/react-native-pjsip-assac/-/react-native-pjsip-assac-2.8.5.tgz#61055cacda4992a792d5141e9b28071956407a7a"
-  integrity sha512-6fRO1nJf4v8dDgX1JT/FATCbjL1JBUERzfnhtDlgpAbLvEHyBmeQJvhIcgsOBlCwzuaCEe2bGRaKm/vgv/qUqQ==
+"react-native-pjsip@https://github.com/datso/react-native-pjsip.git":
+  version "2.8.0"
+  resolved "https://github.com/datso/react-native-pjsip.git#326cc1c122a6b35bd6c1e357d325b685ec5f0139"
   dependencies:
     events "1.1.0"
 
 react-native-swipe-gestures@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/react-native-swipe-gestures/-/react-native-swipe-gestures-1.0.2.tgz#914e1a72a94bc55b322b4622a01103ab879296dd"
-  integrity sha1-kU4acqlLxVsyK0YioBEDq4eSlt0=
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/react-native-swipe-gestures/-/react-native-swipe-gestures-1.0.3.tgz#4160f8d459627323f3a3d2770af4bcd82fd054f5"
+  integrity sha512-KOouRzPB2fHFjVombsSdRfYo8SFeNVa4Ho4B5il87DuuF26sPNOtb3je+qaT/xVptedOsCzRPJGbWFMsaBApgg==
+
+react-native-text-size@^2.0.4:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-text-size/-/react-native-text-size-2.1.1.tgz#e26823c4504576964acc258db44009df81189332"
+  integrity sha512-dkzmfFiKY4iwk73cvgrbUZ5HFB8ZdOFErRVhDWKBNxML/59dDkzTITBaZ8GKwsfGxNHKOXdHD2JdOoPRwAE+yQ==
 
 react-native-ui-lib@^3.3.290:
-  version "3.3.290"
-  resolved "https://registry.yarnpkg.com/react-native-ui-lib/-/react-native-ui-lib-3.3.290.tgz#b58dcae3c8d473c749a7ae0a1e6aab1130166216"
-  integrity sha512-+Yxqne0t8uSiPWpLImy9fIRKXUFgN1x7xUvQtbllc8kGG7QvI8skMLfFwLmYB82mlLtlhJpx1i7C1g1iX62yLw==
+  version "3.15.1"
+  resolved "https://registry.yarnpkg.com/react-native-ui-lib/-/react-native-ui-lib-3.15.1.tgz#9677203261714dd600b7813e8e4c5420fda7dbb1"
+  integrity sha512-HQYpn3XbwDfLemj6hG1V9eFnAi7C6QUVcp8FQdyAKgMxKeUmgQb2RJNA/rLkxviTSCxyjdAwOevUtQMgoTaKog==
   dependencies:
     babel-plugin-transform-inline-environment-variables "^0.0.2"
     hoist-non-react-statics "^2.3.0"
@@ -5023,7 +5032,9 @@ react-native-ui-lib@^3.3.290:
     prop-types "^15.5.10"
     react-native-animatable "^1.1.0"
     react-native-blur "^3.1.1"
+    react-native-interactable "1.0.0-alpha.1"
     react-native-swipe-gestures "^1.0.2"
+    react-native-text-size "^2.0.4"
     semver "^5.5.0"
     url-parse "^1.2.0"
 
@@ -6110,9 +6121,9 @@ urix@^0.1.0:
   integrity sha1-2pN/emLiH+wf0Y1Js1wpNQZ6bHI=
 
 url-parse@^1.2.0:
-  version "1.4.3"
-  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.4.3.tgz#bfaee455c889023219d757e045fa6a684ec36c15"
-  integrity sha512-rh+KuAW36YKo0vClhQzLLveoj8FwPJNu65xLb7Mrt+eZht0IPT0IXgSv8gcMegZ6NvjJUALf6Mf25POlMwD1Fw==
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.4.4.tgz#cac1556e95faa0303691fec5cf9d5a1bc34648f8"
+  integrity sha512-/92DTTorg4JjktLNLe6GPS2/RvAd/RGr6LuktmWSMLEOa6rjnlrFXNgSbSmkNvCoL2T028A0a1JaJLzRMlFoHg==
   dependencies:
     querystringify "^2.0.0"
     requires-port "^1.0.0"
