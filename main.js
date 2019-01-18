@@ -78,28 +78,28 @@ class Main extends Component {
                 });
 
             }).then(stream => {
-                console.log('Streaming OK... :)', stream);
-                console.log('stream.toURL()', stream.toURL());
+            console.log('Streaming OK... :)', stream);
+            console.log('stream.toURL()', stream.toURL());
 
-                // It's callback function :)
-                this.setState({
-                    videoUrl: stream.toURL()
-                });
-
-                if (this.localStream) {
-                    pc.removeStream(this.localStream);
-                    this.localStream.release();
-                }
-                this.localStream = stream;
-
-                pc.addStream(stream);
-
-                return stream
-
-            }).catch(logError => {
-                console.log('Ooops, we getting error: ', logError.message);
-                throw logError;
+            // It's callback function :)
+            this.setState({
+                videoUrl: stream.toURL()
             });
+
+            if (this.localStream) {
+                pc.removeStream(this.localStream);
+                this.localStream.release();
+            }
+            this.localStream = stream;
+
+            pc.addStream(stream);
+
+            return stream
+
+        }).catch(logError => {
+            console.log('Ooops, we getting error: ', logError.message);
+            throw logError;
+        });
     }
 
     _switchVideoType() {
