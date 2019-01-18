@@ -15,7 +15,7 @@ if (Platform.OS === 'android') {
     alert = (title) => {
         Navigation.showOverlay({
             component: {
-                name: 'navigation.playground.alert',
+                name: 'TopBar',
                 passProps: {
                     title
                 },
