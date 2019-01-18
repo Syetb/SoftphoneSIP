@@ -2,15 +2,29 @@ import React from 'react'
 import {
     View,
     Text,
-    StyleSheet,
-    AsyncStorage
+    StyleSheet
 } from 'react-native'
 
-import { goToAuth, goHome } from '../navigation'
-
-import { USER_KEY } from '../config'
+import { goHome } from '../navigation'
 
 export default class Settings extends React.Component {
+
+    static get options() {
+        return {
+            topBar: {
+                visible: true,
+                animate: false,
+                drawBehind: true,
+                title: {
+                    text: 'My Settings'
+                },
+                leftButtons: {
+                    id: 'toggleButtom',
+                    enabled: false
+                }
+            }
+        };
+    }
 
     render() {
         return (

@@ -13,17 +13,17 @@ export default class SideMenu extends React.Component {
     static get options() {
         return {
             topBar: {
-                drawBehind: false,
+                drawBehind: true,
                 visible: true,
                 animate: true,
                 title: {
                     text: 'Side Menu Main - SoftPhone SIP',
-                    fontSize: 14000,
-                    color: 'red',
+                    fontSize: 14,
+                    color: '#cfff20',
                     fontFamily: 'Helvetica',
                 },
                 background: {
-                    color: '#00ff00',
+                    color: '#ff1123',
                 }
             }
         };
@@ -123,20 +123,21 @@ export default class SideMenu extends React.Component {
 const styles = StyleSheet.create({
     container: {
         paddingTop: 0,
-        flex: 1
+        flex: 1,
+        backgroundColor: '#eff0f1'
     },
     navItemStyle: {
         padding: 25
     },
     navSectionStyle: {
-        backgroundColor: 'lightgrey'
+        backgroundColor: '#afcdff'
     },
     sectionHeadingStyle: {
-        paddingVertical: 10,
-        paddingHorizontal: 5
+        paddingVertical: 13.20,
+        paddingHorizontal: 16,
     },
     footerContainer: {
-        padding: 20,
-        backgroundColor: 'lightgrey'
+        padding: 16.3,
+        backgroundColor: '#3F5057'
     }
 })

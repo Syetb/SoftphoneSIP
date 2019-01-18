@@ -2,13 +2,8 @@ import React from 'react'
 import {
     View,
     Text,
-    StyleSheet,
-    AsyncStorage
+    StyleSheet
 } from 'react-native'
-
-import { goToAuth, goHome } from '../navigation'
-
-import { USER_KEY } from '../config'
 
 export default class About extends React.Component {
 

@@ -1,39 +1,5 @@
 import { Navigation } from 'react-native-navigation'
 
-export const goToAuth = () => Navigation.setRoot({
-    root: {
-        bottomTabs: {
-            id: 'BottomTabsId',
-            children: [
-                {
-                    component: {
-                        name: 'SignIn',
-                        options: {
-                            bottomTab: {
-                                fontSize: 12,
-                                text: 'Sign In',
-                                icon: require('./assets/images/signin.png')
-                            }
-                        }
-                    }
-                },
-                {
-                    component: {
-                        name: 'SignUp',
-                        options: {
-                            bottomTab: {
-                                fontSize: 12,
-                                text: 'SignUp',
-                                icon: require('./assets/images/signup.png')
-                            }
-                        }
-                    }
-                },
-            ]
-        }
-    }
-});
-
 export const goHomez = () => Navigation.setRoot({
     root:{
         bottomTabs: {
@@ -65,24 +31,24 @@ export const goHomez = () => Navigation.setRoot({
                 },
                 {
                     component: {
-                        name: 'Profile',
-                        options: {
-                            bottomTab: {
-                                fontSize: 12,
-                                text: 'Profile',
-                                icon: require('./assets/images/profile.png')
-                            }
-                        }
-                    }
-                },
-                {
-                    component: {
                         name: 'Recents',
                         options: {
                             bottomTab: {
                                 fontSize: 12,
                                 text: 'Recents',
                                 icon: require('./assets/images/recents.png')
+                            }
+                        }
+                    }
+                },
+                {
+                    component: {
+                        name: 'Settings',
+                        options: {
+                            bottomTab: {
+                                fontSize: 12,
+                                text: 'Settings',
+                                icon: require('./assets/images/profile.png')
                             }
                         }
                     }
@@ -96,10 +62,10 @@ export const goHome = () => {
 
     Navigation.setDefaultOptions({
         layout: {
-            orientation: 'portrait'
+            orientation: ['portrait']
         },
         statusBar: {
-            backgroundColor: '#1c4b20',
+            backgroundColor: '#575606',
             visible: true
         },
         topBar: {
@@ -108,17 +74,28 @@ export const goHome = () => {
             hideOnScroll: true,
             drawBehind: true,
             title: {
+                color: "#0f0f0f",
+                // text: 'React Native Navigation!',
+            },
+            background: {
+                color: '#3F5057',
+            },
+            leftButtons: {
+                id: 'toggleButtom',
+                icon: require('./assets/images/bottomtabs/contacts-icon.png'),
+                text: 'Menu',
                 color: "#0f0f0f"
             }
         },
         bottomTabs: {
             titleDisplayMode: 'alwaysShow',
-            backgroundColor: '#3f51b5',
+            backgroundColor: '#f8f9fa',
             drawBehind: true,
+            translucent: false,
         },
         bottomTab: {
-            textColor: '#fff',
-            selectedTextColor: '#428412',
+            textColor: '#0f0f0f',
+            selectedTextColor: '#346a11',
         }
     });
 
@@ -131,7 +108,7 @@ export const goHome = () => {
                         id: "SideMenuId",
                         name: "SideMenu"
                     },
-                    visible: true
+                    visible: true,
                 },
                 center: {
                     bottomTabs: {
@@ -158,18 +135,14 @@ export const goHome = () => {
                                                         visible: true,
                                                         animate: false,
                                                         title: {
-                                                            text: 'React Native Navigation!',
+                                                            text: 'Marcar',
                                                             color: "#0f0f0f"
-                                                        },
-                                                        leftButtons: {
-                                                            id: 'hamburgerButtom',
-                                                            icon: require('./assets/images/dialup.png')
                                                         }
                                                     },
                                                     bottomTab: {
-                                                        text: 'DialUp',
-                                                        icon: require('./assets/images/dialup.png'),
-                                                        selectedIcon: require('./assets/images/dialup.png'),
+                                                        text: 'Marcar',
+                                                        icon: require('./assets/images/bottomtabs/call-icon.png'),
+                                                        selectedIcon: require('./assets/images/bottomtabs/call-active-icon.png'),
                                                         testID: 'FIRST_TAB_BAR_BUTTON'
                                                     }
                                                 },
@@ -187,22 +160,25 @@ export const goHome = () => {
                                                 name: 'Contacts',
                                                 passProps: {
                                                     text: 'This is tab 2'
+                                                },
+                                                options: {
+                                                    topBar: {
+                                                        visible: true,
+                                                        animate: false,
+                                                        title: {
+                                                            text: 'Contacts!',
+                                                            color: "#0f0f0f"
+                                                        }
+                                                    },
                                                 }
                                             }
                                         }
                                     ],
                                     options: {
-                                        topBar: {
-                                            visible: true,
-                                            animate: false,
-                                            title: {
-                                                text: 'Contacts!',
-                                                color: "#0f0f0f"
-                                            }
-                                        },
                                         bottomTab: {
-                                            text: 'Contacts',
-                                            icon: require('./assets/images/contacts.png'),
+                                            text: 'Contactos',
+                                            icon: require('./assets/images/bottomtabs/contacts-icon.png'),
+                                            selectedIcon: require('./assets/images/bottomtabs/contacts-active-icon.png'),
                                             testID: 'SECOND_TAB_BAR_BUTTON'
                                         }
                                     }
@@ -214,62 +190,28 @@ export const goHome = () => {
                                     children: [
                                         {
                                             component: {
-                                                name: 'Profile',
-                                                passProps: {
-                                                    text: 'This is tab 3'
-                                                }
-                                            }
-                                        }
-                                    ],
-                                    options: {
-                                        topBar: {
-                                            visible: true,
-                                            animate: false,
-                                            title: {
-                                                text: 'Profile!',
-                                                color: "#0f0f0f"
-                                            },
-                                            leftButtons: {
-                                                id: 'hamburgerButtom',
-                                                icon: require('./assets/images/dialup.png')
-                                            }
-                                        },
-                                        bottomTab: {
-                                            text: 'Profile',
-                                            icon: require('./assets/images/profile.png'),
-                                            testID: 'THIRD_TAB_BAR_BUTTON'
-                                        }
-                                    }
-                                }
-                            },
-                            {
-                                stack: {
-                                    id: 'tab4',
-                                    children: [
-                                        {
-                                            component: {
                                                 name: 'Recents',
                                                 passProps: {
-                                                    text: 'This is tab 4',
+                                                    text: 'This is tab 3',
                                                     myFunction: () => 'Hello from a function!'
                                                 },
                                                 options: {
-                                                    topBar: {
-                                                        visible: true,
-                                                        animate: false,
-                                                        title: {
-                                                            text: 'Recents!',
-                                                            color: "#0f0f0f"
-                                                        },
-                                                        leftButtons: {
-                                                            id: 'hamburgerButtom',
-                                                            icon: require('./assets/images/dialup.png')
-                                                        }
-                                                    },
+                                                    // topBar: {
+                                                    //     visible: true,
+                                                    //     animate: false,
+                                                    //     title: {
+                                                    //         text: 'Recents!',
+                                                    //         color: "#0f0f0f"
+                                                    //     },
+                                                    //     leftButtons: {
+                                                    //         id: 'toggleButtom',
+                                                    //         icon: require('./assets/images/dialup.png')
+                                                    //     }
+                                                    // },
                                                     bottomTab: {
-                                                        text: 'Recents',
-                                                        icon: require('./assets/images/recents.png'),
-                                                        selectedIcon: require('./assets/images/recents.png'),
+                                                        text: 'Recientes',
+                                                        icon: require('./assets/images/bottomtabs/history-icon.png'),
+                                                        selectedIcon: require('./assets/images/bottomtabs/history-active-icon.png'),
                                                     }
                                                 }
                                             }
@@ -283,6 +225,29 @@ export const goHome = () => {
                                     }
                                 }
                             },
+                            {
+                                stack: {
+                                    id: 'tab4',
+                                    children: [
+                                        {
+                                            component: {
+                                                name: 'Settings',
+                                                passProps: {
+                                                    text: 'This is tab 4'
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    options: {
+                                        bottomTab: {
+                                            text: 'Settings',
+                                            icon: require('./assets/images/bottomtabs/settings-icon.png'),
+                                            selectedIcon: require('./assets/images/bottomtabs/settings-active-icon.png'),
+                                            testID: 'FOURTH_TAB_BAR_BUTTON'
+                                        }
+                                    }
+                                }
+                            }
                         ]
                     }
                 }

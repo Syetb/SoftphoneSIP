@@ -2,27 +2,17 @@ import React from 'react'
 import {
     View,
     Text,
-    StyleSheet,
-    AsyncStorage
+    StyleSheet
 } from 'react-native'
 
-import { goToAuth, goHome } from '../navigation'
-
-import { USER_KEY } from '../config'
+import { goHome } from '../navigation'
 
 export default class Initialising extends React.Component {
     async componentDidMount() {
         try {
-            const user = await AsyncStorage.getItem(USER_KEY)
-            console.log('user: ', user)
-            if (user) {
-                goHome()
-            } else {
-                goToAuth()
-            }
+            goHome()
         } catch (err) {
             console.log('error: ', err)
-            goToAuth()
         }
     }
 

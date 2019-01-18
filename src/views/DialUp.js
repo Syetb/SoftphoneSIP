@@ -3,52 +3,46 @@ import {
     View,
     Text,
     Button,
-    StyleSheet,
-    AsyncStorage,
+    StyleSheet
 } from 'react-native'
 import { Navigation } from 'react-native-navigation'
-import { goToAuth } from "../navigation";
-
-import { USER_KEY } from "../config";
 
 export default class DialUp extends React.Component {
-    static get options() {
-        return {
-            topBar: {
-                title: {
-                    text: 'My Screen'
-                },
-                drawBehind: true,
-                visible: false,
-                animate: false
-            }
-        };
-    }
 
-    static navigatorButtons = {
-        leftButtons: [
-            {
-                id: 'SideMenuId'
-            }
-        ]
-    };
-
-    logout = async () => {
-        try {
-            await AsyncStorage.removeItem(USER_KEY)
-            goToAuth()
-        } catch (err) {
-            console.log('error signing out...: ', err)
+    constructor(props){
+        super(props);
+        Navigation.events().bindComponent(this);
+        this.state = {
+            sideMenu: false
         }
     }
+
+    navigationButtonPressed({ buttonId }) {
+        console.log('Sidemenu triggered! :) :O', buttonId)
+        console.log('this', this.state);
+
+        const { sideMenu } = this.state;
+
+        Navigation.mergeOptions('SideMenuId', {
+            sideMenu: {
+                left: {
+                    visible: !sideMenu,
+                },
+            },
+        });
+
+        this.setState({
+            sideMenu: !sideMenu
+        });
+
+        // alert(`sideMenu is now ${!sideMenu}`);
+    }
+
     render() {
         return (
             <View style={styles.container}>
                 <Text>Dial Up</Text>
-                <Button
-                    onPress={this.logout}
-                    title="Sign Out"
-                />
+
                 <Button
                     onPress={() => {
                         Navigation.push(this.props.componentId, {
