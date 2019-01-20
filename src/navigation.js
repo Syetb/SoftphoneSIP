@@ -30,10 +30,9 @@ export const goHome = () => {
             }
         },
         bottomTabs: {
-            titleDisplayMode: 'alwaysShow',
             backgroundColor: '#f8f9fa',
             drawBehind: true,
-            translucent: false,
+            translucent: false
         },
         bottomTab: {
             textColor: '#0f0f0f',
@@ -55,11 +54,6 @@ export const goHome = () => {
                 center: {
                     bottomTabs: {
                         id: 'tabs',
-                        options: {
-                            topbar: {
-                                visible: true,
-                            }
-                        },
                         children: [
                             {
                                 stack: {
@@ -158,13 +152,7 @@ export const goHome = () => {
                                                 }
                                             }
                                         }
-                                    ],
-                                    options: {
-                                        bottomTabs: {
-                                            titleDisplayMode: 'alwaysShow',
-                                            testID: 'BOTTOM_TABS_ELEMENT'
-                                        }
-                                    }
+                                    ]
                                 }
                             },
                             {
@@ -190,7 +178,14 @@ export const goHome = () => {
                                     }
                                 }
                             }
-                        ]
+                        ],
+                        options: {
+                            bottomTabs: {
+                                titleDisplayMode: 'alwaysShow',
+                                testID: 'BOTTOM_TABS_ELEMENT',
+                                // backgroundColor: '#cfff20'
+                            }
+                        }
                     }
                 }
             }
