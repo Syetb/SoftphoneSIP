@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {
     View,
     Text,
@@ -7,10 +7,10 @@ import {
 
 import { goHome } from '../navigation'
 
-export default class Initialising extends React.Component {
+export default class Initialising extends Component {
     async componentDidMount() {
         try {
-            goHome()
+            await goHome()
         } catch (err) {
             console.log('error: ', err)
         }
@@ -19,19 +19,22 @@ export default class Initialising extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.welcome}>Loading</Text>
+                <Text style={styles.welcome}>
+                    Loading...
+                </Text>
             </View>
         )
     }
 }
 
 const styles = StyleSheet.create({
-    welcome: {
-        fontSize: 28
-    },
     container: {
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems: 'center'
+    },
+    welcome: {
+        fontSize: 40,
+        color: '#424242'
     }
 })

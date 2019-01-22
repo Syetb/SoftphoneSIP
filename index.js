@@ -6,8 +6,8 @@
 
 // AppRegistry.registerComponent(appName, () => App);
 
-import {Navigation} from 'react-native-navigation';
-import {registerScreens} from './src/screens';
+import { Navigation } from 'react-native-navigation';
+import { registerScreens } from './src/screens';
 
 import Platform from 'react-native';
 
@@ -35,7 +35,7 @@ Navigation.events().registerAppLaunchedListener(async () => {
     await Navigation.setRoot({
         root: {
             component: {
-                name: 'Initializing'
+                name: 'LaunchScreen'
             }
         }
     });

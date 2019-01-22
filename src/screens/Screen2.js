@@ -16,6 +16,11 @@ export default class Screen2 extends React.Component {
                 title: {
                     text: 'Screen 2'
                 },
+                leftButtons: {
+                    id: 'toggleButtom',
+                    enabled: false
+                }
+
             }
         };
     }

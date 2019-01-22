@@ -1,20 +1,23 @@
 import { Navigation } from 'react-native-navigation'
 
-export const goHome = () => {
+export const goHome = async () => {
 
     Navigation.setDefaultOptions({
         layout: {
-            orientation: ['portrait']
+            orientation: ['portrait'],
+            // backgroundColor: '#ECEFF1'
         },
         statusBar: {
-            backgroundColor: '#575606',
-            visible: true
+            // backgroundColor: '#575606',
+            backgroundColor: 'transparent',
+            style: 'dark',
+            drawBehind: true
         },
         topBar: {
             visible: true,
             animate: false,
-            hideOnScroll: true,
-            drawBehind: true,
+            hideOnScroll: false,
+            drawBehind: false,
             title: {
                 color: "#0f0f0f",
                 // text: 'React Native Navigation!',
@@ -27,12 +30,13 @@ export const goHome = () => {
                 icon: require('./assets/images/bottomtabs/contacts-icon.png'),
                 text: 'Menu',
                 color: "#0f0f0f"
-            }
+            },
+            noBorder: true
         },
         bottomTabs: {
             backgroundColor: '#f8f9fa',
-            drawBehind: true,
-            translucent: false
+            drawBehind: false,
+            translucent: false,
         },
         bottomTab: {
             textColor: '#0f0f0f',
@@ -40,7 +44,7 @@ export const goHome = () => {
         }
     });
 
-    Navigation.setRoot({
+    await Navigation.setRoot({
         root: {
             sideMenu: {
                 id: "sideMenu",
@@ -61,7 +65,8 @@ export const goHome = () => {
                                     children: [
                                         {
                                             component: {
-                                                name: 'DialUp',
+                                                id: 'DialerScreenId',
+                                                name: 'DialerScreen',
                                                 passProps: {
                                                     text: 'This is tab 1',
                                                     myFunction: () => 'Hello from a function!'
@@ -71,12 +76,12 @@ export const goHome = () => {
                                                         visible: true,
                                                         animate: false,
                                                         title: {
-                                                            text: 'Marcar',
+                                                            text: 'Teclado',
                                                             color: "#0f0f0f"
                                                         }
                                                     },
                                                     bottomTab: {
-                                                        text: 'Marcar',
+                                                        text: 'Teclado',
                                                         icon: require('./assets/images/bottomtabs/call-icon.png'),
                                                         selectedIcon: require('./assets/images/bottomtabs/call-active-icon.png'),
                                                         testID: 'FIRST_TAB_BAR_BUTTON'
@@ -93,7 +98,8 @@ export const goHome = () => {
                                     children: [
                                         {
                                             component: {
-                                                name: 'Contacts',
+                                                id: 'ContactsScreenId',
+                                                name: 'ContactsScreen',
                                                 passProps: {
                                                     text: 'This is tab 2'
                                                 },
@@ -102,7 +108,7 @@ export const goHome = () => {
                                                         visible: true,
                                                         animate: false,
                                                         title: {
-                                                            text: 'Contacts!',
+                                                            text: 'Contactos',
                                                             color: "#0f0f0f"
                                                         }
                                                     },
@@ -126,7 +132,8 @@ export const goHome = () => {
                                     children: [
                                         {
                                             component: {
-                                                name: 'Recents',
+                                                id: 'HistoryScreenId',
+                                                name: 'HistoryScreen',
                                                 passProps: {
                                                     text: 'This is tab 3',
                                                     myFunction: () => 'Hello from a function!'
@@ -141,11 +148,11 @@ export const goHome = () => {
                                                     //     },
                                                     //     leftButtons: {
                                                     //         id: 'toggleButtom',
-                                                    //         icon: require('./assets/images/dialup.png')
+                                                    //         icon: require('./assets/images/history-icon.png')
                                                     //     }
                                                     // },
                                                     bottomTab: {
-                                                        text: 'Recientes',
+                                                        text: 'Historial',
                                                         icon: require('./assets/images/bottomtabs/history-icon.png'),
                                                         selectedIcon: require('./assets/images/bottomtabs/history-active-icon.png'),
                                                     }
@@ -161,6 +168,7 @@ export const goHome = () => {
                                     children: [
                                         {
                                             component: {
+                                                id: 'SettingsScreenId',
                                                 name: 'Settings',
                                                 passProps: {
                                                     text: 'This is tab 4'
@@ -170,7 +178,7 @@ export const goHome = () => {
                                     ],
                                     options: {
                                         bottomTab: {
-                                            text: 'Settings',
+                                            text: 'Ajustes',
                                             icon: require('./assets/images/bottomtabs/settings-icon.png'),
                                             selectedIcon: require('./assets/images/bottomtabs/settings-active-icon.png'),
                                             testID: 'FOURTH_TAB_BAR_BUTTON'

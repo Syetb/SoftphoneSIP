@@ -1,17 +1,15 @@
-import {Navigation} from 'react-native-navigation';
+import { Navigation } from 'react-native-navigation';
 
 export function registerScreens() {
-    Navigation.registerComponent('Initializing', (sc) => require('./views/Initializing').default);
+    Navigation.registerComponent('LaunchScreen', (sc) => require('./screens/LaunchScreen').default);
 
-    Navigation.registerComponent('SideMenu', () => require('./views/SideMenu').default);
-    Navigation.registerComponent('TopBar', () => require('./views/TopBar').default);
-    Navigation.registerComponent('About', () => require('./views/About').default);
+    Navigation.registerComponent('SideMenu', () => require('./screens/SideMenu').default);
+    Navigation.registerComponent('About', () => require('./screens/About').default);
 
-    Navigation.registerComponent('DialUp', () => require('./views/DialUp').default);
-    Navigation.registerComponent('Contacts', () => require('./views/Contacts').default);
-    Navigation.registerComponent('Recents', () => require('./views/Recents').default);
-    Navigation.registerComponent('Settings', () => require('./views/Settings').default);
+    Navigation.registerComponent('DialerScreen', () => require('./containers/dialer/DialerScreen').default);
+    Navigation.registerComponent('ContactsScreen', () => require('./containers/contacts/ContactsScreen').default);
+    Navigation.registerComponent('HistoryScreen', () => require('./containers/history/HistoryScreen').default);
+    Navigation.registerComponent('Settings', () => require('./screens/Settings').default);
 
-    Navigation.registerComponent('Home', () => require('./views/Home').default);
-    Navigation.registerComponent('Screen2', () => require('./views/Screen2').default);
+    Navigation.registerComponent('Screen2', () => require('./screens/Screen2').default);
 }
