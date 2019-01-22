@@ -8,12 +8,17 @@
   },
   "dependencies": {
     "jssip": "^3.2.16",
+    "lodash": "^4.17.11",
+    "prop-types": "^15.6.2",
     "react": "16.6.0-alpha.8af6728",
     "react-native": "0.57.4",
     "react-native-navigation": "^2.1.3",
     "react-native-pjsip": "https://github.com/datso/react-native-pjsip.git",
     "react-native-ui-lib": "^3.3.290",
-    "react-native-webrtc": "^1.67.1"
+    "react-native-webrtc": "^1.67.1",
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
