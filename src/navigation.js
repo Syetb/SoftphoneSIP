@@ -5,13 +5,14 @@ export const goHome = async () => {
     Navigation.setDefaultOptions({
         layout: {
             orientation: ['portrait'],
+            topMargin: 1,
             // backgroundColor: '#ECEFF1'
         },
         statusBar: {
             // backgroundColor: '#575606',
             backgroundColor: 'transparent',
             style: 'dark',
-            drawBehind: true
+            drawBehind: false
         },
         topBar: {
             visible: true,
