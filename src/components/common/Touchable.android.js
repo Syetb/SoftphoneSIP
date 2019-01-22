@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { TouchableNativeFeedback, View } from 'react-native'
+import { TouchableNativeFeedback, View, Text } from 'react-native'
 
 const Touchable = (props) => {
     return (
