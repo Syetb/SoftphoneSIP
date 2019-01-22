@@ -1,15 +1,20 @@
 import { Navigation } from 'react-native-navigation';
 
+import { Provider } from 'react-redux';
+import configureStore from './configureStore'
+
+const store = configureStore();
+
 export function registerScreens() {
-    Navigation.registerComponent('LaunchScreen', (sc) => require('./screens/LaunchScreen').default);
+    Navigation.registerComponentWithRedux('LaunchScreen', (sc) => require('./screens/LaunchScreen').default, Provider, store);
 
-    Navigation.registerComponent('SideMenu', () => require('./screens/SideMenu').default);
-    Navigation.registerComponent('About', () => require('./screens/About').default);
+    Navigation.registerComponentWithRedux('SideMenu', () => require('./screens/SideMenu').default, Provider, store);
+    Navigation.registerComponentWithRedux('About', () => require('./screens/About').default, Provider, store);
 
-    Navigation.registerComponent('DialerScreen', () => require('./containers/dialer/DialerScreen').default);
-    Navigation.registerComponent('ContactsScreen', () => require('./containers/contacts/ContactsScreen').default);
-    Navigation.registerComponent('HistoryScreen', () => require('./containers/history/HistoryScreen').default);
-    Navigation.registerComponent('Settings', () => require('./screens/Settings').default);
+    Navigation.registerComponentWithRedux('DialerScreen', () => require('./containers/dialer/DialerScreen').default, Provider, store);
+    Navigation.registerComponentWithRedux('ContactsScreen', () => require('./containers/contacts/ContactsScreen').default, Provider, store);
+    Navigation.registerComponentWithRedux('HistoryScreen', () => require('./containers/history/HistoryScreen').default, Provider, store);
+    Navigation.registerComponentWithRedux('Settings', () => require('./screens/Settings').default, Provider, store);
 
-    Navigation.registerComponent('Screen2', () => require('./screens/Screen2').default);
+    Navigation.registerComponentWithRedux('Screen2', () => require('./screens/Screen2').default, Provider, store);
 }

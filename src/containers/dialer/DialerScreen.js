@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View } from 'react-native'
 import { Navigation } from 'react-native-navigation'
+import { connect } from 'react-redux'
 
 import DialerViewport from './DialerViewport'
 import sc from '../../assets/styles/containers'
@@ -47,4 +48,12 @@ DialerScreen.propTypes = {
 
 }
 
-export default DialerScreen
+const mapStateToProps = (state) => {
+    return {}
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DialerScreen)

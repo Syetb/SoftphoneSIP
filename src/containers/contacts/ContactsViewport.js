@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, Platform, Button } from 'react-native'
 import { Navigation } from "react-native-navigation";
+import { connect } from 'react-redux'
 
 const ContactsViewport = (props) => {
 
@@ -34,4 +35,12 @@ ContactsViewport.propTypes = {
 
 }
 
-export default ContactsViewport
+const mapStateToProps = (state) => {
+    return {}
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactsViewport)

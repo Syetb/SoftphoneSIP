@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View } from 'react-native'
+import { connect } from 'react-redux'
 
 import HistoryViewport from './HistoryViewport'
 import sc from '../../assets/styles/containers'
@@ -33,4 +34,12 @@ HistoryScreen.propTypes = {
 
 }
 
-export default HistoryScreen
+const mapStateToProps = (state) => {
+    return {}
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HistoryScreen)

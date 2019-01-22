@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, Platform, Button } from 'react-native'
 import { Navigation } from 'react-native-navigation'
+import { connect } from 'react-redux'
 
 const HistoryViewport = (props) => {
     return (
@@ -33,4 +34,12 @@ HistoryViewport.propTypes = {
 
 }
 
-export default HistoryViewport
+const mapStateToProps = (state) => {
+    return {}
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HistoryViewport)

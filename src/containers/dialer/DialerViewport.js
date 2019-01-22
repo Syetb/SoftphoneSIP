@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import KeypadWithActions from '../../components/call/KeypadWithActions'
 import sc from '../../assets/styles/containers'
@@ -18,4 +19,12 @@ DialerViewport.propTypes = {
 
 }
 
-export default DialerViewport
+const mapStateToProps = (state) => {
+    return {}
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DialerViewport)
