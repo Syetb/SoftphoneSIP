@@ -16,6 +16,11 @@ class HistoryScreen extends Component {
                 drawBehind: true,
                 visible: true,
                 animate: false
+            },
+            sideMenu: {
+                left: {
+                    enabled: true
+                }
             }
         };
     }

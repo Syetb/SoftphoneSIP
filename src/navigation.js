@@ -14,6 +14,11 @@ export const goHome = async () => {
             style: 'dark',
             drawBehind: false
         },
+        sideMenu: {
+            left: {
+                enabled: false
+            }
+        },
         topBar: {
             visible: false,
             animate: false,
@@ -74,6 +79,11 @@ export const goHome = async () => {
                                                     myFunction: () => 'Hello from a function!'
                                                 },
                                                 options: {
+                                                    sideMenu: {
+                                                        left: {
+                                                            enabled: true
+                                                        }
+                                                    },
                                                     topBar: {
                                                         visible: true,
                                                         animate: false,
@@ -112,6 +122,11 @@ export const goHome = async () => {
                                                             text: 'Contactos'
                                                         }
                                                     },
+                                                    sideMenu: {
+                                                        left: {
+                                                            enabled: true
+                                                        }
+                                                    }
                                                 }
                                             }
                                         }
