@@ -16,6 +16,14 @@ class NetworkSettingsScreen extends Component {
     constructor(props) {
         super(props)
 
+        // debugging
+        console.log('NetworkSettingsScreen executed')
+        console.log('this.props es: ', this.props)
+        console.log('this.props.settings es: ', this.props.settings)
+
+        console.log('this.props.settings === undefined es: ', this.props.settings === undefined)
+        console.log('this.props.settings === null es: ', this.props.settings === null)
+
         // handling exceptions
         let thisPropsSettings = this.props.settings
         if( this.props.settings === undefined || this.props.settings === null) {
@@ -37,6 +45,9 @@ class NetworkSettingsScreen extends Component {
 
         const s = this.props.settings ? this.props.settings.network : thisPropsSettings.network
         const foreground = this.props.settings ? this.props.settings.service.foreground : thisPropsSettings.service.foreground
+
+
+
 
         const wifiDisabled = s.useAnyway
         const mobileDisabled = s.useAnyway || (!wifiDisabled && !s.useWifi)
