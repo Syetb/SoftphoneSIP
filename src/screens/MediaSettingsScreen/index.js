@@ -17,8 +17,8 @@ const MediaSettingsScreen = (props) => {
         title: 'Back',
         icon: require('../../assets/images/header/back_white.png'),
         layout: 'icon',
-        onPress: () => {
-            Navigation.pop(props.componentId)
+        onPress: async () => {
+            await Navigation.pop(props.componentId)
         }
     }
     platformHeaderProps['rightItem'] = {

@@ -116,8 +116,8 @@ class AccountScreen extends Component {
         this.props.onDeletePress && this.props.onDeletePress(this.props.account)
     }
 
-    onBackPress = () => {
-        Navigation.pop(this.props.componentId)
+    onBackPress = async () => {
+        await Navigation.pop(this.props.componentId)
     }
 
     render() {

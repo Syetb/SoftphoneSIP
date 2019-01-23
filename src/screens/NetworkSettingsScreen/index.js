@@ -112,8 +112,8 @@ class NetworkSettingsScreen extends Component {
             title: 'Back',
             icon: require('../../assets/images/header/back_white.png'),
             layout: 'icon',
-            onPress: () => {
-                Navigation.pop(this.props.componentId)
+            onPress: async () => {
+                await Navigation.pop(this.props.componentId)
             }
         }
         platformHeaderProps['rightItem'] = {
