@@ -36,9 +36,6 @@ class AccountScreen extends Component {
     constructor(props) {
         super(props)
 
-        console.log('AccountScreen executed')
-        console.log('this.props es: ', this.props)
-
         if (this.props.account) {
             this.state = {
                 addable: true,
