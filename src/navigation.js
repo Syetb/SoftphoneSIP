@@ -15,12 +15,13 @@ export const goHome = async () => {
             drawBehind: false
         },
         topBar: {
-            visible: true,
+            visible: false,
             animate: false,
             hideOnScroll: false,
             drawBehind: false,
             title: {
-                color: "#0f0f0f",
+                fontSize: 21,
+                color: "white",   //0f0f0f
                 // text: 'React Native Navigation!',
             },
             background: {
@@ -77,8 +78,7 @@ export const goHome = async () => {
                                                         visible: true,
                                                         animate: false,
                                                         title: {
-                                                            text: 'Teclado',
-                                                            color: "#0f0f0f"
+                                                            text: 'Teclado'
                                                         }
                                                     },
                                                     bottomTab: {
@@ -109,8 +109,7 @@ export const goHome = async () => {
                                                         visible: true,
                                                         animate: false,
                                                         title: {
-                                                            text: 'Contactos',
-                                                            color: "#0f0f0f"
+                                                            text: 'Contactos'
                                                         }
                                                     },
                                                 }
@@ -170,7 +169,7 @@ export const goHome = async () => {
                                         {
                                             component: {
                                                 id: 'SettingsScreenId',
-                                                name: 'Settings',
+                                                name: 'SettingsScreen',
                                                 passProps: {
                                                     text: 'This is tab 4'
                                                 }

@@ -14,7 +14,7 @@ export function registerScreens() {
     Navigation.registerComponentWithRedux('DialerScreen', () => require('./containers/dialer/DialerScreen').default, Provider, store);
     Navigation.registerComponentWithRedux('ContactsScreen', () => require('./containers/contacts/ContactsScreen').default, Provider, store);
     Navigation.registerComponentWithRedux('HistoryScreen', () => require('./containers/history/HistoryScreen').default, Provider, store);
-    Navigation.registerComponentWithRedux('Settings', () => require('./screens/Settings').default, Provider, store);
+    Navigation.registerComponentWithRedux('SettingsScreen', () => require('./containers/settings/SettingsScreen').default, Provider, store);
 
     Navigation.registerComponentWithRedux('Screen2', () => require('./screens/Screen2').default, Provider, store);
 }
