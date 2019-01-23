@@ -69,7 +69,7 @@ export default class SideMenu extends React.Component {
         console.log(this.props.componentId)
         Navigation.push(this.props.componentId, {
             component: {
-                name: 'Settings',
+                name: 'AccountScreen',
             }
         })
     }
@@ -93,7 +93,7 @@ export default class SideMenu extends React.Component {
                             Section 2
                         </Text>
                         <View style={styles.navSectionStyle}>
-                            <Text style={styles.navItemStyle} onPress={this.goToAccountsScreen()}>
+                            <Text style={styles.navItemStyle} onPress={this.goToAccountsScreen}>
                                 Settings
                             </Text>
                             <Text style={styles.navItemStyle}>
