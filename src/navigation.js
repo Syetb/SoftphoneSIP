@@ -5,7 +5,6 @@ export const goHome = async () => {
     Navigation.setDefaultOptions({
         layout: {
             orientation: ['portrait'],
-            topMargin: 1,
             // backgroundColor: '#ECEFF1'
         },
         statusBar: {
