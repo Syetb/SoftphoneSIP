@@ -24,7 +24,12 @@ class SettingsScreen extends Component {
                     id: 'toggleButtom',
                     enabled: false
                 }
-            }
+            },
+            sideMenu: {
+                left: {
+                    enabled: false
+                }
+            },
         };
     }
 
