@@ -7,7 +7,6 @@ import android.app.Application;
 import com.facebook.react.ReactApplication;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.carusto.ReactNativePjSip.PjSipModulePackage;
-import com.carusto.ReactNativePjSip.PjSipModulePackage;
 import com.oney.WebRTCModule.WebRTCModulePackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -34,7 +33,6 @@ import java.util.List;
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new LinearGradientPackage(),
-            new PjSipModulePackage(),
             new PjSipModulePackage(),
             new WebRTCModulePackage()
       );
@@ -79,7 +77,9 @@ public class MainApplication extends NavigationApplication {
     // Add additional packages you require here
     // No need to add RnnPackage and MainReactPackage
     return Arrays.<ReactPackage>asList(
-            // eg. new VectorIconsPackage()
+            new WebRTCModulePackage(),
+            new PjSipModulePackage(),
+            new LinearGradientPackage()
     );
   }
 
