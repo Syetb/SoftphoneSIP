@@ -56,7 +56,7 @@ class SettingsScreen extends Component {
 
         return (
             <View style={sc.mainContainer}>
-                <Header title="Settings" {...platformHeaderProps} />
+                <Header title="Configuraciones" {...platformHeaderProps} />
                 <SettingsViewport />
             </View>
         )
