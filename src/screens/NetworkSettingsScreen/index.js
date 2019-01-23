@@ -113,7 +113,7 @@ class NetworkSettingsScreen extends Component {
             icon: require('../../assets/images/header/back_white.png'),
             layout: 'icon',
             onPress: () => {
-                Navigation.pop('SettingsScreenId')
+                Navigation.pop(this.props.componentId)
             }
         }
         platformHeaderProps['rightItem'] = {

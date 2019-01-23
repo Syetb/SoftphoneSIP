@@ -10,7 +10,7 @@ import Header from '../../components/common/Header'
 
 import sc from '../../assets/styles/containers'
 
-const MediaSettingsScreen = () => {
+const MediaSettingsScreen = (props) => {
     const platformHeaderProps = {}
 
     platformHeaderProps['leftItem'] = {
@@ -18,7 +18,7 @@ const MediaSettingsScreen = () => {
         icon: require('../../assets/images/header/back_white.png'),
         layout: 'icon',
         onPress: () => {
-            Navigation.pop('SettingsScreenId')
+            Navigation.pop(props.componentId)
         }
     }
     platformHeaderProps['rightItem'] = {

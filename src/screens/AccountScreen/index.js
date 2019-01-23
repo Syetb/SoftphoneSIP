@@ -36,6 +36,9 @@ class AccountScreen extends Component {
     constructor(props) {
         super(props)
 
+        console.log('AccountScreen executed')
+        console.log('this.props es: ', this.props)
+
         if (this.props.account) {
             this.state = {
                 addable: true,
@@ -114,7 +117,7 @@ class AccountScreen extends Component {
     }
 
     onBackPress = () => {
-        Navigation.pop('SettingsId')
+        Navigation.pop(this.props.componentId)
     }
 
     render() {
