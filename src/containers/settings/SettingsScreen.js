@@ -16,7 +16,7 @@ class SettingsScreen extends Component {
             topBar: {
                 visible: false,
                 animate: false,
-                drawBehind: false,
+                drawBehind: true,
                 title: {
                     text: 'Mis Ajustes'
                 },

@@ -21,7 +21,7 @@ class AccountScreen extends Component {
             topBar: {
                 visible: false,
                 animate: false,
-                drawBehind: false,
+                drawBehind: true,
                 title: {
                     text: 'Mi Nueva Cuenta'
                 },

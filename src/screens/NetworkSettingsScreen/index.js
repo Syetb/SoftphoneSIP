@@ -13,6 +13,14 @@ import cs from '../../assets/styles/containers'
 
 class NetworkSettingsScreen extends Component {
 
+    static get options() {
+        return {
+            topBar: {
+                drawBehind: true,
+            }
+        };
+    }
+
     constructor(props) {
         super(props)
 
