@@ -154,9 +154,9 @@ configurations.all {
 }
 
 dependencies {
-    compile project(':react-native-linear-gradient')
-    compile project(':react-native-pjsip')
-    compile project(':react-native-webrtc')
+    implementation project(':react-native-linear-gradient')
+    implementation project(':react-native-pjsip')
+    implementation project(':react-native-webrtc')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:design:${rootProject.ext.supportLibVersion}"
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
