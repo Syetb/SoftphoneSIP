@@ -17,6 +17,7 @@ export function registerScreens() {
     Navigation.registerComponentWithRedux('SettingsScreen', () => require('./containers/settings/SettingsScreen').default, Provider, store);
 
     Navigation.registerComponentWithRedux('AccountScreen', () => require('./screens/AccountScreen').default, Provider, store);
+    Navigation.registerComponentWithRedux('MediaSettingsScreen', () => require('./screens/MediaSettingsScreen').default, Provider, store);
 
     Navigation.registerComponentWithRedux('Screen2', () => require('./screens/Screen2').default, Provider, store);
 }
