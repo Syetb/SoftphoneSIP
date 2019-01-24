@@ -16,7 +16,10 @@ class MediaSettingsScreen extends Component {
         return {
             topBar: {
                 drawBehind: true,
-            }
+            },
+            bottomTabs: {
+                visible: false
+            },
         };
     }
 
