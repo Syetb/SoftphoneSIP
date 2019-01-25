@@ -33,8 +33,8 @@ class AccountScreen extends Component {
             },
             bottomTabs: {
                 visible: false
-            }
-        }
+            },
+        };
     }
 
     constructor(props) {
