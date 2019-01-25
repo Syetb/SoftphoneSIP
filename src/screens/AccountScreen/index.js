@@ -1,9 +1,10 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { TouchableHighlight, View, Text, ScrollView } from 'react-native'
 
 import { Navigation } from 'react-native-navigation'
 import { connect } from 'react-redux'
+import { createAccount } from '../../actions/pjsip'
 
 import Header from '../../components/common/Header'
 import ListSection from '../../components/common/ListSection'
@@ -32,8 +33,8 @@ class AccountScreen extends Component {
             },
             bottomTabs: {
                 visible: false
-            }
-        }
+            },
+        };
     }
 
     constructor(props) {
@@ -78,7 +79,6 @@ class AccountScreen extends Component {
         this._onRegServerChanged = this.onFieldChanged.bind(this, "regServer")
         this._onRegTimeoutChanged = this.onFieldChanged.bind(this, "regTimeout")
         this._onSubmitPress = this.onSubmitPress.bind(this)
-        this._onDeletePress = this.onDeletePress.bind(this)
     }
 
     onFieldChanged(name, value) {
@@ -110,10 +110,6 @@ class AccountScreen extends Component {
         } else {
             this.props.onCreatePress && this.props.onCreatePress(credentials)
         }
-    }
-
-    onDeletePress() {
-        this.props.onDeletePress && this.props.onDeletePress(this.props.account)
     }
 
     onBackPress = async () => {
@@ -211,7 +207,7 @@ class AccountScreen extends Component {
                     !this.props.account ? null :
                         <TouchableHighlight
                             style={sas.deleteButton}
-                            onPress={this._onDeletePress}
+                            onPress={ () => {} }
                         >
                             <Text style={sas.deleteButtonText}>Remove account</Text>
                         </TouchableHighlight>
@@ -233,8 +229,7 @@ AccountScreen.propTypes = {
         getRegTimeout: PropTypes.func
     }),
     onCreatePress: PropTypes.func,
-    onChangePress: PropTypes.func,
-    onDeletePress: PropTypes.func
+    onChangePress: PropTypes.func
 }
 
 const mapStateToProps = (state) => {
@@ -242,7 +237,19 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {}
+    return {
+        onCreatePress: (configuration) => {
+            dispatch( async () => {
+                await dispatch(createAccount(configuration))
+                // await dispatch(Navigation.goAndReplace({name: 'settings'}))  Recarga la pagina actual
+            })
+        },
+        onChangePress: (account, configuration) => {
+            alert("Por implementar")
+            // dispatch(replaceAccount(account, configuration));
+            // dispatch(Navigation.goAndReplace({name: 'settings'}))
+        }
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AccountScreen)
