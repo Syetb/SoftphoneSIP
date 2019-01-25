@@ -1,6 +1,8 @@
 import { Platform } from 'react-native'
+import { Navigation } from 'react-native-navigation'
 
 export const ACCOUNT_CREATED = 'pjsip/ACCOUNT_CREATED'
+export const ACCOUNT_DELETED = 'pjsip/ACCOUNT_DELETED'
 
 /**
  * Creates new account based on provided configuration.
@@ -26,5 +28,28 @@ export function createAccount(configuration) {
         dispatch( { type: ACCOUNT_CREATED, payload: { account } } )
 
         return account
+    }
+}
+
+/**
+ * Action to delete account.
+ *
+ * @param {Account} account
+ * @returns {Function}
+ */
+export function deleteAccount(account) {
+    return async function (dispatch, getState) {
+        const endpoint = getState().pjsip.endpoint
+        await endpoint.deleteAccount(account)
+
+        dispatch( { type: ACCOUNT_DELETED, payload: { account } } )
+
+        dispatch(
+            Navigation.push('SettingsScreenId', {
+                component: {
+                    name: 'SettingsScreen'
+                }
+            })
+        )
     }
 }

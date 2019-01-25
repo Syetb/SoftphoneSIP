@@ -4,7 +4,7 @@ import { TouchableHighlight, View, Text, ScrollView } from 'react-native'
 
 import { Navigation } from 'react-native-navigation'
 import { connect } from 'react-redux'
-import { createAccount } from '../../actions/pjsip'
+import { createAccount, deleteAccount } from '../../actions/pjsip'
 
 import Header from '../../components/common/Header'
 import ListSection from '../../components/common/ListSection'
@@ -79,6 +79,7 @@ class AccountScreen extends Component {
         this._onRegServerChanged = this.onFieldChanged.bind(this, "regServer")
         this._onRegTimeoutChanged = this.onFieldChanged.bind(this, "regTimeout")
         this._onSubmitPress = this.onSubmitPress.bind(this)
+        this._onDeletePress = this.onDeletePress.bind(this)
     }
 
     onFieldChanged(name, value) {
@@ -110,6 +111,10 @@ class AccountScreen extends Component {
         } else {
             this.props.onCreatePress && this.props.onCreatePress(credentials)
         }
+    }
+
+    onDeletePress() {
+        this.props.onDeletePress && this.props.onDeletePress(this.props.account)
     }
 
     onBackPress = async () => {
@@ -207,7 +212,7 @@ class AccountScreen extends Component {
                     !this.props.account ? null :
                         <TouchableHighlight
                             style={sas.deleteButton}
-                            onPress={ () => {} }
+                            onPress={this._onDeletePress}
                         >
                             <Text style={sas.deleteButtonText}>Remove account</Text>
                         </TouchableHighlight>
@@ -229,7 +234,8 @@ AccountScreen.propTypes = {
         getRegTimeout: PropTypes.func
     }),
     onCreatePress: PropTypes.func,
-    onChangePress: PropTypes.func
+    onChangePress: PropTypes.func,
+    onDeletePress: PropTypes.func
 }
 
 const mapStateToProps = (state) => {
@@ -248,7 +254,8 @@ const mapDispatchToProps = (dispatch) => {
             alert("Por implementar")
             // dispatch(replaceAccount(account, configuration));
             // dispatch(Navigation.goAndReplace({name: 'settings'}))
-        }
+        },
+        onDeletePress: (account) => dispatch(deleteAccount(account))
     }
 }
 

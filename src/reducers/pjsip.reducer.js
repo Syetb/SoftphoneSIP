@@ -1,6 +1,6 @@
 import { INIT, CHANGED_APP_STATE} from '../actions/app'
 import { ACCOUNT_CHANGED, CONNECTIVITY_CHANGED, CALL_RECEIVED, CALL_CHANGED, CALL_TERMINATED, CALL_SCREEN_LOCKED } from '../actions/handlers'
-import { ACCOUNT_CREATED } from '../actions/pjsip'
+import { ACCOUNT_CREATED, ACCOUNT_DELETED } from '../actions/pjsip'
 
 export const CALL_INITIATED = 'pjsip/CALL_INITIATED'
 export const ACCOUNT_REGISTRATION_CHANGED = 'pjsip/ACCOUNT_REGISTRATION_CHANGED'
@@ -76,6 +76,17 @@ const reducer = (state = initialState, action) => {
                     ...state.accounts,
                     [account.getId()]: account
                 }
+            }
+        }
+        case ACCOUNT_DELETED: {
+            const account = action.payload.account
+            const accounts = {...state.accounts}
+
+            delete accounts[account.getId()]
+
+            return {
+                ...state,
+                accounts
             }
         }
         default:
