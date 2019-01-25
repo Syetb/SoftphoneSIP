@@ -29,8 +29,11 @@ class AccountScreen extends Component {
                     id: 'toggleButtom',
                     enabled: false
                 }
+            },
+            bottomTabs: {
+                visible: false
             }
-        };
+        }
     }
 
     constructor(props) {
@@ -103,7 +106,7 @@ class AccountScreen extends Component {
         }
 
         if (this.props.account) {
-            this.props.onChangePress && this.props.onChangePress(credentials)
+            this.props.onChangePress && this.props.onChangePress(this.props.account, credentials)
         } else {
             this.props.onCreatePress && this.props.onCreatePress(credentials)
         }
