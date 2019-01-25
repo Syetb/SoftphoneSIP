@@ -27,7 +27,7 @@ export function createAccount(configuration) {
 
         dispatch( { type: ACCOUNT_CREATED, payload: { account } } )
 
-        return account
+        return await Navigation.popTo('SettingsScreenId')
     }
 }
 
@@ -44,10 +44,6 @@ export function deleteAccount(account) {
 
         dispatch( { type: ACCOUNT_DELETED, payload: { account } } )
 
-        return await Navigation.push('SettingsScreenId', {
-            component: {
-                name: 'SettingsScreen'
-            }
-        })
+        return await Navigation.popTo('SettingsScreenId')
     }
 }
