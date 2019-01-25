@@ -3,7 +3,14 @@ import { Navigation } from 'react-native-navigation';
 import { Provider } from 'react-redux';
 import configureStore from './configureStore'
 
+import { init } from './actions/app'
+
 const store = configureStore();
+
+store.dispatch(async (dispatch, getState) => {
+
+    await dispatch(init())
+})
 
 export function registerScreens() {
     Navigation.registerComponentWithRedux('LaunchScreen', (sc) => require('./screens/LaunchScreen').default, Provider, store);
