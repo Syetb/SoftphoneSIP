@@ -44,12 +44,10 @@ export function deleteAccount(account) {
 
         dispatch( { type: ACCOUNT_DELETED, payload: { account } } )
 
-        dispatch(
-            Navigation.push('SettingsScreenId', {
-                component: {
-                    name: 'SettingsScreen'
-                }
-            })
-        )
+        return await Navigation.push('SettingsScreenId', {
+            component: {
+                name: 'SettingsScreen'
+            }
+        })
     }
 }
