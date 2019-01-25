@@ -246,10 +246,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onCreatePress: (configuration) => {
-            dispatch( async () => {
-                await dispatch(createAccount(configuration))
-                // await dispatch(Navigation.goAndReplace({name: 'settings'}))  Recarga la pagina actual
-            })
+            dispatch( async () => await dispatch(createAccount(configuration)))
         },
         onChangePress: (account, configuration) => {
             alert("Por implementar")
