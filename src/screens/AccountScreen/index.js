@@ -159,20 +159,21 @@ class AccountScreen extends Component {
                     />
                     <ListFieldSeparator />
                     <ListTextField
-                        inputProps={{autoCapitalize: "none", autoCorrect: false}}
-                        title="Servidor"
-                        placeholder="Servidor SIP / Dominio"
-                        value={this.state.domain}
-                        onChange={this._onDomainChanged}
-                    />
-                    <ListFieldSeparator />
-                    <ListTextField
                         inputProps={{autoCapitalize: "none", autoCorrect: false, secureTextEntry: true}}
                         title="Password"
                         placeholder="SIP password" value={this.state.password}
                         valueType="password"
                         onChange={this._onPasswordChanged}
                     />
+                    <ListFieldSeparator />
+                    <ListTextField
+                        inputProps={{autoCapitalize: "none", autoCorrect: false}}
+                        title="Servidor"
+                        placeholder="Servidor SIP / Dominio"
+                        value={this.state.domain}
+                        onChange={this._onDomainChanged}
+                    />
+
                     <ListFieldSeparator />
                     <ListSection title="Avanzado"/>
                     <ListFieldSeparator />
