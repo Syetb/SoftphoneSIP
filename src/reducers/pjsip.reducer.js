@@ -1,3 +1,10 @@
+import { INIT, CHANGED_APP_STATE} from '../actions/app'
+import { ACCOUNT_CHANGED, CONNECTIVITY_CHANGED, CALL_RECEIVED, CALL_CHANGED, CALL_TERMINATED, CALL_SCREEN_LOCKED } from '../actions/handlers'
+import { ACCOUNT_CREATED } from '../actions/pjsip'
+
+export const CALL_INITIATED = 'pjsip/CALL_INITIATED'
+export const ACCOUNT_REGISTRATION_CHANGED = 'pjsip/ACCOUNT_REGISTRATION_CHANGED'
+
 const initialState = {
     endpoint: null,
     endpointSettings: null,
@@ -10,15 +17,70 @@ const initialState = {
     calls: {},
 }
 
-export default function (state = initialState, action) {
-
+const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'FETCH_ACCOUNTS':
+        case INIT:
             return {
                 ...state,
-                accounts: action.payload
+                ...action.payload
             }
+
+        case CALL_INITIATED:
+        case CALL_RECEIVED:
+        case CALL_CHANGED:
+            const call = action.call
+
+            return {
+                ...state,
+                calls: {
+                    ...state.calls,
+                    [call.getId()]: call
+                }
+            }
+
+        case CALL_TERMINATED:
+            const calls = {...state.calls}
+            delete calls[action.call.getId()]
+
+            return {
+                ...state,
+                calls
+            }
+
+        case CALL_SCREEN_LOCKED:
+            return {
+                ...state,
+                isScreenLocked: action.lock
+            }
+
+        case CONNECTIVITY_CHANGED:
+            return {
+                ...state,
+                connectivity: action.payload
+            }
+
+        case CHANGED_APP_STATE:
+            return {
+                ...state,
+                ...action.payload
+            }
+
+        case ACCOUNT_CREATED:
+        case ACCOUNT_CHANGED:
+        case ACCOUNT_REGISTRATION_CHANGED: {
+            const account = action.payload.account
+
+            return {
+                ...state,
+                accounts: {
+                    ...state.accounts,
+                    [account.getId()]: account
+                }
+            }
+        }
         default:
-            return state;
+            return state
     }
 }
+
+export default reducer
