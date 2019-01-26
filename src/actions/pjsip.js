@@ -40,32 +40,10 @@ export function createAccount(configuration) {
  */
 export function replaceAccount(account, configuration) {
     // There is no change account method. But this functionality is easy to implement by calling delete and create account methods.
-    return async function (dispatch, getState) {
-        return Navigation.popTo('SettingsScreenId')
-            .then(
-                async () => {
-                    const endpoint = getState().pjsip.endpoint
-                    await endpoint.deleteAccount(account)
+    return async function (dispatch) {
 
-                    dispatch( { type: ACCOUNT_DELETED, payload: { account } } )
-
-                    const contactUriParams = Platform.select({
-                        ios: ';app-id=com.softphoneSIP.mobile.app',
-                        android: ';im-type=sip',
-                    })
-
-                    const replaceAccount = endpoint.createAccount({
-                        ...configuration,
-                        transport: configuration.transport ? configuration.transport : "UDP",
-                        contactUriParams
-                    })
-
-                    dispatch( { type: ACCOUNT_CREATED, payload: { replaceAccount } } )
-
-                },
-
-                error => console.log('An error occurred.', error)
-            )
+        dispatch(deleteAccount(account))
+        dispatch(createAccount(configuration))
     }
 }
 
