@@ -73,7 +73,12 @@ export function init() {
 
                     for (const id in accounts) {
                         if (accounts.hasOwnProperty(id)) {
-                            await endpoint.registerAccount(accounts[id], nextAppState === 'active')
+                            try {
+                                await endpoint.registerAccount(accounts[id], nextAppState === 'active')
+                            } catch (e) {
+                                // console.warn('error es: ' , e)
+                                console.log('error es: ' , e)
+                            }
                         }
                     }
 
