@@ -1,4 +1,4 @@
-import { Platform } from 'react-native'
+import { Platform, AppState } from 'react-native'
 import { Endpoint } from 'react-native-pjsip'
 
 import { onAccountChanged, onConnectivityChanged, onCallReceived, onCallChanged, onCallTerminated, onCallScreenLocked } from './handlers'
@@ -50,8 +50,14 @@ export function init() {
             dispatch(onCallScreenLocked(call))
         })
 
-        const accountMap = accounts.reduce( (acc, cur) => acc[cur.getId()] = cur, {} )
-        const callsMap = calls.reduce( (acc, cur) => acc[cur.getId()] = cur, {} )
+        const accountMap = accounts.reduce( (acc, cur) => {
+            acc[cur.getId()] = cur
+            return acc
+        }, {})
+        const callsMap = calls.reduce((acc, cur) => {
+            acc[cur.getId()] = cur
+            return acc
+        }, {})
 
         dispatch({
             type: INIT,
