@@ -4,7 +4,7 @@ import { TouchableHighlight, View, Text, ScrollView } from 'react-native'
 
 import { Navigation } from 'react-native-navigation'
 import { connect } from 'react-redux'
-import { createAccount, deleteAccount } from '../../actions/pjsip'
+import { createAccount, replaceAccount, deleteAccount } from '../../actions/pjsip'
 
 import Header from '../../components/common/Header'
 import ListSection from '../../components/common/ListSection'
@@ -249,9 +249,7 @@ const mapDispatchToProps = (dispatch) => {
             dispatch( async () => await dispatch(createAccount(configuration)))
         },
         onChangePress: (account, configuration) => {
-            alert("Por implementar")
-            // dispatch(replaceAccount(account, configuration));
-            // dispatch(Navigation.goAndReplace({name: 'settings'}))
+            dispatch( async () => await dispatch(replaceAccount(account, configuration)));
         },
         onDeletePress: (account) => dispatch(deleteAccount(account))
     }
