@@ -5,9 +5,9 @@ import android.support.annotation.Nullable;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.BV.LinearGradient.LinearGradientPackage;
-import com.carusto.ReactNativePjSip.PjSipModulePackage;
 import com.oney.WebRTCModule.WebRTCModulePackage;
+import com.carusto.ReactNativePjSip.PjSipModulePackage;
+import com.BV.LinearGradient.LinearGradientPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -32,9 +32,9 @@ import java.util.List;
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new LinearGradientPackage(),
+            new WebRTCModulePackage(),
             new PjSipModulePackage(),
-            new WebRTCModulePackage()
+            new LinearGradientPackage()
       );
     }
 
