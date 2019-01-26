@@ -63,5 +63,23 @@ export function init() {
             type: INIT,
             payload: { endpoint, endpointSettings, connectivity, accounts: accountMap, calls: callsMap }
         })
+
+        if (Platform.OS === 'ios') {
+            // Register / unregister when app in background or foreground
+            AppState.addEventListener('change', async (nextAppState) => {
+
+                if (nextAppState === 'background' || nextAppState === 'active') {
+                    const accounts = getState().pjsip.accounts
+
+                    for (const id in accounts) {
+                        if (accounts.hasOwnProperty(id)) {
+                            await endpoint.registerAccount(accounts[id], nextAppState === 'active')
+                        }
+                    }
+
+                    dispatch( { type: CHANGED_APP_STATE, payload: { appState: nextAppState } } )
+                }
+            })
+        }
     }
 }
