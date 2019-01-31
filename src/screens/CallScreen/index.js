@@ -4,7 +4,7 @@ import { Animated, View, Text, Dimensions } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 
 import { connect } from 'react-redux'
-import { Navigation } from 'react-native-navigation'
+import { goTo, goBack } from "../../actions/navigate";
 import * as CallAnimation from './anim'
 import {
     answerCall, declineCall, hangupCall, makeCall
@@ -409,7 +409,7 @@ const mapDispatchToProps = (dispatch) => {
                     const calls = getState().pjsip.calls
                     const route = getState().navigate.current
 
-                    const doDirectRoute = () => Navigation.popTo('DialerScreenId')   // Return to previous screen once call end.
+                    const doDirectRoute = () => dispatch(goBack())   //dispatch Return to previous screen once call end.
 
                     const doRoute = (call) => {
                         if (calls.hasOwnProperty(call.getId())) {
@@ -418,20 +418,11 @@ const mapDispatchToProps = (dispatch) => {
 
                         // Open active call once current call ends.
                         for (const id in calls) {
-                            if (calls.hasOwnProperty(id)) {
-                                console.log('calls[id] es: ', calls[id])
-
-                                Navigation.push('DialerScreenId', {
-                                    component: {
-                                        name: 'CallScreen',
-                                        passProps: { call }
-                                    }
-                                })
-                            }
+                            if (calls.hasOwnProperty(id)) { return dispatch(goTo(calls[id])) }
                         }
 
                         // Return to previous screen once call end.
-                        return Navigation.popTo('DialerScreenId')
+                        return dispatch(goBack())
                     }
 
                     if (route.name !== 'CallScreen') {
@@ -440,6 +431,7 @@ const mapDispatchToProps = (dispatch) => {
 
                     if (route.call instanceof Promise) {
                         route.call.then(doRoute, doDirectRoute)
+
                     } else {
                         doRoute(route.call)
                     }
@@ -448,25 +440,13 @@ const mapDispatchToProps = (dispatch) => {
             }, 2000)
         },
 
-        onCallAdd: (call, destination) => dispatch(makeCall(destination, call)) ,
+        onCallAdd: (call, destination) => dispatch(makeCall(destination, call)),
 
-        onCallSelect: async (call) => {
-           await Navigation.push('DialerScreenId', {
-                component: {
-                    name: 'CallScreen',
-                    passProps: { call }
-                }
-            })
-        },
+        onCallSelect: async (call) => dispatch(goTo( { name: 'CallScreen', call } )),
 
         onIncomingCallAnswer: async (call) => {
             dispatch(answerCall(call))
-            await Navigation.push('DialerScreenId', {
-                component: {
-                    name: 'CallScreen',
-                    passProps: { call }
-                }
-            })
+            dispatch(await goTo( { name: 'CallScreen', call } ))
         },
 
         onIncomingCallDecline: (call) => dispatch(declineCall(call)),
