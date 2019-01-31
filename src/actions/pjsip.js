@@ -63,3 +63,75 @@ export function deleteAccount(account) {
         return await Navigation.popTo('SettingsScreenId')
     }
 }
+
+/**
+ * Initiate new outgoing call.
+ *
+ * @param {String} destination
+ * @param {Account} account
+ * @returns {Function}
+ */
+export function makeCall(destination, account = null) {
+    return async function (dispatch, getState) {
+        const { accounts } = getState().pjsip
+
+        // Use "default" account if none provided
+        if (account == null) {
+            for (const id in accounts) {
+                if (accounts.hasOwnProperty(id)) {
+                    account = accounts[id]
+                    break
+                }
+            }
+        }
+
+        if (!account) {
+            dispatch(
+                Navigation.push('DialerScreenId', {
+                    component: {
+                        name: 'CallScreen',
+                        passProps: {
+                            call: Promise.reject("At least one account should be available to make a call.")
+                        }
+                    }
+                })
+            )
+            return
+        }
+
+        const endpoint = getState().pjsip.endpoint
+
+
+        const call = endpoint.makeCall(account, destination)
+
+        await Navigation.push('DialerScreenId', {
+            component: {
+                name: 'CallScreen',
+                passProps: {
+                    call
+                }
+            }
+        })
+    }
+}
+
+export function hangupCall(call) {
+    return async function (dispatch, getState) {
+        const endpoint = getState().pjsip.endpoint
+        await  endpoint.hangupCall(call)
+    }
+}
+
+export function declineCall(call) {
+    return async function (dispatch, getState) {
+        const endpoint = getState().pjsip.endpoint
+        await endpoint.declineCall(call)
+    }
+}
+
+export function answerCall(call) {
+    return async function (dispatch, getState) {
+        const endpoint = getState().pjsip.endpoint
+        await endpoint.answerCall(call)
+    }
+}
