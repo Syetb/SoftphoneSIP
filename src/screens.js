@@ -3,7 +3,7 @@ import { Navigation } from 'react-native-navigation';
 import { Provider } from 'react-redux';
 import configureStore from './configureStore'
 
-import { init } from './actions/app'
+import { init }  from './actions/app'
 
 const store = configureStore();
 
@@ -26,6 +26,8 @@ export function registerScreens() {
     Navigation.registerComponentWithRedux('AccountScreen', () => require('./screens/AccountScreen').default, Provider, store);
     Navigation.registerComponentWithRedux('NetworkSettingsScreen', () => require('./screens/NetworkSettingsScreen').default, Provider, store);
     Navigation.registerComponentWithRedux('MediaSettingsScreen', () => require('./screens/MediaSettingsScreen').default, Provider, store);
+
+    Navigation.registerComponentWithRedux('CallScreen', () => require('./screens/CallScreen').default, Provider, store);
 
     Navigation.registerComponentWithRedux('Screen2', () => require('./screens/Screen2').default, Provider, store);
 }
