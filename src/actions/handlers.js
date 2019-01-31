@@ -1,3 +1,5 @@
+import { Navigation } from 'react-native-navigation'
+
 export const ACCOUNT_CHANGED = 'pjsip/ACCOUNT_CHANGED'
 export const CONNECTIVITY_CHANGED = 'pjsip/CONNECTIVITY_CHANGED'
 
@@ -34,6 +36,20 @@ export function onConnectivityChanged(online) {
  */
 export function onCallReceived(call) {
     return async function (dispatch, getState) {
+        const state = getState()
+        if (state.navigation.current.name !== 'call' && state.pjsip.appState === 'active') {
+            dispatch(
+                Navigation.push('CallScreenId', {
+                    component: {
+                        name: 'call',
+                        passProps: {
+                            call
+                        }
+                    }
+                })
+            )
+        }
+
         dispatch( { type: CALL_RECEIVED, call } )
     }
 }
