@@ -1,31 +1,24 @@
-const mockPosts = [
-    {
-        name: "John Doe",
-        username: "100",
-        domain: "pbx.com",
-        password: "XXXXXX",
+import { Navigation } from "react-native-navigation";
 
-        proxy: "192.168.100.1:5060",
-        transport: "UDP",
-        regServer: "pbx.com",
-        regTimeout: 300,
-    },
-    {
-        name: "Marie Curie",
-        username: "101",
-        domain: "pbx.com",
-        password: "XXXXXX",
+export const NAVIGATE_TO = 'navigation/NAVIGATE_TO'
+export const NAVIGATE_BACK = 'navigation/NAVIGATE_BACK'
 
-        proxy: "192.168.100.2:5060",
-        transport: "UDP",
-        regServer: "pbx.com",
-        regTimeout: 300,
+export function goTo(route, currentScreen='DialerScreenId') {
+    return async (dispatch, getState) => {
+
+        dispatch( { type: NAVIGATE_TO, route } )
+
+        return await Navigation.push(currentScreen, {
+            component: { name: route.name }
+        })
     }
-];
+}
 
-export function getAccounts() {
-    return {
-        type: 'FETCH_ACCOUNTS',
-        payload: mockPosts
-    };
+export function goBack() {
+    return async (dispatch, getState) => {
+
+        dispatch( { type: NAVIGATE_BACK } )
+
+        return await Navigation.popTo('DialerScreenId')
+    }
 }
