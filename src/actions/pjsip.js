@@ -1,5 +1,6 @@
 import { Platform } from 'react-native'
 import { Navigation } from 'react-native-navigation'
+import {goTo} from "./navigate";
 
 export const ACCOUNT_CREATED = 'pjsip/ACCOUNT_CREATED'
 export const ACCOUNT_DELETED = 'pjsip/ACCOUNT_DELETED'
@@ -86,32 +87,24 @@ export function makeCall(destination, account = null) {
         }
 
         if (!account) {
-            dispatch(
-                Navigation.push('DialerScreenId', {
-                    component: {
-                        name: 'CallScreen',
-                        passProps: {
-                            call: Promise.reject("At least one account should be available to make a call.")
-                        }
-                    }
-                })
-            )
+            dispatch(goTo({
+                name: 'CallScreen',
+                call: Promise.reject("Al menos debes configurar una cuenta SIP para hacer llamadas")
+            }))
+
             return
         }
 
         const endpoint = getState().pjsip.endpoint
 
+        // TODO: Do not deactivateAudioSession if iOS version is not compatible with CallKit
+        if (Platform.OS === 'ios') {
+            endpoint.deactivateAudioSession()
+        }
 
         const call = endpoint.makeCall(account, destination)
 
-        await Navigation.push('DialerScreenId', {
-            component: {
-                name: 'CallScreen',
-                passProps: {
-                    call
-                }
-            }
-        })
+        dispatch(goTo( { name: 'CallScreen', call } ))
     }
 }
 
