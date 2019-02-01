@@ -41,7 +41,8 @@ class CallScreen extends Component {
                 }
             },
             bottomTabs: {
-                visible: false
+                visible: false,
+                drawBehind: true,
             }
         }
     }
