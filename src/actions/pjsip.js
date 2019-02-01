@@ -1,6 +1,6 @@
 import { Platform } from 'react-native'
 import { Navigation } from 'react-native-navigation'
-import {goTo} from "./navigate";
+import { goTo } from "./navigate";
 
 export const ACCOUNT_CREATED = 'pjsip/ACCOUNT_CREATED'
 export const ACCOUNT_DELETED = 'pjsip/ACCOUNT_DELETED'
@@ -126,5 +126,75 @@ export function answerCall(call) {
     return async function (dispatch, getState) {
         const endpoint = getState().pjsip.endpoint
         await endpoint.answerCall(call)
+    }
+}
+
+export function muteCall(call) {
+    return async function (dispatch, getState) {
+        const endpoint = getState().pjsip.endpoint
+        await endpoint.muteCall(call)
+    }
+}
+
+export function unmuteCall(call) {
+    return async function (dispatch, getState) {
+        const endpoint = getState().pjsip.endpoint
+        await endpoint.unMuteCall(call)
+    }
+}
+
+export function holdCall(call) {
+    return async function (dispatch, getState) {
+        const endpoint = getState().pjsip.endpoint
+        await endpoint.holdCall(call)
+    }
+}
+
+export function unholdCall(call) {
+    return async function (dispatch, getState) {
+        const endpoint = getState().pjsip.endpoint
+        await endpoint.unholdCall(call)
+    }
+}
+
+export function useSpeaker(call) {
+    return async function (dispatch, getState) {
+        const endpoint = getState().pjsip.endpoint
+        await endpoint.useSpeaker(call)
+    }
+}
+
+export function useEarpiece(call) {
+    return async function (dispatch, getState) {
+        const endpoint = getState().pjsip.endpoint
+        await endpoint.useEarpiece(call)
+    }
+}
+
+export function dtmfCall(call, key) {
+    return async function (dispatch, getState) {
+        const endpoint = getState().pjsip.endpoint
+        await endpoint.dtmfCall(call, key)
+    }
+}
+
+export function redirectCall(call, destination) {
+    return async function (dispatch, getState) {
+        const {endpoint, accounts} = getState().pjsip
+        await endpoint.redirectCall(accounts[call.getAccountId()], call, destination)
+    }
+}
+
+export function xferCall(call, destination) {
+    return async function (dispatch, getState) {
+        const {endpoint, accounts} = getState().pjsip
+        await endpoint.xferCall(accounts[call.getAccountId()], call, destination)
+    }
+}
+
+export function xferReplacesCall(call, destinationCall) {
+    return async function (dispatch, getState) {
+        const endpoint = getState().pjsip.endpoint
+        await endpoint.xferReplacesCall(call, destinationCall)
     }
 }
