@@ -30,7 +30,7 @@ export default StyleSheet.create({
     flexDirection: 'row'
   },
   actionsPadding: {
-    flex: 0.15
+    flex: 0.20
   },
   actionsContent: {
     flex: 0.7
@@ -43,7 +43,7 @@ export default StyleSheet.create({
     marginTop: 30
   },
   actionSeparator: {
-    flex: 0.3
+    flex: 0.495
   },
   actionEmpty: {
     width: 64

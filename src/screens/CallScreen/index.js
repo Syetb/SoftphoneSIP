@@ -441,7 +441,7 @@ class CallScreen extends Component {
                     >
                         <CallActions
                             call={call}
-                            style={{flex: 0.7}}
+                            style={{flex: 1}}
                             onAddPress={this._onCallAddPress}
                             onMutePress={this._onCallMutePress}
                             onUnMutePress={this._onCallUnMutePress}
