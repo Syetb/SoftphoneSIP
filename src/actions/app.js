@@ -4,7 +4,7 @@ import RNCallKit  from 'react-native-callkit'
 import uuid from 'uuid'
 
 import { onAccountChanged, onConnectivityChanged, onCallReceived, onCallChanged, onCallTerminated, onCallScreenLocked } from './handlers'
-import { answerCall, declineCall, hangupCall } from "./pjsip";
+import {ACCOUNT_CREATED, answerCall, createAccount, declineCall, hangupCall} from "./pjsip";
 
 export const INIT = 'pjsip/INIT'
 export const CHANGED_APP_STATE = 'pjsip/CHANGED_APP_STATE'
@@ -91,6 +91,39 @@ export function init() {
                     dispatch( { type: CHANGED_APP_STATE, payload: { appState: nextAppState } } )
                 }
             })
+        }
+
+        // Cuenta SIP por defecto para pruebas
+        if (accounts.length === 0) {
+            const defaultAccount = {
+                'name': 'Jhonatan',
+                'username': 'jhona',
+                'domain': '192.168.0.133',
+                'password': 'pwd_100',
+                'proxy': '',
+                'transport':'UDP',
+                'regServer': '',
+                'regTimeout': ''
+            }
+
+            if( Platform.OS === 'ios') {
+                const account = await endpoint.createAccount({
+                    ...defaultAccount,
+                    contactUriParams: ';app-id=com.softphoneSIP.mobile.app'
+                })
+                dispatch( { type: ACCOUNT_CREATED, payload: { account } } )
+
+            } else {
+                defaultAccount.name = 'Betsy'
+                defaultAccount.username = 'betsy'
+                defaultAccount.password = 'pwd_102'
+
+                const account = await endpoint.createAccount({
+                    ...defaultAccount,
+                    contactUriParams: ';im-type=sip'
+                })
+                dispatch( { type: ACCOUNT_CREATED, payload: { account } } )
+            }
         }
     }
 }
