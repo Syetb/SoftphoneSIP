@@ -11,7 +11,7 @@ class CallControls extends Component {
 
         const call = props.call
         const { height: screenHeight, width: screenWidth } = Dimensions.get('window')
-        const answerable = call.getState() == "PJSIP_INV_STATE_INCOMING"
+        const answerable = call.getState() === "PJSIP_INV_STATE_INCOMING"
 
         const space = (screenWidth - 64 * 3) / 4
         let hangupOffset = space
@@ -42,7 +42,7 @@ class CallControls extends Component {
     componentWillReceiveProps(nextProps) {
         const call = nextProps.call
 
-        if (call.getState() != 'PJSIP_INV_STATE_INCOMING') {
+        if (call.getState() !== 'PJSIP_INV_STATE_INCOMING') {
             Animated.parallel([
                 Animated.timing(this.state.hangupOffset, { toValue: this.state.answerOffset })
             ]).start()
@@ -54,19 +54,19 @@ class CallControls extends Component {
     }
 
     onHangupPress() {
-        if (this.props.call.getState() != "PJSIP_INV_STATE_DISCONNECTED") {
+        if (this.props.call.getState() !== "PJSIP_INV_STATE_DISCONNECTED") {
             this.props.onHangupPress && this.props.onHangupPress()
         }
     }
 
     onAnswerPress() {
-        if (this.props.call.getState() == "PJSIP_INV_STATE_INCOMING") {
+        if (this.props.call.getState() === "PJSIP_INV_STATE_INCOMING") {
             this.props.onAnswerPress && this.props.onAnswerPress()
         }
     }
 
     onRedirectPress() {
-        if (this.props.call.getState() == "PJSIP_INV_STATE_INCOMING") {
+        if (this.props.call.getState() === "PJSIP_INV_STATE_INCOMING") {
             this.props.onRedirectPress && this.props.onRedirectPress()
         }
     }
@@ -80,7 +80,7 @@ class CallControls extends Component {
                 <Animated.View style={[{left: this.state.hangupOffset}, scc.buttonContainer]}>
                     <TouchableOpacity
                         onPress={this._onHangupPress}
-                        style={[scc.buttonTouchable, (call.getState() == "PJSIP_INV_STATE_DISCONNECTED" ? scc.buttonDisabled : scc.buttonRed)]}
+                        style={[scc.buttonTouchable, (call.getState() === "PJSIP_INV_STATE_DISCONNECTED" ? scc.buttonDisabled : scc.buttonRed)]}
                     >
                         <Image source={require('../../../assets/images/call/action-hangup.png')}/>
                     </TouchableOpacity>
