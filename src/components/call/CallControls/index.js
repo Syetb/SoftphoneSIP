@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { TouchableOpacity, Dimensions, Animated, View, Image } from 'react-native'
+import { TouchableOpacity, Dimensions, Animated, View, Image, Platform } from 'react-native'
 
 import scc from './styles'
+
+export const PJSIP_INV_STATE_INCOMING = Platform.OS === 'android' ? 'PJSIP_INV_STATE_NULL' : 'PJSIP_INV_STATE_INCOMING'
 
 class CallControls extends Component {
 
@@ -11,7 +13,7 @@ class CallControls extends Component {
 
         const call = props.call
         const { height: screenHeight, width: screenWidth } = Dimensions.get('window')
-        const answerable = call.getState() === "PJSIP_INV_STATE_INCOMING"
+        const answerable = call.getState() === PJSIP_INV_STATE_INCOMING
 
         const space = (screenWidth - 64 * 3) / 4
         let hangupOffset = space
@@ -42,7 +44,7 @@ class CallControls extends Component {
     componentWillReceiveProps(nextProps) {
         const call = nextProps.call
 
-        if (call.getState() !== 'PJSIP_INV_STATE_INCOMING') {
+        if (call.getState() !== PJSIP_INV_STATE_INCOMING) {
             Animated.parallel([
                 Animated.timing(this.state.hangupOffset, { toValue: this.state.answerOffset })
             ]).start()
@@ -60,13 +62,13 @@ class CallControls extends Component {
     }
 
     onAnswerPress() {
-        if (this.props.call.getState() === "PJSIP_INV_STATE_INCOMING") {
+        if (this.props.call.getState() === PJSIP_INV_STATE_INCOMING) {
             this.props.onAnswerPress && this.props.onAnswerPress()
         }
     }
 
     onRedirectPress() {
-        if (this.props.call.getState() === "PJSIP_INV_STATE_INCOMING") {
+        if (this.props.call.getState() === PJSIP_INV_STATE_INCOMING) {
             this.props.onRedirectPress && this.props.onRedirectPress()
         }
     }

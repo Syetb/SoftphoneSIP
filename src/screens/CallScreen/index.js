@@ -14,7 +14,7 @@ import {
 import CallState from '../../components/call/CallState'
 import CallInfo from '../../components/call/CallInfo'
 import CallAvatar from '../../components/call/CallAvatar'
-import CallControls from '../../components/call/CallControls'
+import CallControls, { PJSIP_INV_STATE_INCOMING } from '../../components/call/CallControls'
 import CallActions from '../../components/call/CallActions'
 import CallParallelInfo from '../../components/call/CallParallelInfo'
 import TransferModal from '../../components/call/TransferModal'
@@ -140,13 +140,19 @@ class CallScreen extends Component {
             // Handle incoming call
             let incomingCall = this.state.incomingCall
 
-            if (!incomingCall && calls.length > 1) {
+            if (!incomingCall && calls.length === 1) {
+                for (const c of calls) {
+                    if (c.getState() === PJSIP_INV_STATE_INCOMING) {
+                        incomingCall = c
+                    }
+                }
+            } else if (!incomingCall && calls.length > 1) {
                 for (const c of calls) {
                     if (c.getId() === call.getId()) {
                         continue
                     }
 
-                    if (c.getState() === "PJSIP_INV_STATE_INCOMING") {
+                    if (c.getState() === PJSIP_INV_STATE_INCOMING) {
                         incomingCall = c
                     }
                 }
@@ -160,7 +166,7 @@ class CallScreen extends Component {
                     }
                 }
 
-                if (!exist) {
+                if (exist) {
                     incomingCall = null
                 }
             }
