@@ -4,7 +4,7 @@ import RNCallKit  from 'react-native-callkit'
 import uuid from 'uuid'
 
 import { onAccountChanged, onConnectivityChanged, onCallReceived, onCallChanged, onCallTerminated, onCallScreenLocked } from './handlers'
-import {ACCOUNT_CREATED, answerCall, createAccount, declineCall, hangupCall} from "./pjsip";
+import {ACCOUNT_CREATED, answerCall, declineCall, hangupCall} from "./pjsip";
 
 export const INIT = 'pjsip/INIT'
 export const CHANGED_APP_STATE = 'pjsip/CHANGED_APP_STATE'
