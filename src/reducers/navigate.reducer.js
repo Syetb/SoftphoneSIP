@@ -1,4 +1,4 @@
-import { NAVIGATE_BACK, NAVIGATE_TO } from "../actions/navigate";
+import { NAVIGATE_BACK, NAVIGATE_TO, NAVIGATE_REPLACE } from "../actions/navigate";
 
 const initialState = {
     ref: null,
@@ -34,6 +34,17 @@ export default function navigation(state = initialState, action) {
                 sideMenu: false
             }
         }
+        case NAVIGATE_REPLACE: {
+            const newHistory = [].concat(state.history)
+            newHistory[state.history.length - 1] = action.route
+            return {
+                ...state,
+                current: action.route,
+                history: newHistory,
+                drawer: false
+            }
+        }
+
         default:
             return state
     }

@@ -4,7 +4,7 @@ import { Animated, View, Text, Dimensions, Platform } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 
 import { connect } from 'react-redux'
-import { goTo, goBack } from "../../actions/navigate";
+import { goTo, goBack, goAndReplace } from "../../actions/navigate";
 import * as CallAnimation from './anim'
 import {
     answerCall, declineCall, hangupCall, makeCall,
@@ -590,11 +590,11 @@ const mapDispatchToProps = (dispatch) => {
 
         onCallAdd: (call, destination) => dispatch(makeCall(destination)),
 
-        onCallSelect: async (call) => dispatch(goTo( { name: 'CallScreen', call } )),
+        onCallSelect: async (call) => dispatch(goAndReplace( { name: 'CallScreen', call } )),
 
         onIncomingCallAnswer: async (call) => {
             dispatch(answerCall(call))
-            dispatch(await goTo( { name: 'CallScreen', call } ))
+            dispatch(await goAndReplace( { name: 'CallScreen', call } ))
         },
 
         onIncomingCallDecline: (call) => dispatch(declineCall(call)),
