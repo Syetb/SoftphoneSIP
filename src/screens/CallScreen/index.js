@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Animated, View, Text, Dimensions } from 'react-native'
+import { Animated, View, Text, Dimensions, Platform } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 
 import { connect } from 'react-redux'
@@ -24,6 +24,8 @@ import IncomingCallModal from '../../components/call/IncomingCallModal'
 
 import scs from './styles'
 import sc from '../../assets/styles/containers'
+
+const parallelTop = Platform.OS === 'ios' ? 18 : 0
 
 class CallScreen extends Component {
 
@@ -140,27 +142,21 @@ class CallScreen extends Component {
             // Handle incoming call
             let incomingCall = this.state.incomingCall
 
-            if (!incomingCall && calls.length === 1) {
-                for (const c of calls) {
-                    if (c.getState() === PJSIP_INV_STATE_INCOMING) {
-                        incomingCall = c
-                    }
-                }
-            } else if (!incomingCall && calls.length > 1) {
-                for (const c of calls) {
-                    if (c.getId() === call.getId()) {
+            if (!incomingCall && calls.length > 1) {
+                for (const cll of calls) {
+                    if (cll.getId() === call.getId()) {
                         continue
                     }
 
-                    if (c.getState() === PJSIP_INV_STATE_INCOMING) {
-                        incomingCall = c
+                    if (cll.getState() === PJSIP_INV_STATE_INCOMING) {
+                        incomingCall = cll
                     }
                 }
             } else if (incomingCall) {
                 let exist = false
 
-                for (const c of calls) {
-                    if (c.getId() === incomingCall.getId()) {
+                for (const call of calls) {
+                    if (call.getId() === incomingCall.getId()) {
                         exist = true
                         break
                     }
@@ -334,7 +330,7 @@ class CallScreen extends Component {
 
         let i = 0
         for (const id in this.props.calls) {
-            if (this.props.calls.hasOwnProperty(id) && id != activeCall.getId()) { // TODO: Check why type of ID is different
+            if (this.props.calls.hasOwnProperty(id) && id != activeCall.getId()) { // TODO: Check why type of ID is different => id becomes into string
                 const call = this.props.calls[id]
 
                 result.push((
@@ -342,7 +338,7 @@ class CallScreen extends Component {
                         key={`parallel-${call.getId()}`}
                         call={call}
                         onPress={this.props.onCallSelect}
-                        style={{marginTop: i === 0 ? 0 : 5}}
+                        style={{marginTop: i === 0 ? 0 : parallelTop}}
                     />
                 ))
             }
@@ -351,7 +347,7 @@ class CallScreen extends Component {
         }
 
         return (
-            <View style={ { position: 'absolute', top: 5, width: this.state.screenWidth } }>
+            <View style={ { position: 'absolute', top: parallelTop, width: this.state.screenWidth } }>
                 {result}
             </View>
         )
@@ -560,7 +556,8 @@ const mapDispatchToProps = (dispatch) => {
                     const calls = getState().pjsip.calls
                     const route = getState().navigate.current
 
-                    const doDirectRoute = () => dispatch(goBack())   //dispatch Return to previous screen once call end.
+                    //dispatch Return to previous screen once call end.
+                    const doDirectRoute = () => dispatch(goBack())
 
                     const doRoute = (call) => {
                         if (calls.hasOwnProperty(call.getId())) {
@@ -569,7 +566,7 @@ const mapDispatchToProps = (dispatch) => {
 
                         // Open active call once current call ends.
                         for (const id in calls) {
-                            if (calls.hasOwnProperty(id)) { return dispatch(goTo(calls[id])) }
+                            if (calls.hasOwnProperty(id)) { return dispatch(goTo( { name: 'CallScreen', call: calls[id] } )) }
                         }
 
                         // Return to previous screen once call end.
@@ -588,10 +585,10 @@ const mapDispatchToProps = (dispatch) => {
                     }
                 })
 
-            }, 2000)
+            }, 1500)
         },
 
-        onCallAdd: (call, destination) => dispatch(makeCall(destination, call)),
+        onCallAdd: (call, destination) => dispatch(makeCall(destination)),
 
         onCallSelect: async (call) => dispatch(goTo( { name: 'CallScreen', call } )),
 
