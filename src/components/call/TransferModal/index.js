@@ -82,7 +82,7 @@ class TransferModal extends Component {
             if (calls.hasOwnProperty(id)) {
                 const c = calls[id]
 
-                if (c.getId() == calls.getId()) {
+                if (c.getId() === this.props.call.getId()) {
                     continue
                 }
 
