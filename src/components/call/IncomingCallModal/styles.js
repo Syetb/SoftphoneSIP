@@ -18,7 +18,7 @@ export default StyleSheet.create({
   },
   titleText: {
     color: "#000",
-    fontSize: correctFontSizeForScreen(22)
+    fontSize: correctFontSizeForScreen(16)
   },
   actionTouchable: {
     padding: 12,
@@ -38,7 +38,7 @@ export default StyleSheet.create({
   actionText: {
     textAlign: 'center',
     flex: 1,
-    fontSize: correctFontSizeForScreen(18),
+    fontSize: correctFontSizeForScreen(16),
     color: "#FFF"
   }
 })
