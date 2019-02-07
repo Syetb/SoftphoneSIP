@@ -37,7 +37,6 @@
 		2DCD954D1E0B4F2C00145EB5 /* softphoneSIPTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* softphoneSIPTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		457B680E218FEC3A005C95D1 /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 457B680B218FE95F005C95D1 /* libReactNativeNavigation.a */; };
-		457DB9CC218BAF9C000309E3 /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 457DB9CB218BAF9C000309E3 /* WebRTC.framework */; };
 		457DB9CD218BB063000309E3 /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 457DB9CB218BAF9C000309E3 /* WebRTC.framework */; };
 		457DB9CE218BB063000309E3 /* WebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 457DB9CB218BAF9C000309E3 /* WebRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		457DB9D1218BB404000309E3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 457DB9D0218BB404000309E3 /* AVFoundation.framework */; };
@@ -477,7 +476,6 @@
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
-				457DB9CC218BAF9C000309E3 /* WebRTC.framework in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
