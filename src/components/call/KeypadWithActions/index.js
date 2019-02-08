@@ -28,6 +28,8 @@ export default class KeypadWithActions extends Component {
         this._onBackspacePress = this.onBackspacePress.bind(this)
         this._onKeyPress = this.onKeyPress.bind(this)
         this._onDefineKeySize = this.onDefineKeySize.bind(this)
+
+        this._onActionCallBack = this.onActionCallBack.bind(this)
     }
 
     onBackspacePress() {
@@ -52,6 +54,11 @@ export default class KeypadWithActions extends Component {
         this.setState({
             actionSize: width
         })
+    }
+
+    onActionCallBack(destination) {
+        this._onClearPress()
+        this.props.actions[0].callback(destination)
     }
 
     renderActionKey(type, description, callback = noop) {
@@ -125,7 +132,7 @@ export default class KeypadWithActions extends Component {
 
         } else {
             for( const action of this.props.actions ) {
-                actions.push(this.renderActionKey(action['icon'], action['text'], action['callback']))
+                actions.push(this.renderActionKey(action['icon'], action['text'], this._onActionCallBack))
             }
         }
 
