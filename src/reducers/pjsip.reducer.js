@@ -20,6 +20,9 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case INIT:
+            console.log('\naction.type es: ', action.type)
+            console.log('previous state es: ', state)
+            console.log('next state es: ', action.payload)
             return {
                 ...state,
                 ...action.payload
@@ -28,7 +31,21 @@ const reducer = (state = initialState, action) => {
         case CALL_INITIATED:
         case CALL_RECEIVED:
         case CALL_CHANGED:
+            console.log('\naction.type es: ', action.type)
+
             const call = action.call
+
+            console.log('previous state es: ', state)
+            console.log(
+                'next state es: ',
+                {
+                    ...state,
+                    calls: {
+                        ...state.calls,
+                        [call.getId()]: call
+                    }
+                }
+            )
 
             return {
                 ...state,
@@ -39,8 +56,13 @@ const reducer = (state = initialState, action) => {
             }
 
         case CALL_TERMINATED:
+            console.log('\naction.type es: ', action.type)
+
             const calls = {...state.calls}
             delete calls[action.call.getId()]
+
+            console.log('previous state es: ', {...state.calls})
+            console.log('next state es: ', calls)
 
             return {
                 ...state,
@@ -48,18 +70,30 @@ const reducer = (state = initialState, action) => {
             }
 
         case CALL_SCREEN_LOCKED:
+            console.log('\naction.type es: ', action.type)
+            console.log('previous state es: ', state)
+            console.log('next state es: ', action.lock)
+
             return {
                 ...state,
                 isScreenLocked: action.lock
             }
 
         case CONNECTIVITY_CHANGED:
+            console.log('\naction.type es: ', action.type)
+            console.log('previous state es: ', state)
+            console.log('next state es: ', action.payload)
+
             return {
                 ...state,
                 connectivity: action.payload
             }
 
         case CHANGED_APP_STATE:
+            console.log('action.type es: ', action.type)
+            console.log('previous state es: ', state)
+            console.log('next state es: ', action.payload)
+
             return {
                 ...state,
                 ...action.payload
@@ -69,6 +103,20 @@ const reducer = (state = initialState, action) => {
         case ACCOUNT_CHANGED:
         case ACCOUNT_REGISTRATION_CHANGED: {
             const account = action.payload.account
+
+            const nextState = {
+                ...state,
+                accounts: {
+                    ...state.accounts,
+                    [account.getId()]: account
+                }
+            }
+
+            // console.log('action.type es: ', action.type)
+            // console.log('previous state es: ', state)
+            // console.log('next state es: ', nextState)
+            //
+            // console.log('account es: ', account)
 
             return {
                 ...state,
@@ -83,6 +131,10 @@ const reducer = (state = initialState, action) => {
             const accounts = {...state.accounts}
 
             delete accounts[account.getId()]
+
+            console.log('action.type es: ', action.type)
+            console.log('previous state es: ', state.accounts)
+            console.log('next state es: ', accounts)
 
             return {
                 ...state,

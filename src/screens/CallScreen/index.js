@@ -49,15 +49,180 @@ class CallScreen extends Component {
         }
     }
 
+    // static getDerivedStateFromProps(nextProps, prevState) {
+    //     console.log('\nstatic getDerivedStateFromProps() executed')
+    //     console.log('nextProps es: ', nextProps)
+    //     console.log('prevState es: ', prevState)
+    //
+    //     console.log('_______________________________________________')
+    //     console.log('nextProps es: ', nextProps)
+    //     console.log('this.state.call es: ', prevState.call)
+    //     console.log('nextProps.call es: ', nextProps.call)
+    //     console.log('nextProps.calls es: ', nextProps.calls)
+    //     console.log('!(nextProps.call instanceof Promise) es: ', !(nextProps.call instanceof Promise))
+    //
+    //     console.log('1er caso if(): Que no existe call en el localState y que exista call en el nextLocalState es: ', !prevState && nextProps.call)
+    //     console.log('Y que call en el nextLocalState no sea una instancia de Promise es decir que yo no haga la llamada es: ', !(nextProps.call instanceof Promise))
+    //
+    //     console.log('2do caso if() Que exista call en el localState y que calls de nextLocalState contenga a call de localState es: ', (prevState.call && nextProps.calls.hasOwnProperty(prevState.call.getId())) )
+    //
+    //     console.log('1ER CASO ES: ', ( !prevState.call && nextProps.call && !(nextProps.call instanceof Promise) ))
+    //     console.log('2DO CASO ES: ', ( prevState.call && nextProps.calls.hasOwnProperty(prevState.call.getId()) ))
+    //
+    //     if( ( !prevState.call && nextProps.call && !(nextProps.call instanceof Promise) ) || ( prevState.call && nextProps.calls.hasOwnProperty(prevState.call.getId()) ) )
+    //         console.log('INGRESA A if() para logica getDerivedStateFromProps()')
+    //     else {
+    //         console.log('NOOOO INGRESA A if() - getDerivedStateFromProps()')
+    //     }
+    //
+    //     console.log('_______________________________________________')
+    //
+    //     // Remember latest state of current call, to be able display call information after removal from state
+    //     if ( ( !prevState.call && nextProps.call && !(nextProps.call instanceof Promise) ) ||
+    //         ( prevState.call && nextProps.calls.hasOwnProperty(prevState.call.getId()) ) ) {
+    //
+    //         if( ( !prevState.call && nextProps.call && !(nextProps.call instanceof Promise) ) )
+    //             console.log('Ingresa a logica getDerivedStateFromProps() por 1er CASO: prevState.call es null: ', prevState.call)
+    //         else
+    //             console.log('Ingresa a logica getDerivedStateFromProps() por 2do CASO: nextProps.calls contiene a prevState.call: ', nextProps.calls.hasOwnProperty(prevState.call.getId()))
+    //
+    //
+    //         // nextProps.call nunca se actualiza el calling State - "PJSIP_INV_STATE_INCOMING"
+    //         const prevCall = prevState.call ? prevState.call : nextProps.call
+    //         let call = nextProps.calls[prevCall.getId()]
+    //
+    //         console.log('Si existe call en localState prevCall es localState sino es nextLocalState es: ', prevCall)
+    //         console.log('call es sacado de nextProps.calls usando prevCall.getId() es: ', call)
+    //
+    //         if (!call) {
+    //             console.log('No existe call sacado desde nextProps.calls')
+    //             call = prevCall
+    //             console.log('call es exactamente igual a prevCall')
+    //         }
+    //
+    //         const calls = Object.keys(nextProps.calls).map((key) => nextProps.calls[key])
+    //         console.log('calls mapped es: ', calls)
+    //
+    //         const init = !prevState.call && nextProps.call
+    //         console.log('Init es true si no existe call en localState y si call existe en nextProps es: ', init)
+    //
+    //         // Handle incoming call
+    //         let incomingCall = prevState.incomingCall
+    //         console.log('\nHandle incoming call')
+    //         console.log('this.state.incomingCall es: ', prevState.incomingCall)
+    //         console.log('incomingCall es: ', incomingCall)
+    //
+    //         console.log('!incomingCall es: ', !incomingCall)
+    //         console.log('calls.length > 1 es: ', calls.length > 1)
+    //         if (!incomingCall && calls.length > 1) {
+    //             console.log('DENTRO DE if (!incomingCall && calls.length > 1)')
+    //
+    //             for (const cll of calls) {
+    //                 console.log('for (const cll of calls)')
+    //                 if (cll.getId() === call.getId()) {
+    //                     console.log('cll.getId() === call.getId() es: ', cll.getId() === call.getId())
+    //                     console.log('continue???')
+    //                     continue
+    //                 }
+    //
+    //                 console.log('cll.getState() es: ', cll.getState())
+    //                 if (cll.getState() === PJSIP_INV_STATE_INCOMING) {
+    //                     console.log('cll.getState() === PJSIP_INV_STATE_INCOMING es: ', cll.getState() === PJSIP_INV_STATE_INCOMING)
+    //                     incomingCall = cll
+    //                     console.log('incomingCall es: ', incomingCall)
+    //                      break
+    //                 }
+    //             }
+    //
+    //         } else if (incomingCall) {
+    //             console.log('DENTRO DE else if (incomingCall)')
+    //             console.log('incomingCall es: ', incomingCall)
+    //             console.log('calls.length es: ', calls.length)
+    //
+    //             let exist = false
+    //
+    //             for (const call of calls) {
+    //                 console.log('for (const call of calls)')
+    //
+    //                 console.log('call.getId() === incomingCall.getId() es: ', call.getId() === incomingCall.getId())
+    //                 if (call.getId() === incomingCall.getId()) {
+    //                     exist = true
+    //                     console.log('exist es: ', exist);
+    //                     console.log('break????')
+    //                     break
+    //                 }
+    //             }
+    //
+    //             console.log('Fuera de for()')
+    //             console.log('exist es: ', exist)
+    //
+    //             if (exist) {
+    //                 incomingCall = null
+    //                 console.log('incomingCall es: ', incomingCall)
+    //                 console.log('incomingCall nulo?? porque o para que?')
+    //                 console.log('Para que el modal incomingCall desaparezca una vez que se ha aceptado la llamadda')
+    //                 console.log('Y para poder seguir buscando posibles incoming calls')
+    //             }
+    //         }
+    //
+    //         if (init) {
+    //             console.log('DENTRO DE init ??? ')
+    //             console.log('Por que y como paso? revisar logs')
+    //
+    //             console.log('Aqui es donde se usa setState() que hace que todo se vuelva a renderizar')
+    //             console.log('Totalmente confirmado que se hace un reset al this.state localState de CallScreen component')
+    //
+    //             console.log('Seteados setState a call e incomingCall')
+    //             console.log('call es: ', call)
+    //             console.log('incomingCall es: ', incomingCall)
+    //
+    //             this.setState({
+    //                 call,
+    //                 incomingCall,
+    //                 ...CallAnimation.calculateInitialDimensions(
+    //                     { ...this.state, totalCalls: Object.keys(nextProps.calls).length },
+    //                     call
+    //                 )
+    //             })
+    //
+    //         } else {
+    //             console.log('No se realiza un reset al this.state localState')
+    //             console.log('Se actualiza la interfaz dependiendo del estado de calling state')
+    //             console.log('-----Probablemente aqui es donde se rerenderiza los parallelCalls-----')
+    //             console.log('Se hace un setState a call e incomingCall')
+    //             console.log('call es: ', call)
+    //             console.log('incomingCall es: ', incomingCall)
+    //
+    //             return { call, incomingCall }
+    //
+    //             // CallAnimation.animateCallState( { ...this.state, totalCalls: calls.length }, call)
+    //             // this.setState( { call, incomingCall } )
+    //         }
+    //
+    //         // if (call.getState() === "PJSIP_INV_STATE_DISCONNECTED") {
+    //         //     console.log('Se termina la llamada por medio de la variable call: ', call.getState())
+    //         //     this.props.onCallEnd && this.props.onCallEnd(call)
+    //         // }
+    //
+    //     }
+    //
+    //     // Return null to indicate no change to state.
+    //     return null;
+    //
+    // }
+
     constructor(props) {
         super(props)
         console.log('\nCallScreen - constructor() executed!')
+        console.log('ANTES this.state es: ', this.state)
+        console.log('this.props es: ', this.props)
 
         const { height: screenHeight, width: screenWidth } = Dimensions.get('window')
         let call = this.props.call
 
         // When user makes call
         if (call instanceof Promise) {
+            console.log('call es instanceof Promise')
             call
                 .then(
                     call => this.onInitializationResponse(call),
@@ -66,6 +231,7 @@ class CallScreen extends Component {
                 )
 
             call = null
+            console.log('call ahora es null')
         }
 
         this.state = {
@@ -86,6 +252,7 @@ class CallScreen extends Component {
         }
 
         if (call) {
+            console.log('existe call - recibiendo llamada: es: ', call.getState())
             this.state = {
                 ...this.state,
                 ...CallAnimation.calculateInitialDimensions(
@@ -94,6 +261,8 @@ class CallScreen extends Component {
                 )
             }
         }
+
+        console.log('DESPUES this.state es: ', this.state)
 
         this._onCallAnswer = this.onCallAnswer.bind(this)
         this._onCallHangup = this.onCallHangup.bind(this)
@@ -126,8 +295,35 @@ class CallScreen extends Component {
         this._onIncomingCallDecline = this.onIncomingCallDecline.bind(this)
     }
 
+    // componentDidUpdate(prevProps, prevState) {
+    //     console.log('componentDidUpdate(prevProps, prevState)')
+    //
+    //     console.log('prevProps es: ', prevProps)
+    //     console.log('prevState es: ', prevState)
+    //     console.log('this.props es: ', this.props)
+    //
+    //     console.log('this.props.calls.hasOwnProperty(prevState.call.getId()) es: ', this.props.calls.hasOwnProperty(prevState.call.getId()))
+    //     console.log('prevState.call.getId() es: ', prevState.call.getId())
+    //     console.log('prevState.call.getStatus() es: ', prevState.call.getStateText())
+    //     //console.log('this.props.calls[prevState.call.getId()].getStatus() es: ', this.props.calls[prevState.call.getId()].getStateText())
+    //
+    //     const { call, incomingCall } = prevState
+    //
+    //     if ( this.props.calls.hasOwnProperty(prevState.call.getId()) && prevState.call.getStateText() !== this.props.calls[prevState.call.getId()].getStateText() ) {
+    //
+    //         CallAnimation.animateCallState( { ...this.state, totalCalls: prevProps.calls.length }, call)
+    //
+    //         this.setState( { call, incomingCall } )
+    //     }
+    //
+    //     if (call.getState() === "PJSIP_INV_STATE_DISCONNECTED") {
+    //         console.log('Se termina la llamada por medio de la variable call: ', call.getState())
+    //         this.props.onCallEnd && this.props.onCallEnd(call)
+    //     }
+    // }
+
     componentWillReceiveProps(nextProps) {
-        console.log('componentWillReceiveProps(nextProps) executed')
+        console.log('\ncomponentWillReceiveProps(nextProps) executed')
 
         console.log('nextProps es: ', nextProps)
         console.log('this.state.call es: ', this.state.call)
@@ -135,12 +331,10 @@ class CallScreen extends Component {
         console.log('nextProps.calls es: ', nextProps.calls)
         console.log('!(nextProps.call instanceof Promise) es: ', !(nextProps.call instanceof Promise))
 
-        console.log('1er caso if()')
-        console.log('Que no existe call en el localState y que exista call en el nextLocalState es: ', !this.state.call && nextProps.call)
+        console.log('1er caso if(): Que no existe call en el localState y que exista call en el nextLocalState es: ', !this.state.call && nextProps.call)
         console.log('Y que call en el nextLocalState no sea una instancia de Promise es decir que yo no haga la llamada es: ', !(nextProps.call instanceof Promise))
 
-        console.log('2do caso if()')
-        console.log('Que exista call en el localState y que calls de nextLocalState contenga a call de localState es: ', (this.state.call && nextProps.calls.hasOwnProperty(this.state.call.getId())) )
+        console.log('2do caso if(): Que exista call en el localState y que calls de nextLocalState contenga a call de localState es: ', (this.state.call && nextProps.calls.hasOwnProperty(this.state.call.getId())) )
 
         console.log('1ER CASO ES: ', ( !this.state.call && nextProps.call && !(nextProps.call instanceof Promise) ))
         console.log('2DO CASO ES: ', ( this.state.call && nextProps.calls.hasOwnProperty(this.state.call.getId()) ))
@@ -152,7 +346,8 @@ class CallScreen extends Component {
         }
 
         // Remember latest state of current call, to be able display call information after removal from state
-        if ( ( !this.state.call && nextProps.call && !(nextProps.call instanceof Promise) ) ||
+        // todo condicion para cerrar active call actual
+        if ( ( this.state.call.getState() === 'PJSIP_INV_STATE_DISCONNECTED' && nextProps.call && this.state.call.getId() !== nextProps.call.getId() && !(nextProps.call instanceof Promise) ) ||
             ( this.state.call && nextProps.calls.hasOwnProperty(this.state.call.getId()) ) ) {
 
             if( ( !this.state.call && nextProps.call && !(nextProps.call instanceof Promise) ) )
@@ -161,7 +356,12 @@ class CallScreen extends Component {
                 console.log('Ingresa a logica componentWillReceiveProps() por 2do CASO: nextProps.calls contiene a this.state.call: ', nextProps.calls.hasOwnProperty(this.state.call.getId()))
 
             // nextProps.call nunca se actualiza el calling State - "PJSIP_INV_STATE_INCOMING"
-            const prevCall = this.state.call ? this.state.call : nextProps.call
+            // const prevCall = this.state.call ? this.state.call : nextProps.call
+            // todo condicion si incomingCall exists y hacer que call = nextProps.call
+            const isIncomingCall = !(nextProps.call instanceof Promise) && this.state.call.getId() !== nextProps.call.getId()
+
+            // const prevCall = this.state.call && !this.state.resetCall ? this.state.call : nextProps.call
+            const prevCall = this.state.call && !isIncomingCall ? this.state.call : nextProps.call
             let call = nextProps.calls[prevCall.getId()]
 
             console.log('Si existe call en localState prevCall es localState sino es nextLocalState es: ', prevCall)
@@ -176,7 +376,8 @@ class CallScreen extends Component {
             const calls = Object.keys(nextProps.calls).map((key) => nextProps.calls[key])
             console.log('calls mapped es: ', calls)
 
-            const init = !this.state.call && nextProps.call
+            // const init = (!this.state.call || this.state.resetCall) && nextProps.call
+            const init = (!this.state.call || isIncomingCall) && nextProps.call
             console.log('Init es true si no existe call en localState y si call existe en nextProps es: ', init)
 
             // Handle incoming call
@@ -203,6 +404,7 @@ class CallScreen extends Component {
                         console.log('cll.getState() === PJSIP_INV_STATE_INCOMING es: ', cll.getState() === PJSIP_INV_STATE_INCOMING)
                         incomingCall = cll
                         console.log('incomingCall es: ', incomingCall)
+                        break
                     }
                 }
 
@@ -228,7 +430,7 @@ class CallScreen extends Component {
                 console.log('Fuera de for()')
                 console.log('exist es: ', exist)
 
-                if (exist) {
+                if (!exist) {
                     incomingCall = null
                     console.log('incomingCall es: ', incomingCall)
                     console.log('incomingCall nulo?? porque o para que?')
@@ -277,6 +479,9 @@ class CallScreen extends Component {
     }
 
     onInitializationResponse(call) {
+
+        console.log('\nEjecutando resolve promise call.then() con call es: ', call)
+
         let state = {
             call: call
         }
@@ -290,16 +495,22 @@ class CallScreen extends Component {
             }, call)
         }
 
+        console.log('ANTES DE this.setState(state)')
         this.setState(state)
+        console.log('DESPUES DE this.setState(state)')
     }
 
     onInitializationError(reason) {
+        console.log('\nEjecutando resolve promise call.then() error con reason es: ', reason)
+
+        console.log('ANTES DE this.setState({ error: reason })')
         this.setState( { error: reason } )
+        console.log('DESPUES DE this.setState({ error: reason })')
         this.props.onCallEnd && this.props.onCallEnd(this.state.call)
     }
 
     onCallAnswer() {
-        console.log('onCallAnswer() executed')
+        console.log('\nonCallAnswer() executed')
         this.props.onCallAnswer && this.props.onCallAnswer(this.state.call)
     }
 
@@ -326,7 +537,7 @@ class CallScreen extends Component {
     // onCallSelect()
 
     onIncomingCallAnswer() {
-        console.log('onIncomingCallAnswer() executed!')
+        console.log('\nonIncomingCallAnswer() executed!')
         this.setState( { incomingCall: null } )
         console.log('this.state.incomingCall es: ', this.state.incomingCall)
         this.props.onIncomingCallAnswer && this.props.onIncomingCallAnswer(this.state.incomingCall)
@@ -438,6 +649,11 @@ class CallScreen extends Component {
             i++
         }
 
+        console.log('renderSimultaniousCalls() executed!')
+        console.log('const activeCall = this.state.call')
+        console.log('activeCall es: ', activeCall)
+        console.log('result es: ', result)
+
         return (
             <View style={ { position: 'absolute', top: parallelTop, width: this.state.screenWidth } }>
                 {result}
@@ -446,6 +662,8 @@ class CallScreen extends Component {
     }
 
     renderError() {
+        console.log('render() executed!')
+
         return (
             <LinearGradient colors={['#2a5743', '#14456f']} style={sc.mainContainer}>
                 <View style={scs.errorContainer}>
@@ -456,6 +674,7 @@ class CallScreen extends Component {
     }
 
     renderCallWait() {
+        console.log('renderCallWait() executed! - NO EXISTE CALL ES NULL: ', this.state.call)
         return (
             <LinearGradient colors={['#2a5743', '#14456f']} style={sc.mainContainer}>
                 <View style={scs.initContainer}>
@@ -486,6 +705,8 @@ class CallScreen extends Component {
                 <View style={ { flex: 1, backgroundColor: "#000" } }/>
             )
         }
+
+        console.log('Rendering components')
 
         return (
             <LinearGradient colors={['#2a5743', '#14456f']} style={sc.mainContainer}>
@@ -645,12 +866,12 @@ const mapDispatchToProps = (dispatch) => {
         onCallHangup: (call) => dispatch(hangupCall(call)),
 
         // call param has current calling state disconnected
-        onCallEnd: (call) => {
+        onCallEnd: (call, routeName='CallScreen') => {
             setTimeout( () => {
 
                 dispatch( async (dispatch, getState) => {
                     const calls = getState().pjsip.calls
-                    const route = getState().navigate.current
+                    const route = { call, name: routeName}  //getState().navigate.current
 
                     console.log('\nCallScreen - onCallEnd() executed!')
                     console.log('calls es: ', calls)
@@ -674,7 +895,10 @@ const mapDispatchToProps = (dispatch) => {
                             console.log('for (const id in calls)')
                             if (calls.hasOwnProperty(id)) {
                                 console.log('calls.hasOwnProperty(id) es: ', calls.hasOwnProperty(id));
-                                return dispatch(goTo( { name: 'CallScreen', call: calls[id] } ))
+
+                                // todo implementar condicion para que si aun hay active calls no se haga un pop de CallScreen sino que haga un reset en el this.state del component
+
+                                return dispatch(goAndReplace( { name: 'CallScreen', call: calls[id] } ))
                             }
                         }
 

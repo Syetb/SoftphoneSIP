@@ -35,21 +35,27 @@ export function init() {
 
         // Subscribe to endpoint events
         endpoint.on("registration_changed", (account) => {
+            // console.log('\nendpoint events - registration_changed event executed')
             dispatch(onAccountChanged(account))
         })
         endpoint.on("connectivity_changed", (available) => {
+            console.log('\nendpoint events - connectivity_changed event executed')
             dispatch(onConnectivityChanged(available))
         })
         endpoint.on("call_received", (call) => {
+            console.log('\nendpoint events - call_received event executed')
             dispatch(onCallReceived(call))
         })
         endpoint.on("call_changed", (call) => {
+            console.log('\nendpoint events - call_changed event executed')
             dispatch(onCallChanged(call))
         })
         endpoint.on("call_terminated", (call) => {
+            console.log('\nendpoint events - call_terminated event executed')
             dispatch(onCallTerminated(call))
         })
         endpoint.on("call_screen_locked", (call) => {
+            console.log('\nendpoint events - regiscall_screen_lockedtration_changed event executed')
             dispatch(onCallScreenLocked(call))
         })
 
@@ -69,7 +75,7 @@ export function init() {
 
         if (Platform.OS === 'ios') {
             // CallKit
-            dispatch(initCallKitIntegration())
+            //dispatch(initCallKitIntegration())
 
             // Register / unregister when app in background or foreground
             AppState.addEventListener('change', async (nextAppState) => {
@@ -98,7 +104,7 @@ export function init() {
             const defaultAccount = {
                 'name': 'Jhonatan',
                 'username': 'jhona',
-                'domain': '192.168.0.133',
+                'domain': '192.168.1.133',
                 'password': 'pwd_100',
                 'proxy': '',
                 'transport':'UDP',
