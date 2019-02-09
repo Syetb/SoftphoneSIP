@@ -13,15 +13,21 @@ class DtmfModal extends Component {
         super(props)
 
         this.state = {
-            value: ""
+            value: ''
         }
 
         this._onKeyPress = this.onKeyPress.bind(this)
+        this._onRequestClose = this.onRequestClose.bind(this)
     }
 
     onKeyPress(key) {
         this.setState({value: this.state.value + key})
         this.props.onPress && this.props.onPress(key)
+    }
+
+    onRequestClose() {
+        this.setState({value: ''})
+        this.props.onRequestClose()
     }
 
     render() {
@@ -36,7 +42,7 @@ class DtmfModal extends Component {
                     <View style={sdtmf.contentBackground}>
                         <View style={sdtmf.titleContainer}>
                             <Text style={sdtmf.titleText}>DTMF</Text>
-                            <TouchableOpacity onPress={this.props.onRequestClose}>
+                            <TouchableOpacity onPress={this._onRequestClose}>
                                 <Image source={require('../../../assets/images/modal/close-icon.png')}/>
                             </TouchableOpacity>
                         </View>
