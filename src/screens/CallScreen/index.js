@@ -128,7 +128,7 @@ class CallScreen extends Component {
     componentWillReceiveProps(nextProps) {
         // Remember latest state of current call, to be able display call information after removal from state
         // todo condicion para cerrar active call actual
-        if ( ( this.state.call.getState() === 'PJSIP_INV_STATE_DISCONNECTED' && !(nextProps.call instanceof Promise) && nextProps.call && this.state.call.getId() !== nextProps.call.getId() && !(nextProps.call instanceof Promise) ) ||
+        if ( ( this.state.call && this.state.call.getState() === 'PJSIP_INV_STATE_DISCONNECTED' && !(nextProps.call instanceof Promise) && nextProps.call && this.state.call.getId() !== nextProps.call.getId() && !(nextProps.call instanceof Promise) ) ||
             ( this.state.call && nextProps.calls.hasOwnProperty(this.state.call.getId()) ) ) {
 
             // nextProps.call nunca se actualiza el calling State - "PJSIP_INV_STATE_INCOMING"
