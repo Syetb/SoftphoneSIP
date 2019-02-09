@@ -98,9 +98,9 @@ export function makeCall(destination, account = null) {
         const endpoint = getState().pjsip.endpoint
 
         // TODO: Do not deactivateAudioSession if iOS version is not compatible with CallKit
-        // if (Platform.OS === 'ios') {
-        //     endpoint.deactivateAudioSession()
-        // }
+        if (Platform.OS === 'ios') {
+            endpoint.deactivateAudioSession()
+        }
 
         const call = endpoint.makeCall(account, destination)
 
@@ -124,8 +124,6 @@ export function declineCall(call) {
 
 export function answerCall(call) {
     return async function (dispatch, getState) {
-        console.log('\nanswerCall(call) executed con new call es: ', call)
-
         const endpoint = getState().pjsip.endpoint
         await endpoint.answerCall(call)
     }

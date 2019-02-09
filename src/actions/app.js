@@ -35,27 +35,21 @@ export function init() {
 
         // Subscribe to endpoint events
         endpoint.on("registration_changed", (account) => {
-            // console.log('\nendpoint events - registration_changed event executed')
             dispatch(onAccountChanged(account))
         })
         endpoint.on("connectivity_changed", (available) => {
-            console.log('\nendpoint events - connectivity_changed event executed')
             dispatch(onConnectivityChanged(available))
         })
         endpoint.on("call_received", (call) => {
-            console.log('\nendpoint events - call_received event executed')
             dispatch(onCallReceived(call))
         })
         endpoint.on("call_changed", (call) => {
-            console.log('\nendpoint events - call_changed event executed')
             dispatch(onCallChanged(call))
         })
         endpoint.on("call_terminated", (call) => {
-            console.log('\nendpoint events - call_terminated event executed')
             dispatch(onCallTerminated(call))
         })
         endpoint.on("call_screen_locked", (call) => {
-            console.log('\nendpoint events - regiscall_screen_lockedtration_changed event executed')
             dispatch(onCallScreenLocked(call))
         })
 
@@ -75,7 +69,7 @@ export function init() {
 
         if (Platform.OS === 'ios') {
             // CallKit
-            //dispatch(initCallKitIntegration())
+            dispatch(initCallKitIntegration())
 
             // Register / unregister when app in background or foreground
             AppState.addEventListener('change', async (nextAppState) => {
@@ -149,7 +143,7 @@ function initCallKitIntegration() {
         // Initialize RNCallKit
         RNCallKit.setup({appName: 'React Native PjSip'})
 
-        const { endpoint } = getState().pjsip
+        const {endpoint} = getState().pjsip
 
         endpoint.on("call_received", (call) => {
             if (incomingCall != null) {
@@ -166,7 +160,7 @@ function initCallKitIntegration() {
         })
 
         endpoint.on("call_changed", (call) => {
-            if (call.getId() === incomingCall && call.getState() !== 'PJSIP_INV_STATE_INCOMING') {
+            if (call.getId() === incomingCall && call.getState() != 'PJSIP_INV_STATE_INCOMING') {
                 incomingCall = null
             } else if (activeCall === null) {
                 activeCall = call.getId()
@@ -181,11 +175,11 @@ function initCallKitIntegration() {
         })
 
         endpoint.on("call_terminated", async (call) => {
-            const { appState } = getState().pjsip
+            const {appState} = getState().pjsip
 
             // Send unregistry when application was in background
-            if (appState === 'background' && activeCall === call.getCallId()) {
-                const { endpoint, accounts } = getState().pjsip
+            if (appState == 'background' && activeCall == call.getCallId()) {
+                const {endpoint, accounts} = getState().pjsip
                 for (const id in accounts) {
                     if (accounts.hasOwnProperty(id)) {
                         await endpoint.registerAccount(accounts[id], false)
@@ -193,10 +187,10 @@ function initCallKitIntegration() {
                 }
             }
 
-            if (activeCall === call.getId()) {
+            if (activeCall == call.getId()) {
                 activeCall = null
             }
-            if (incomingCall === call.getId()) {
+            if (incomingCall == call.getId()) {
                 incomingCall = null
             }
 
@@ -211,14 +205,20 @@ function initCallKitIntegration() {
         })
 
 
-        // DTMF Actions  - Add RNCallKit Events
+        // -------------------------
+        // -------------------------
+        // -------------------------
+
+        // TODO: Other actions like DTMF - Add RNCallKit Events
         RNCallKit.addEventListener('didReceiveStartCallAction', () => {
-            const { endpoint } = getState().pjsip
+            const {endpoint} = getState().pjsip
             endpoint.deactivateAudioSession()
         })
 
         RNCallKit.addEventListener('answerCall', () => {
-            const { calls } = getState().pjsip
+            console.log("JS RNCallKit", "answerCall", incomingCall)
+
+            const {calls} = getState().pjsip
             let call = null
 
             if (incomingCall !== null) {
@@ -231,7 +231,9 @@ function initCallKitIntegration() {
         })
 
         RNCallKit.addEventListener('endCall', () => {
-            const { calls } = getState().pjsip
+            console.log("JS RNCallKit", "endCall", activeCall, incomingCall)
+
+            const {calls} = getState().pjsip
             let call = null
 
             if (activeCall !== null) {
@@ -255,12 +257,12 @@ function initCallKitIntegration() {
         })
 
         RNCallKit.addEventListener('didActivateAudioSession', () => {
-            const { endpoint } = getState().pjsip
+            const {endpoint} = getState().pjsip
             endpoint.activateAudioSession()
         })
 
-        // RNCallKit.addEventListener('didDisplayIncomingCall', () => {} )  // Para manejo de errores
+        // RNCallKit.addEventListener('didDisplayIncomingCall', (error) => {} )  error
 
-        // RNCallKit.addEventListener('didPerformSetMutedCallAction', () => {} )
+        // RNCallKit.addEventListener('didPerformSetMutedCallAction', (muted) => {} )
     }
 }
