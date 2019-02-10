@@ -1,4 +1,6 @@
-import {Animated} from 'react-native'
+import { Animated, Platform } from 'react-native'
+
+const topInitSpace = Platform.OS === 'ios' ? 20 : 10
 
 /**
  * @param height Screen height
@@ -6,9 +8,9 @@ import {Animated} from 'react-native'
 export function calculateComponentsHeight(height) {
   return {
     infoHeight: height * 0.12,
-    avatarHeight: height * 0.3,
-    stateHeight: height * 0.08,
-    actionsHeight: height * 0.4,
+    avatarHeight: height * 0.2336,  //0.3
+    stateHeight: height * 0.064,   //0.08
+    actionsHeight: height * 0.38,  //0.4
     buttonsHeight: 64
   }
 }
@@ -20,7 +22,7 @@ export function calculateDimensionsForIncomingCall({screenHeight, infoHeight, st
   const spaces = screenHeight - totals
   const space = spaces / 5
 
-  const infoOffset = switchHeight + switchOffset + space
+  const infoOffset = switchHeight + switchOffset + topInitSpace
   const avatarOffset = infoOffset + infoHeight + space
   const stateOffset = avatarOffset + avatarHeight + space
   let buttonsOffset = stateOffset + stateHeight + space
@@ -44,13 +46,13 @@ export function calculateDimensionsForIncomingCall({screenHeight, infoHeight, st
 }
 
 function calculateCallSwitchHeight(totalCalls) {
-  let height = (totalCalls - 1) * 42
+  let height = (totalCalls - 1) * 30
 
   if (totalCalls > 2) {
     height = height + (totalCalls - 2) * 10
   }
 
-  return height > 0 ? height + 10 : 0
+  return height > 0 ? height : 0
 }
 
 export function calculateDimensionsForActiveCall({screenHeight, infoHeight, stateHeight, actionsHeight, buttonsHeight, totalCalls}) {
@@ -59,7 +61,7 @@ export function calculateDimensionsForActiveCall({screenHeight, infoHeight, stat
   const spaces = screenHeight - totals
   const space = spaces / 5
 
-  const infoOffset = switchHeight + space
+  const infoOffset = switchHeight + topInitSpace
   const stateOffset = infoOffset + infoHeight + space
   const actionsOffset = stateOffset + stateHeight + space
   const buttonsOffset = actionsOffset + actionsHeight + space
@@ -83,7 +85,7 @@ export function calculateDimensionsForTerminatedCall({screenHeight, infoHeight, 
   const spaces = screenHeight - totals
   const space = spaces / 4
 
-  const infoOffset = switchHeight + space
+  const infoOffset = switchHeight + topInitSpace
   const stateOffset = infoOffset + infoHeight + space
   const buttonsOffset = stateOffset + stateHeight + space
 
@@ -145,5 +147,6 @@ export function animateCallState(props, call, callback) {
 
     Animated.timing(props.buttonsOffset, {toValue: dim.buttonsOffset})
   ])
+    
   anim.start(callback)
 }
