@@ -4,7 +4,7 @@ import { Animated, View, Text, Dimensions, Platform } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 
 import { connect } from 'react-redux'
-import { goTo, goBack, goAndReplace } from "../../actions/navigate";
+import { goBack, goAndReplace } from "../../actions/navigate";
 import * as CallAnimation from './anim'
 import {
     answerCall, declineCall, hangupCall, makeCall,
