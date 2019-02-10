@@ -25,7 +25,7 @@ import IncomingCallModal from '../../components/call/IncomingCallModal'
 import scs from './styles'
 import sc from '../../assets/styles/containers'
 
-const parallelTop = Platform.OS === 'ios' ? 18 : 0
+const parallelTop = Platform.OS === 'ios' ? 20 : 0
 
 class CallScreen extends Component {
 
@@ -354,12 +354,12 @@ class CallScreen extends Component {
                         key={`parallel-${call.getId()}`}
                         call={call}
                         onPress={this.props.onCallSelect}
-                        style={{marginTop: i === 0 ? 0 : parallelTop}}
+                        style={{marginTop: i === 0 ? 0 : 5}}
                     />
                 ))
-            }
 
-            i++
+                i++
+            }
         }
 
         return (
