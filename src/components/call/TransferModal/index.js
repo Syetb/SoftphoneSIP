@@ -111,7 +111,7 @@ class TransferModal extends Component {
                     <View style={stm.contentBackground}>
                         <View style={stm.titleContainer}>
                             <Text style={stm.titleText}>Transfer call</Text>
-                            <TouchableOpacity onPress={this._onModalClosePress}>
+                            <TouchableOpacity onPress={this._onBlindTransferRequest}>
                                 <Image source={require('../../../assets/images/modal/close-icon.png')}/>
                             </TouchableOpacity>
                         </View>
