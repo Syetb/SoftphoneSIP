@@ -5,9 +5,7 @@ import { TouchableOpacity, View, Text, Modal } from 'react-native'
 import sicml from './styles'
 
 const IncomingCallModal = ( { call, onAnswerPress, onDeclinePress } ) => {
-    console.log('IncomingCallModal llamado! con: ', call)
-
-    if (!call) {    // todo Check incoming call first time || Object.keys(calls).length === 1
+    if (!call) {
         return null
     }
 

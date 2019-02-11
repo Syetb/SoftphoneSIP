@@ -38,8 +38,6 @@ export function onCallReceived(call) {
     return async function (dispatch, getState) {
         const state = getState()
 
-        console.log('  handler onCallReceived(call) executed con new call es: ', call)
-
         if (state.navigate.current.name !== 'CallScreen' && state.pjsip.appState === 'active') {
             dispatch(goTo({ name: 'CallScreen', call }))
         }
@@ -56,8 +54,6 @@ export function onCallReceived(call) {
  */
 export function onCallChanged(call) {
     return async function (dispatch, getState) {
-        console.log('  handler onCallChanged(call) executed con new call es: ', call)
-
         dispatch( { type: CALL_CHANGED, call } )
     }
 }
@@ -70,8 +66,6 @@ export function onCallChanged(call) {
  */
 export function onCallTerminated(call) {
     return async function (dispatch, getState) {
-        console.log('  handler onCallTerminated(call) executed con new call es: ', call)
-
         dispatch( { type: CALL_CHANGED, call } )
         dispatch( { type: CALL_TERMINATED, call } )
     }
