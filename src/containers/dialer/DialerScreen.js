@@ -44,7 +44,7 @@ class DialerScreen extends Component {
         let status = 'no registrada'
         let color = '#f8f9fa'
 
-        if( Object.keys(account).length > 0 ) {
+        if( account && Object.keys(account).length > 0 ) {
             name = account.getName()
             const registration = account.getRegistration()
             const isRegisterOk = registration.isActive() && registration.getStatusText() === "OK"
