@@ -4,12 +4,38 @@ import { Provider } from 'react-redux';
 import configureStore from './configureStore'
 
 import { init }  from './actions/app'
+import { goAndReplace, goTo } from './actions/navigate';
 
 const store = configureStore();
 
 store.dispatch(async (dispatch, getState) => {
 
     await dispatch(init())
+
+    // Render
+    let route = { name: 'SettingsScreenId', index: 3 }
+    const { calls, accounts } = getState().pjsip
+    let isGoTo = false
+
+    for (const id in accounts) {
+        if (accounts.hasOwnProperty(id)) {
+            route = { name: 'DialerScreenId', index: 0 }
+            break
+        }
+    }
+
+    for (const id in calls) {
+        if (calls.hasOwnProperty(id)) {
+            const call = calls[id]
+            if (call.getState() === "PJSIP_INV_STATE_INCOMING") {
+                route = { name: 'CallScreenId', call }
+                isGoTo = true
+                break
+            }
+        }
+    }
+
+    !isGoTo ? dispatch(goAndReplace(route)) : dispatch(goTo(route))
 })
 
 export function registerScreens() {

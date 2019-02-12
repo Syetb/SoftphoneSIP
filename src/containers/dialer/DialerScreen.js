@@ -20,6 +20,14 @@ class DialerScreen extends Component {
         }
     }
 
+    componentDidMount() {
+        Navigation.mergeOptions('tabs', {
+            bottomTabs: {
+                currentTabIndex: this.props.screen.index
+            }
+        });
+    }
+
     navigationButtonPressed({ buttonId }) {
         const { sideMenu } = this.state;
 
@@ -83,12 +91,14 @@ class DialerScreen extends Component {
 }
 
 DialerScreen.propTypes = {
-    account: PropTypes.object
+    account: PropTypes.object,
+    screen: PropTypes.object
 }
 
 const mapStateToProps = (state) => {
     return {
-        account: state.pjsip.account
+        account: state.pjsip.account,
+        screen: state.navigate.current
     }
 }
 
