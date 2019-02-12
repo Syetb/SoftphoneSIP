@@ -83,13 +83,6 @@ export const goHome = async () => {
                                                             enabled: true
                                                         }
                                                     },
-                                                    topBar: {
-                                                        visible: true,
-                                                        animate: false,
-                                                        title: {
-                                                            text: 'Teclado'
-                                                        }
-                                                    },
                                                     bottomTab: {
                                                         text: 'Teclado',
                                                         icon: require('./assets/images/bottomtabs/call-icon.png'),
