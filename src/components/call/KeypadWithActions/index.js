@@ -58,6 +58,12 @@ export default class KeypadWithActions extends Component {
 
     onActionCallBack(destination) {
         this._onClearPress()
+
+        if(this.props.status !== 'OK') {
+            alert('Servicio no disponible')
+            return
+        }
+
         this.props.actions[0].callback(destination)
     }
 
@@ -166,5 +172,6 @@ export default class KeypadWithActions extends Component {
 KeypadWithActions.propTypes = {
     style: Text.propTypes.style,
     actions: PropTypes.array,
-    theme: PropTypes.string
+    theme: PropTypes.string,
+    status: PropTypes.string.isRequired,
 }

@@ -7,10 +7,12 @@ import { makeCall } from "../../actions/pjsip";
 
 import sc from '../../assets/styles/containers'
 
-const DialerViewport = ({ onCallPress }) => {
+const DialerViewport = ({ onCallPress, registrationStatus }) => {
+
     return (
         <KeypadWithActions
             style={ sc.mainContainer }
+            status={ registrationStatus }
             actions={[
                 { icon: "call", text: "", callback: onCallPress }
             ]}
@@ -19,7 +21,8 @@ const DialerViewport = ({ onCallPress }) => {
 }
 
 DialerViewport.propTypes = {
-    onCallPress: PropTypes.func.isRequired
+    onCallPress: PropTypes.func.isRequired,
+    registrationStatus: PropTypes.string.isRequired,
 }
 
 const mapStateToProps = (state) => {

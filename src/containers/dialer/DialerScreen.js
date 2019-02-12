@@ -65,16 +65,18 @@ class DialerScreen extends Component {
                 }
             }
         });
+
+        return status;
     }
 
     render() {
         const { account } = this.props
 
-        this.showRegistrationStatus(account)
+        const status = this.showRegistrationStatus(account)
 
         return (
             <View style={sc.mainContainer}>
-                <DialerViewport />
+                <DialerViewport registrationStatus={status} />
             </View>
         )
     }
