@@ -64,7 +64,7 @@ export function init() {
 
         dispatch({
             type: INIT,
-            payload: { endpoint, endpointSettings, connectivity, accounts: accountMap, calls: callsMap }
+            payload: { endpoint, endpointSettings, connectivity, accounts: accountMap, calls: callsMap, account: accounts[0] }
         })
 
         if (Platform.OS === 'ios') {
@@ -98,7 +98,7 @@ export function init() {
             const defaultAccount = {
                 'name': 'Jhonatan',
                 'username': 'jhona',
-                'domain': '192.168.1.133',
+                'domain': '192.168.0.133',
                 'password': 'pwd_100',
                 'proxy': '',
                 'transport':'UDP',

@@ -15,6 +15,8 @@ const initialState = {
 
     accounts: {},
     calls: {},
+
+    account: {}
 }
 
 const reducer = (state = initialState, action) => {
@@ -75,7 +77,8 @@ const reducer = (state = initialState, action) => {
                 accounts: {
                     ...state.accounts,
                     [account.getId()]: account
-                }
+                },
+                account: account
             }
         }
         case ACCOUNT_DELETED: {
@@ -86,7 +89,8 @@ const reducer = (state = initialState, action) => {
 
             return {
                 ...state,
-                accounts
+                accounts,
+                account: {}
             }
         }
         default:
