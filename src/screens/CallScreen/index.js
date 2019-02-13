@@ -34,9 +34,6 @@ class CallScreen extends Component {
             topBar: {
                 visible: false,
                 drawBehind: true,
-                title: {
-                    text: 'Mi Nueva Cuenta'
-                },
                 leftButtons: {
                     id: 'toggleButtom',
                     enabled: false
