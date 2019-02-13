@@ -5,6 +5,7 @@ import { Navigation } from 'react-native-navigation'
 import { connect } from 'react-redux'
 
 import DialerViewport from './DialerViewport'
+import { destroy } from "../../actions/pjsip";
 
 import sc from '../../assets/styles/containers'
 
@@ -88,11 +89,16 @@ class DialerScreen extends Component {
             </View>
         )
     }
+
+    componentWillUnmount() {
+        this.props.onDestroy && this.props.onDestroy()
+    }
 }
 
 DialerScreen.propTypes = {
     account: PropTypes.object,
-    screen: PropTypes.object
+    screen: PropTypes.object,
+    onDestroy: PropTypes.func,
 }
 
 const mapStateToProps = (state) => {
@@ -103,7 +109,9 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {}
+    return {
+        onDestroy: () => dispatch(destroy())
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DialerScreen)

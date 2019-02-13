@@ -66,6 +66,26 @@ export function deleteAccount(account) {
 }
 
 /**
+ * Destroy current Endpoint instance  -  EventEmitter memory leak
+ * @returns {Function}
+ */
+export function destroy() {
+    return async function (dispatch, getState) {
+        // Remove accounts
+        const { endpoint, accounts } = getState().pjsip
+
+        for (const id in accounts) {
+            if (accounts.hasOwnProperty(id)) {
+                await endpoint.deleteAccount(accounts[id])
+                dispatch( { type: ACCOUNT_DELETED, payload: { account: accounts[id] } } )
+            }
+        }
+
+        endpoint.removeAllListeners()
+    }
+}
+
+/**
  * Initiate new outgoing call.
  *
  * @param {String} destination
