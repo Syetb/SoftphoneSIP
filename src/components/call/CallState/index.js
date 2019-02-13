@@ -61,6 +61,12 @@ class CallState extends Component {
 
         return (
             <View style={scst.container}>
+                {
+                    this.props.call.getState() === "PJSIP_INV_STATE_CONFIRMED" &&
+                        <Text style={scst.text}>
+                            Llamada
+                        </Text>
+                }
                 <TextInput
                     ref={(c) => {
                         this.statusTextInput = c

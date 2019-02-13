@@ -9,7 +9,7 @@ export function calculateComponentsHeight(height) {
   return {
     infoHeight: height * 0.12,
     avatarHeight: height * 0.2336,  //0.3
-    stateHeight: height * 0.064,   //0.08
+    stateHeight: height * 0.07,   //0.08
     actionsHeight: height * 0.38,  //0.4
     buttonsHeight: 64
   }
@@ -147,6 +147,6 @@ export function animateCallState(props, call, callback) {
 
     Animated.timing(props.buttonsOffset, {toValue: dim.buttonsOffset})
   ])
-    
+
   anim.start(callback)
 }
