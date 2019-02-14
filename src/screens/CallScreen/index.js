@@ -50,19 +50,7 @@ class CallScreen extends Component {
         super(props)
 
         const { height: screenHeight, width: screenWidth } = Dimensions.get('window')
-        let call = this.props.call
-
-        // When user makes call
-        if (call instanceof Promise) {
-            call
-                .then(
-                    call => this.onInitializationResponse(call),
-
-                    error => this.onInitializationError(error)
-                )
-
-            call = null
-        }
+        let call = this._initializeOutCall(this.props.call)
 
         this.state = {
             call,
@@ -78,7 +66,8 @@ class CallScreen extends Component {
 
             error: null,
 
-            ...CallAnimation.calculateComponentsHeight(screenHeight)
+            ...CallAnimation.calculateComponentsHeight(screenHeight),
+            isCallAdd: false
         }
 
         if (call) {
@@ -120,6 +109,23 @@ class CallScreen extends Component {
 
         this._onIncomingCallAnswer = this.onIncomingCallAnswer.bind(this)
         this._onIncomingCallDecline = this.onIncomingCallDecline.bind(this)
+    }
+
+    _initializeOutCall(outCall) {
+        let call = outCall
+
+        // When user makes call
+        if (call instanceof Promise) {
+            call
+                .then(
+                    call => this.onInitializationResponse(call),
+
+                    error => this.onInitializationError(error)
+                )
+
+            call = null
+        }
+        return call
     }
 
     componentWillReceiveProps(nextProps) {
@@ -178,7 +184,10 @@ class CallScreen extends Component {
                 }
             }
 
-            if (init) {
+            if (init || this.state.isCallAdd) {
+
+                if( this.state.isCallAdd ) { this._initializeOutCall(nextProps.call) }
+
                 this.setState({
                     call,
                     incomingCall,
@@ -234,15 +243,15 @@ class CallScreen extends Component {
 
     onCallAddPress() {
         // TODO: Put local call on hold while typing digits
-        this.setState( { isAddModalVisible: true } )
+        this.setState( { isAddModalVisible: true, isCallAdd: true } )
     }
 
     onCallAddClosePress() {
-        this.setState( { isAddModalVisible: false } )
+        this.setState( { isAddModalVisible: false, isCallAdd: false } )
     }
 
     onCallAddSubmitPress(destination) {
-        this.setState( { isAddModalVisible: false } )
+        this.setState( { isAddModalVisible: false, isCallAdd: false } )
         this.props.onCallAdd && this.props.onCallAdd(this.state.call, destination)
     }
 

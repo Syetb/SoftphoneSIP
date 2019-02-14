@@ -8,11 +8,15 @@ export const NAVIGATE_BOTTOM_TAB = 'navigation/NAVIGATE_BOTTOM_TAB'
 export function goTo(route, currentScreen='DialerScreenId') {
     return async (dispatch, getState) => {
 
+        const screenName = getState().navigate.current.name
+
         dispatch( { type: NAVIGATE_TO, route } )
 
-        return await Navigation.push(currentScreen, {
-            component: { name: route.name }
-        })
+        if (screenName !== 'CallScreen') {
+            return await Navigation.push(currentScreen, {
+                component: { name: route.name }
+            })
+        }
     }
 }
 
