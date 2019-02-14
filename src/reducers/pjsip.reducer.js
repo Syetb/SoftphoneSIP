@@ -71,15 +71,29 @@ const reducer = (state = initialState, action) => {
         case ACCOUNT_CHANGED:
         case ACCOUNT_REGISTRATION_CHANGED: {
             const account = action.payload.account
+            const isRegChanged = JSON.stringify(account.getRegistration()) !== JSON.stringify(Object.keys(state.account).length > 0 ? state.account.getRegistration() : '' )
+
+            if( isRegChanged ) {
+                return {
+                    ...state,
+                    accounts: {
+                        ...state.accounts,
+                        [account.getId()]: account
+                    },
+                    account: account
+                }
+
+            }
 
             return {
                 ...state,
                 accounts: {
                     ...state.accounts,
                     [account.getId()]: account
-                },
-                account: account
+                }
             }
+
+
         }
         case ACCOUNT_DELETED: {
             const account = action.payload.account

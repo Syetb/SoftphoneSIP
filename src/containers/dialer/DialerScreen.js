@@ -14,7 +14,7 @@ class DialerScreen extends Component {
     constructor(props){
         super(props);
 
-        Navigation.events().bindComponent(this);
+        this.navigationEventListener = Navigation.events().bindComponent(this)
 
         this.state = {
             sideMenu: false
@@ -91,6 +91,11 @@ class DialerScreen extends Component {
     }
 
     componentWillUnmount() {
+        // Not mandatory
+        if (this.navigationEventListener) {
+            this.navigationEventListener.remove();
+        }
+
         this.props.onDestroy && this.props.onDestroy()
     }
 }
