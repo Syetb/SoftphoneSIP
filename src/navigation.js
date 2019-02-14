@@ -22,7 +22,7 @@ export const goHome = async () => {
             visible: false,
             animate: false,
             hideOnScroll: false,
-            drawBehind: false,
+            drawBehind: true,
             title: {
                 fontSize: 21,
                 color: "white",   //0f0f0f
@@ -41,7 +41,7 @@ export const goHome = async () => {
         },
         bottomTabs: {
             backgroundColor: '#f8f9fa',
-            drawBehind: false,
+            drawBehind: true,
             translucent: false,
         },
         bottomTab: {
