@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import configureStore from './configureStore'
 
 import { init }  from './actions/app'
-import { goAndReplace, goTo } from './actions/navigate';
+import { goToIndexTab, goTo } from './actions/navigate';
 
 const store = configureStore();
 
@@ -35,7 +35,7 @@ store.dispatch(async (dispatch, getState) => {
         }
     }
 
-    !isGoTo ? dispatch(goAndReplace(route)) : dispatch(goTo(route))
+    !isGoTo ? dispatch(goToIndexTab(route)) : dispatch(goTo(route))
 })
 
 export function registerScreens() {

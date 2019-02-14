@@ -15,9 +15,9 @@ class DialerScreen extends Component {
         super(props);
 
         Navigation.events().bindComponent(this);
+
         this.state = {
-            sideMenu: false,
-            account: {}
+            sideMenu: false
         }
     }
 
@@ -104,7 +104,7 @@ DialerScreen.propTypes = {
 const mapStateToProps = (state) => {
     return {
         account: state.pjsip.account,
-        screen: state.navigate.current
+        screen: state.navigate.screen,
     }
 }
 
