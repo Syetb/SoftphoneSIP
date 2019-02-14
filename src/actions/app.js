@@ -64,7 +64,7 @@ export function init() {
 
         dispatch({
             type: INIT,
-            payload: { endpoint, endpointSettings, connectivity, accounts: accountMap, calls: callsMap, account: accounts[0] }
+            payload: { endpoint, endpointSettings, connectivity, accounts: accountMap, calls: callsMap, account: accounts[0] ? accounts[0] : {} }
         })
 
         if (Platform.OS === 'ios') {
