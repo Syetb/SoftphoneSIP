@@ -63,15 +63,16 @@ class TransferModal extends Component {
     }
 
     render() {
-
         const calls = this.props.calls
+
         if (Object.keys(calls).length === 1 || this.state.isRedirectModalVisible) {
             return (
                 <DialerModal
-                    actions={ [ { icon: "blind-transfer", text: "Blind\nTransfer", callback: this._onBlindTransferPress } ] }
+                    actions={ [ { icon: "blind-transfer", text: "Blind Transfer", callback: this._onBlindTransferPress } ] }
                     theme="dark"
                     visible={this.props.visible}
                     onRequestClose={this._onBlindTransferClose}
+                    flexActionModal={{flex:0.211}}
                 />
             )
         }
@@ -88,7 +89,7 @@ class TransferModal extends Component {
 
                 options.push({
                     key: `merge_${c.getId()}`,
-                    title: `Merge with${c.getRemoteFormattedNumber()}`,
+                    title: `Merge with ${c.getRemoteFormattedNumber()}`,
                     callback: this.props.onAttendantTransferPress.bind(null, c)
                 })
             }
@@ -111,7 +112,7 @@ class TransferModal extends Component {
                     <View style={stm.contentBackground}>
                         <View style={stm.titleContainer}>
                             <Text style={stm.titleText}>Transfer call</Text>
-                            <TouchableOpacity onPress={this._onBlindTransferRequest}>
+                            <TouchableOpacity onPress={this._onBlindTransferClose}>
                                 <Image source={require('../../../assets/images/modal/close-icon.png')}/>
                             </TouchableOpacity>
                         </View>

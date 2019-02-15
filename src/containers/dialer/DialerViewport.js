@@ -16,6 +16,7 @@ const DialerViewport = ({ onCallPress, registrationStatus }) => {
             actions={[
                 { icon: "call", text: "", callback: onCallPress }
             ]}
+            flexActionModal={{}}
         />
     )
 }

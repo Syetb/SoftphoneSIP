@@ -161,7 +161,7 @@ export default class KeypadWithActions extends Component {
                     onDefineKeySize={ this._onDefineKeySize }
                 />
                 <View style={ {flex: 0.002 } } />
-                <View style={ ska.actionsWrapper }>
+                <View style={ [ ska.actionsWrapper, this.props.flexActionModal ] }>
                     { actions }
                 </View>
             </View>
@@ -173,5 +173,6 @@ KeypadWithActions.propTypes = {
     style: Text.propTypes.style,
     actions: PropTypes.array,
     theme: PropTypes.string,
-    status: PropTypes.string
+    status: PropTypes.string,
+    flexActionModal: PropTypes.object,
 }

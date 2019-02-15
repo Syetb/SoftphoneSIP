@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Animated, View, Text, Dimensions, Platform } from 'react-native'
+import { Animated, View, Text, Dimensions } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 
 import { connect } from 'react-redux'
@@ -19,13 +19,13 @@ import CallActions from '../../components/call/CallActions'
 import CallParallelInfo from '../../components/call/CallParallelInfo'
 import TransferModal from '../../components/call/TransferModal'
 import DtmfModal from '../../components/call/DtmfModal'
-import DialerModal from '../../components/call/DialerModal'
+import DialerModal, { parallelTop } from '../../components/call/DialerModal'
 import IncomingCallModal from '../../components/call/IncomingCallModal'
 
 import scs from './styles'
 import sc from '../../assets/styles/containers'
 
-const parallelTop = Platform.OS === 'ios' ? 20 : 0
+export const flexActionModal = { flex:0.211 }
 
 class CallScreen extends Component {
 
@@ -305,8 +305,6 @@ class CallScreen extends Component {
 
     onCallTransferPress() {
         // TODO: Put local call on hold while typing digits
-
-        console.log("onCallTransferPress")
         this.setState( { isTransferModalVisible: true } )
     }
 
@@ -497,15 +495,17 @@ class CallScreen extends Component {
                     </Animated.View>
 
                     <DialerModal
-                        actions={[ { icon: "call", text: "Call", callback: this._onCallAddSubmitPress } ]}
+                        actions={[ { icon: "call", text: "Nueva Llamada", callback: this._onCallAddSubmitPress } ]}
                         visible={this.state.isAddModalVisible}
                         onRequestClose={this._onCallAddClosePress}
+                        flexActionModal={flexActionModal}
                     />
                     <DialerModal
                         actions={[ { icon: "blind-transfer", text: "Redirect", callback: this._onCallRedirectSubmitPress } ]}
                         theme="dark"
                         visible={this.state.isRedirectModalVisible}
                         onRequestClose={this._onCallRedirectClosePress}
+                        flexActionModal={flexActionModal}
                     />
 
                     <TransferModal
