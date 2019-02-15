@@ -53,6 +53,8 @@
 		8C1041CD43954966BF08F62E /* libRCTWebRTC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D28B3CF5A947C588B3BF42 /* libRCTWebRTC.a */; };
 		9D4AF695EA3C47ECAA5E9F4A /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FED4165C98924AE0AAEA7006 /* libBVLinearGradient.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
+		E6CC917822172E45008E7D51 /* CallKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6CC917622172E45008E7D51 /* CallKit.framework */; };
+		E6CC917922172E45008E7D51 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6CC917722172E45008E7D51 /* Intents.framework */; };
 		F6675466A8BC49B29DA5246A /* libRTCPjSip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5129C3C45D1648C49E583ACE /* libRTCPjSip.a */; };
 /* End PBXBuildFile section */
 
@@ -446,6 +448,8 @@
 		8351030866064D238EC5A5D0 /* RNCallKeep.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNCallKeep.xcodeproj; path = "../node_modules/react-native-callkeep/ios/RNCallKeep.xcodeproj"; sourceTree = "<group>"; };
 		945AC1C5571C40C4A70FA4DC /* libRNCallKeep.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNCallKeep.a; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
+		E6CC917622172E45008E7D51 /* CallKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CallKit.framework; path = System/Library/Frameworks/CallKit.framework; sourceTree = SDKROOT; };
+		E6CC917722172E45008E7D51 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		EE0A224EE9D346CC8FA01E56 /* RTCPjSip.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RTCPjSip.xcodeproj; path = "../node_modules/react-native-pjsip/ios/RTCPjSip.xcodeproj"; sourceTree = "<group>"; };
 		FED4165C98924AE0AAEA7006 /* libBVLinearGradient.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libBVLinearGradient.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -463,6 +467,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6CC917822172E45008E7D51 /* CallKit.framework in Frameworks */,
+				E6CC917922172E45008E7D51 /* Intents.framework in Frameworks */,
 				457B680E218FEC3A005C95D1 /* libReactNativeNavigation.a in Frameworks */,
 				457DB9E1218BB4CD000309E3 /* libsqlite3.tbd in Frameworks */,
 				457DB9DF218BB4A0000309E3 /* libc.tbd in Frameworks */,
@@ -638,6 +644,8 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E6CC917622172E45008E7D51 /* CallKit.framework */,
+				E6CC917722172E45008E7D51 /* Intents.framework */,
 				457DB9E0218BB4CD000309E3 /* libsqlite3.tbd */,
 				457DB9DE218BB4A0000309E3 /* libc.tbd */,
 				457DB9DC218BB47E000309E3 /* VideoToolbox.framework */,
@@ -1519,7 +1527,6 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../node_modules/react-native-pjsip-assac/ios/RTCPjSip",
-					"$(SRCROOT)/../node_modules/react-native-ui-lib/lib/ios/reactnativeuilib/**",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-callkeep/ios/RNCallKeep",
 				);
@@ -1552,7 +1559,6 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../node_modules/react-native-pjsip-assac/ios/RTCPjSip",
-					"$(SRCROOT)/../node_modules/react-native-ui-lib/lib/ios/reactnativeuilib/**",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-callkeep/ios/RNCallKeep",
 				);
