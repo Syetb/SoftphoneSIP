@@ -25,6 +25,9 @@ export default StyleSheet.create({
     flex: 1,
     fontSize: correctFontSizeForScreen(18)
   },
+  stretch: {
+    padding: 6
+  },
   keypadInput: {
     flex: 0.20
   },
@@ -33,6 +36,6 @@ export default StyleSheet.create({
     borderColor: "#E0E7EA",
     borderTopWidth: 1,
     paddingTop: 20,
-    paddingBottom: 30
+    paddingBottom: 20
   }
 })

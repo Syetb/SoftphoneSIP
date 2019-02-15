@@ -36,14 +36,14 @@ class DtmfModal extends Component {
                 animationType={"fade"}
                 transparent
                 visible={this.props.visible}
-                onRequestClose={this.props.onRequestClose}
+                onRequestClose={this._onRequestClose}
             >
                 <View style={sdtmf.modalBackground}>
                     <View style={sdtmf.contentBackground}>
                         <View style={sdtmf.titleContainer}>
                             <Text style={sdtmf.titleText}>DTMF</Text>
                             <TouchableOpacity onPress={this._onRequestClose}>
-                                <Image source={require('../../../assets/images/modal/close-icon.png')}/>
+                                <Image source={require('../../../assets/images/modal/close-icon.png')} style={sdtmf.stretch}/>
                             </TouchableOpacity>
                         </View>
 
