@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native'
-import {correctFontSizeForScreen} from '../../../utils/scale'
+import { StyleSheet } from 'react-native'
+import { correctFontSizeForScreen } from '../../../utils/scale'
 
 export default StyleSheet.create({
   modalBackground: {
@@ -8,7 +8,7 @@ export default StyleSheet.create({
   },
   contentBackground: {
     margin: 30,
-    marginTop: 70,
+    marginTop: 80,
     backgroundColor: "#FFF",
     borderRadius: 8
   },
@@ -22,7 +22,7 @@ export default StyleSheet.create({
   titleText: {
     textAlign: 'center',
     flex: 1,
-    fontSize: 18
+      fontSize: correctFontSizeForScreen(18)
   },
   optionTouchable: {
     padding: 20,

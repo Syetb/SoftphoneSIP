@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
         marginLeft: 48,
         flex: 1,
         textAlign: 'center',
-        fontSize: correctFontSizeForScreen(30)
+        fontSize: correctFontSizeForScreen(25) //30
     },
     textNotEditable: {
         marginLeft: 10,

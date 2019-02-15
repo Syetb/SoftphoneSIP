@@ -9,7 +9,7 @@ export default StyleSheet.create({
   contentBackground: {
     margin: 30,
     flex: 0.7,
-    marginTop: 70,
+    marginTop: 80,
     backgroundColor: "#FFF",
     borderRadius: 8
   },
@@ -29,7 +29,7 @@ export default StyleSheet.create({
     padding: 6
   },
   keypadInput: {
-    flex: 0.20
+    flex: 0.30  //0.20
   },
   keypad: {
     flex: 1,

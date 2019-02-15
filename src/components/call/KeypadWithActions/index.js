@@ -159,6 +159,7 @@ export default class KeypadWithActions extends Component {
                     keyTextStyle={ textStyle(theme) }
                     onKeyPress={ this._onKeyPress }
                     onDefineKeySize={ this._onDefineKeySize }
+                    keyDigitFontSize={{}}
                 />
                 <View style={ {flex: 0.002 } } />
                 <View style={ [ ska.actionsWrapper, this.props.flexActionModal ] }>

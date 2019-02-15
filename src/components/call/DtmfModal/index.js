@@ -6,6 +6,7 @@ import Keypad from '../Keypad'
 import KeypadInputText from '../KeypadInputText'
 
 import sdtmf from './styles'
+import {correctFontSizeForScreen} from "../../../utils/scale";
 
 class DtmfModal extends Component {
 
@@ -49,7 +50,11 @@ class DtmfModal extends Component {
 
                         <KeypadInputText style={sdtmf.keypadInput} value={this.state.value} editable={false}/>
 
-                        <Keypad onKeyPress={this._onKeyPress} style={sdtmf.keypad}/>
+                        <Keypad
+                            onKeyPress={this._onKeyPress}
+                            style={sdtmf.keypad}
+                            keyDigitFontSize={{fontSize: correctFontSizeForScreen(28)}}
+                        />
                     </View>
                 </View>
             </Modal>

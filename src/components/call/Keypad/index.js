@@ -50,7 +50,7 @@ export default class Keypad extends Component {
                             onPress={this.onKeyPress.bind(this, digit)}
                         >
                             <View style={skp.keyDigitWrapper}>
-                                <Text style={[skp.keyDigitText, this.props.keyTextStyle]}>{digit}</Text>
+                                <Text style={[skp.keyDigitText, this.props.keyTextStyle, this.props.keyDigitFontSize]}>{digit}</Text>
                                 <Text style={[skp.keyLettersText, this.props.keyTextStyle]}>{letters}</Text>
                             </View>
                         </Touchable>
@@ -110,5 +110,6 @@ Keypad.propTypes = {
     keyUnderlayColor: PropTypes.any,
     keyTextStyle: Text.propTypes.style,
     onKeyPress: PropTypes.func,
-    onDefineKeySize: PropTypes.func
+    onDefineKeySize: PropTypes.func,
+    keyDigitFontSize: PropTypes.object,
 }
