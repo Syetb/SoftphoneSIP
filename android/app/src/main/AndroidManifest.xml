@@ -34,10 +34,6 @@
         </intent-filter>
       </activity>
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
-        <service
-            android:name="com.carusto.ReactNativePjSip.PjSipService"
-            android:enabled="true"
-            android:exported="true"/>
     </application>
 
 </manifest>
