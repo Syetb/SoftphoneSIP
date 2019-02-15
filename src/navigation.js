@@ -26,7 +26,11 @@ export const goHome = async () => {
             title: {
                 fontSize: 21,
                 color: "white",   //0f0f0f
-                // text: 'React Native Navigation!',
+                alignment: 'center',
+            },
+            subtitle: {
+                fontSize: 14,
+                alignment: 'center',
             },
             background: {
                 color: '#3F5057',
