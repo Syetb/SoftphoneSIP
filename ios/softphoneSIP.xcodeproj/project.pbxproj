@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -13,6 +14,7 @@
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		00E356F31AD99517003FC87E /* softphoneSIPTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* softphoneSIPTests.m */; };
 		11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
+		12281BF3033942BBBED43DC1 /* libRNCallKeep.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 945AC1C5571C40C4A70FA4DC /* libRNCallKeep.a */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
@@ -52,7 +54,6 @@
 		9D4AF695EA3C47ECAA5E9F4A /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FED4165C98924AE0AAEA7006 /* libBVLinearGradient.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		F6675466A8BC49B29DA5246A /* libRTCPjSip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5129C3C45D1648C49E583ACE /* libRTCPjSip.a */; };
-		12281BF3033942BBBED43DC1 /* libRNCallKeep.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 945AC1C5571C40C4A70FA4DC /* libRNCallKeep.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -378,6 +379,13 @@
 			remoteGlobalIDString = DDFF87521D79D6F50096A8BE;
 			remoteInfo = RTCPjSip;
 		};
+		E6CC917422172C62008E7D51 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8351030866064D238EC5A5D0 /* RNCallKeep.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 234528921E0B88C700D1A033;
+			remoteInfo = RNCallKeep;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -435,11 +443,11 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		7FEF1F6FB9DE4903BAFB92A5 /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		8351030866064D238EC5A5D0 /* RNCallKeep.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNCallKeep.xcodeproj; path = "../node_modules/react-native-callkeep/ios/RNCallKeep.xcodeproj"; sourceTree = "<group>"; };
+		945AC1C5571C40C4A70FA4DC /* libRNCallKeep.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNCallKeep.a; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		EE0A224EE9D346CC8FA01E56 /* RTCPjSip.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RTCPjSip.xcodeproj; path = "../node_modules/react-native-pjsip/ios/RTCPjSip.xcodeproj"; sourceTree = "<group>"; };
 		FED4165C98924AE0AAEA7006 /* libBVLinearGradient.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libBVLinearGradient.a; sourceTree = "<group>"; };
-		8351030866064D238EC5A5D0 /* RNCallKeep.xcodeproj */ = {isa = PBXFileReference; name = "RNCallKeep.xcodeproj"; path = "../node_modules/react-native-callkeep/ios/RNCallKeep.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		945AC1C5571C40C4A70FA4DC /* libRNCallKeep.a */ = {isa = PBXFileReference; name = "libRNCallKeep.a"; path = "libRNCallKeep.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -659,7 +667,7 @@
 				39D28B3CF5A947C588B3BF42 /* libRCTWebRTC.a */,
 				5129C3C45D1648C49E583ACE /* libRTCPjSip.a */,
 				FED4165C98924AE0AAEA7006 /* libBVLinearGradient.a */,
-				F7F93019F2944F1DBC0A01D9 /* libRNCallKit.a */,
+				945AC1C5571C40C4A70FA4DC /* libRNCallKeep.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -772,6 +780,14 @@
 			isa = PBXGroup;
 			children = (
 				E6B2062E21F82A010064C565 /* libRTCPjSip.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E6CC917122172C62008E7D51 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E6CC917522172C62008E7D51 /* libRNCallKeep.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -959,6 +975,10 @@
 				{
 					ProductGroup = 457B67E1218FE95E005C95D1 /* Products */;
 					ProjectRef = 457B67E0218FE95E005C95D1 /* ReactNativeNavigation.xcodeproj */;
+				},
+				{
+					ProductGroup = E6CC917122172C62008E7D51 /* Products */;
+					ProjectRef = 8351030866064D238EC5A5D0 /* RNCallKeep.xcodeproj */;
 				},
 				{
 					ProductGroup = E6B2062A21F82A010064C565 /* Products */;
@@ -1275,6 +1295,13 @@
 			fileType = archive.ar;
 			path = libRTCPjSip.a;
 			remoteRef = E6B2062D21F82A010064C565 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E6CC917522172C62008E7D51 /* libRNCallKeep.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNCallKeep.a;
+			remoteRef = E6CC917422172C62008E7D51 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

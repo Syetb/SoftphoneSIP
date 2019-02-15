@@ -81,7 +81,8 @@ public class MainApplication extends NavigationApplication {
     return Arrays.<ReactPackage>asList(
             new WebRTCModulePackage(),
             new PjSipModulePackage(),
-            new LinearGradientPackage()
+            new LinearGradientPackage(),
+            new RNCallKeepPackage()
     );
   }
 
