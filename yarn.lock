@@ -4973,6 +4973,11 @@ react-lifecycles-compat@2.0.0:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-2.0.0.tgz#71d9c4cde47114c4102454f76da055c2bc48c948"
   integrity sha512-txfpPCQYiazVdcbMRhatqWKcAxJweUu2wDXvts5/7Wyp6+Y9cHojqXHsLPEckzutfHlxZhG8Oiundbmp8Fd6eQ==
 
+react-native-callkeep@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-callkeep/-/react-native-callkeep-2.0.0.tgz#b63b9657c810e0ec2b6678b97666993d273ec8d3"
+  integrity sha512-C7yzfU3ROs5f+bUlN26J7cCK6jQoOKEuHMe1IoeYNovwxlz0+ScDiPnax9S1mao4IHlfGe06sfiPMJby5HGdYQ==
+
 react-native-linear-gradient@^2.5.3:
   version "2.5.3"
   resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.3.tgz#d90cf19a13fcccfa8bb32025ac40a15ae1b49e99"
