@@ -13,11 +13,6 @@ export default class Keypad extends Component {
         const { height, width } = Dimensions.get('window')
         const ratio = height / width
 
-        console.log('\nKeypad - constructor() executed!')
-        console.log('height es: ', height)
-        console.log('width es: ', width)
-        console.log('ratio es: ', ratio)
-
         this.state = {
             keySize: 0,
             heightRatio: ratio * ratio
