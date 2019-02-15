@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.wazo.callkeep.RNCallKeepPackage;
+import io.wazo.callkeep.RNCallKeepPackage;
 import com.oney.WebRTCModule.WebRTCModulePackage;
 import com.carusto.ReactNativePjSip.PjSipModulePackage;
 import com.BV.LinearGradient.LinearGradientPackage;
