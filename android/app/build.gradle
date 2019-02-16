@@ -154,6 +154,7 @@ configurations.all {
 }
 
 dependencies {
+    implementation project(':react-native-callkeep')
     implementation project(':react-native-linear-gradient')
     implementation project(':react-native-pjsip')
     implementation project(':react-native-webrtc')

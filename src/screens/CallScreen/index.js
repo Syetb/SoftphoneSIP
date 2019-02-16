@@ -116,6 +116,7 @@ class CallScreen extends Component {
 
         // When user makes call
         if (call instanceof Promise) {
+            console.log('call es instanceof Promise')
             call
                 .then(
                     call => this.onInitializationResponse(call),
@@ -124,6 +125,7 @@ class CallScreen extends Component {
                 )
 
             call = null
+            console.log('call ahora es null')
         }
         return call
     }
@@ -259,6 +261,7 @@ class CallScreen extends Component {
 
     onIncomingCallAnswer() {
         this.setState( { incomingCall: null } )
+
         this.props.onIncomingCallAnswer && this.props.onIncomingCallAnswer(this.state.incomingCall)
     }
 
@@ -384,7 +387,6 @@ class CallScreen extends Component {
     }
 
     renderCallWait() {
-
         return (
             <LinearGradient colors={['#2a5743', '#14456f']} style={sc.mainContainer}>
                 <View style={scs.initContainer}>
@@ -590,7 +592,9 @@ const mapDispatchToProps = (dispatch) => {
 
                         // Open active call once current call ends.
                         for (const id in calls) {
-                            if (calls.hasOwnProperty(id)) { return dispatch(goAndReplace( { name: 'CallScreen', call: calls[id] } )) }
+                            if (calls.hasOwnProperty(id)) {
+                                return dispatch(goAndReplace( { name: 'CallScreen', call: calls[id] } ))
+                            }
                         }
 
                         // Return to previous screen once call end.
@@ -600,7 +604,7 @@ const mapDispatchToProps = (dispatch) => {
                     if (route.name !== 'CallScreen') {
                         return
                     }
-
+                    
                     if (route.call instanceof Promise) {
                         route.call.then(doRoute, doDirectRoute)
 
@@ -646,4 +650,3 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CallScreen)
-

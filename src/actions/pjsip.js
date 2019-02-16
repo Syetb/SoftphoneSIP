@@ -5,6 +5,8 @@ import {goBack, goTo} from "./navigate";
 export const ACCOUNT_CREATED = 'pjsip/ACCOUNT_CREATED'
 export const ACCOUNT_DELETED = 'pjsip/ACCOUNT_DELETED'
 
+export const isiOS = Platform.OS === 'ios'
+
 /**
  * Creates new account based on provided configuration.
  *
@@ -118,7 +120,7 @@ export function makeCall(destination, account = null) {
         const endpoint = getState().pjsip.endpoint
 
         // TODO: Do not deactivateAudioSession if iOS version is not compatible with CallKit
-        if (Platform.OS === 'ios') {
+        if ( isiOS ) {
             endpoint.deactivateAudioSession()
         }
 
@@ -136,7 +138,7 @@ export function hangupCall(call) {
             await  endpoint.hangupCall(call)
         } catch (e) {
             alert('Error al colgar la llamada!')
-            dispatch(goBack())
+            return dispatch(goBack())
         }
     }
 }
@@ -149,7 +151,7 @@ export function declineCall(call) {
             await endpoint.declineCall(call)
         } catch (e) {
             alert('Error al declineCall la llamada!')
-            dispatch(goBack())
+            return dispatch(goBack())
         }
     }
 }
@@ -158,11 +160,13 @@ export function answerCall(call) {
     return async function (dispatch, getState) {
         const endpoint = getState().pjsip.endpoint
 
+        console.log('answerCall(call) executed!')
+
         try {
             await endpoint.answerCall(call)
         } catch (e) {
-            alert('Error al responder la llamada!')
-            dispatch(goBack())
+            alert('Error al responder la llamada! es: ' + e)
+            return dispatch(goBack())
         }
     }
 }

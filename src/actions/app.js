@@ -1,10 +1,10 @@
 import { Platform, AppState } from 'react-native'
 import { Endpoint } from 'react-native-pjsip'
-import RNCallKit  from 'react-native-callkit'
+import RNCallKit  from 'react-native-callkeep'
 import uuid from 'uuid'
 
 import { onAccountChanged, onConnectivityChanged, onCallReceived, onCallChanged, onCallTerminated, onCallScreenLocked } from './handlers'
-import {ACCOUNT_CREATED, answerCall, declineCall, hangupCall} from "./pjsip";
+import {ACCOUNT_CREATED, answerCall, declineCall, hangupCall, isiOS} from "./pjsip";
 
 export const INIT = 'pjsip/INIT'
 export const CHANGED_APP_STATE = 'pjsip/CHANGED_APP_STATE'
@@ -67,10 +67,10 @@ export function init() {
             payload: { endpoint, endpointSettings, connectivity, accounts: accountMap, calls: callsMap, account: accounts[0] ? accounts[0] : {} }
         })
 
-        if (Platform.OS === 'ios') {
-            // CallKit
-            dispatch(initCallKitIntegration())
+        // CallKit
+        dispatch(initCallKitIntegration())
 
+        if ( isiOS ) {
             // Register / unregister when app in background or foreground
             AppState.addEventListener('change', async (nextAppState) => {
 
@@ -106,7 +106,7 @@ export function init() {
                 'regTimeout': ''
             }
 
-            if( Platform.OS === 'ios') {
+            if( isiOS ) {
                 const account = await endpoint.createAccount({
                     ...defaultAccount,
                     contactUriParams: ';app-id=com.softphoneSIP.mobile.app'
@@ -141,9 +141,26 @@ function initCallKitIntegration() {
         const uuids = {}
 
         // Initialize RNCallKit
-        RNCallKit.setup({appName: 'React Native PjSip'})
+        const options = {
+            ios: {
+                appName: 'React Native PjSip',
+            },
+            android: {
+                alertTitle: 'Permissions required',
+                alertDescription: 'This application needs to access your phone accounts',
+                cancelButton: 'Cancel',
+                okButton: 'ok',
+            }
+        };
 
-        const {endpoint} = getState().pjsip
+        try {
+            await RNCallKit.setup(options);
+            RNCallKit.setAvailable(true); // Only used for Android, see doc above.
+        } catch (err) {
+            console.error('initializeCallKeep error:', err.message);
+        }
+
+        const { endpoint } = getState().pjsip
 
         endpoint.on("call_received", (call) => {
             if (incomingCall != null) {
@@ -152,6 +169,7 @@ function initCallKitIntegration() {
 
             incomingCall = call.getId()
 
+            // Si callID aun no se encuentra en uuids array
             if (!uuids.hasOwnProperty(call.getCallId())) {
                 uuids[call.getCallId()] = uuid.v1()
             }
@@ -160,11 +178,10 @@ function initCallKitIntegration() {
         })
 
         endpoint.on("call_changed", (call) => {
-            if (call.getId() === incomingCall && call.getState() != 'PJSIP_INV_STATE_INCOMING') {
+            if (call.getId() === incomingCall && call.getState() !== 'PJSIP_INV_STATE_INCOMING') {
                 incomingCall = null
             } else if (activeCall === null) {
                 activeCall = call.getId()
-
 
                 if (!uuids.hasOwnProperty(call.getCallId())) {
                     uuids[call.getCallId()] = uuid.v1()
@@ -175,11 +192,11 @@ function initCallKitIntegration() {
         })
 
         endpoint.on("call_terminated", async (call) => {
-            const {appState} = getState().pjsip
+            const { appState } = getState().pjsip
 
             // Send unregistry when application was in background
-            if (appState == 'background' && activeCall == call.getCallId()) {
-                const {endpoint, accounts} = getState().pjsip
+            if (appState === 'background' && activeCall === call.getCallId()) {
+                const { endpoint, accounts } = getState().pjsip
                 for (const id in accounts) {
                     if (accounts.hasOwnProperty(id)) {
                         await endpoint.registerAccount(accounts[id], false)
@@ -187,10 +204,10 @@ function initCallKitIntegration() {
                 }
             }
 
-            if (activeCall == call.getId()) {
+            if (activeCall === call.getId()) {
                 activeCall = null
             }
-            if (incomingCall == call.getId()) {
+            if (incomingCall === call.getId()) {
                 incomingCall = null
             }
 
@@ -205,20 +222,18 @@ function initCallKitIntegration() {
         })
 
 
-        // -------------------------
-        // -------------------------
-        // -------------------------
+        // DTMF Actions  - Add RNCallKit Events
+        RNCallKit.addEventListener('didReceiveStartCallAction', ( data ) => {
+            // todo User start call action from Recents (Or Contact on Android) in built-in phone app
 
-        // TODO: Other actions like DTMF - Add RNCallKit Events
-        RNCallKit.addEventListener('didReceiveStartCallAction', () => {
-            const {endpoint} = getState().pjsip
-            endpoint.deactivateAudioSession()
+            if( isiOS ) {
+                const { endpoint } = getState().pjsip
+                endpoint.deactivateAudioSession()
+            }
         })
 
-        RNCallKit.addEventListener('answerCall', () => {
-            console.log("JS RNCallKit", "answerCall", incomingCall)
-
-            const {calls} = getState().pjsip
+        RNCallKit.addEventListener('answerCall', ( data ) => {
+            const { calls } = getState().pjsip
             let call = null
 
             if (incomingCall !== null) {
@@ -230,10 +245,8 @@ function initCallKitIntegration() {
             }
         })
 
-        RNCallKit.addEventListener('endCall', () => {
-            console.log("JS RNCallKit", "endCall", activeCall, incomingCall)
-
-            const {calls} = getState().pjsip
+        RNCallKit.addEventListener('endCall', ( data ) => {
+            const { calls } = getState().pjsip
             let call = null
 
             if (activeCall !== null) {
@@ -256,12 +269,16 @@ function initCallKitIntegration() {
             }
         })
 
-        RNCallKit.addEventListener('didActivateAudioSession', () => {
-            const {endpoint} = getState().pjsip
-            endpoint.activateAudioSession()
+        RNCallKit.addEventListener('didActivateAudioSession', ( data ) => {
+            // todo - Start playing ringback if it is an outgoing call
+
+            if( isiOS ) {
+                const { endpoint } = getState().pjsip
+                endpoint.activateAudioSession()
+            }
         })
 
-        // RNCallKit.addEventListener('didDisplayIncomingCall', (error) => {} )  error
+        // RNCallKit.addEventListener('didDisplayIncomingCall', ({ error }) => {} )  error
 
         // RNCallKit.addEventListener('didPerformSetMutedCallAction', (muted) => {} )
     }

@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import io.wazo.callkeep.RNCallKeepPackage;
 import com.oney.WebRTCModule.WebRTCModulePackage;
 import com.carusto.ReactNativePjSip.PjSipModulePackage;
 import com.BV.LinearGradient.LinearGradientPackage;
@@ -32,6 +33,7 @@ import java.util.List;
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNCallKeepPackage(),
             new WebRTCModulePackage(),
             new PjSipModulePackage(),
             new LinearGradientPackage()
@@ -79,7 +81,8 @@ public class MainApplication extends NavigationApplication {
     return Arrays.<ReactPackage>asList(
             new WebRTCModulePackage(),
             new PjSipModulePackage(),
-            new LinearGradientPackage()
+            new LinearGradientPackage(),
+            new RNCallKeepPackage()
     );
   }
 
