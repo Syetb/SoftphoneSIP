@@ -136,7 +136,7 @@ export function hangupCall(call) {
             await  endpoint.hangupCall(call)
         } catch (e) {
             alert('Error al colgar la llamada!')
-            dispatch(goBack())
+            return dispatch(goBack())
         }
     }
 }
@@ -149,7 +149,7 @@ export function declineCall(call) {
             await endpoint.declineCall(call)
         } catch (e) {
             alert('Error al declineCall la llamada!')
-            dispatch(goBack())
+            return dispatch(goBack())
         }
     }
 }
@@ -158,11 +158,13 @@ export function answerCall(call) {
     return async function (dispatch, getState) {
         const endpoint = getState().pjsip.endpoint
 
+        console.log('answerCall(call) executed!')
+
         try {
             await endpoint.answerCall(call)
         } catch (e) {
-            alert('Error al responder la llamada!')
-            dispatch(goBack())
+            alert('Error al responder la llamada! es: ' + e)
+            return dispatch(goBack())
         }
     }
 }
