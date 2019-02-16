@@ -5,6 +5,8 @@ import {goBack, goTo} from "./navigate";
 export const ACCOUNT_CREATED = 'pjsip/ACCOUNT_CREATED'
 export const ACCOUNT_DELETED = 'pjsip/ACCOUNT_DELETED'
 
+export const isiOS = Platform.OS === 'ios'
+
 /**
  * Creates new account based on provided configuration.
  *
@@ -118,7 +120,7 @@ export function makeCall(destination, account = null) {
         const endpoint = getState().pjsip.endpoint
 
         // TODO: Do not deactivateAudioSession if iOS version is not compatible with CallKit
-        if (Platform.OS === 'ios') {
+        if ( isiOS ) {
             endpoint.deactivateAudioSession()
         }
 

@@ -4,7 +4,7 @@ import RNCallKit  from 'react-native-callkeep'
 import uuid from 'uuid'
 
 import { onAccountChanged, onConnectivityChanged, onCallReceived, onCallChanged, onCallTerminated, onCallScreenLocked } from './handlers'
-import {ACCOUNT_CREATED, answerCall, declineCall, hangupCall} from "./pjsip";
+import {ACCOUNT_CREATED, answerCall, declineCall, hangupCall, isiOS} from "./pjsip";
 
 export const INIT = 'pjsip/INIT'
 export const CHANGED_APP_STATE = 'pjsip/CHANGED_APP_STATE'
@@ -70,7 +70,7 @@ export function init() {
         // CallKit
         dispatch(initCallKitIntegration())
 
-        if (Platform.OS === 'ios') {
+        if ( isiOS ) {
             // Register / unregister when app in background or foreground
             AppState.addEventListener('change', async (nextAppState) => {
 
@@ -106,7 +106,7 @@ export function init() {
                 'regTimeout': ''
             }
 
-            if( Platform.OS === 'ios') {
+            if( isiOS ) {
                 const account = await endpoint.createAccount({
                     ...defaultAccount,
                     contactUriParams: ';app-id=com.softphoneSIP.mobile.app'
@@ -224,10 +224,12 @@ function initCallKitIntegration() {
 
         // DTMF Actions  - Add RNCallKit Events
         RNCallKit.addEventListener('didReceiveStartCallAction', ( data ) => {
-            // User start call action from Recents (Or Contact on Android) in built-in phone app
-            const { endpoint } = getState().pjsip
+            // todo User start call action from Recents (Or Contact on Android) in built-in phone app
 
-            endpoint.deactivateAudioSession()
+            if( isiOS ) {
+                const { endpoint } = getState().pjsip
+                endpoint.deactivateAudioSession()
+            }
         })
 
         RNCallKit.addEventListener('answerCall', ( data ) => {
@@ -268,9 +270,12 @@ function initCallKitIntegration() {
         })
 
         RNCallKit.addEventListener('didActivateAudioSession', ( data ) => {
-            // - Start playing ringback if it is an outgoing call
-            const { endpoint } = getState().pjsip
-            endpoint.activateAudioSession()
+            // todo - Start playing ringback if it is an outgoing call
+
+            if( isiOS ) {
+                const { endpoint } = getState().pjsip
+                endpoint.activateAudioSession()
+            }
         })
 
         // RNCallKit.addEventListener('didDisplayIncomingCall', ({ error }) => {} )  error
