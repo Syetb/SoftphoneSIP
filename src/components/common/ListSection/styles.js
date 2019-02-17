@@ -11,7 +11,7 @@ export default StyleSheet.create({
   },
   text: {
     color: '#3F5057',
-    fontSize: correctFontSizeForScreen(13)
+    fontSize: correctFontSizeForScreen(18)
   },
     linearGradient: {
         flex: 1,
