@@ -8,6 +8,7 @@ import { Navigation } from 'react-native-navigation'
 import ListSection from '../../components/common/ListSection'
 import Header from '../../components/common/Header'
 
+import SwitchItem from "../../components/common/SwitchItem";
 import sc from '../../assets/styles/containers'
 
 class MediaSettingsScreen extends Component {
@@ -21,6 +22,57 @@ class MediaSettingsScreen extends Component {
                 visible: false
             },
         };
+    }
+
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            codecs: this.props.codecs,
+            mediaCodecs: this.initializeCodecs(this.props.codecs)
+        }
+    }
+
+    initializeCodecs(codecs) {
+        return Object.keys(codecs).reduce( (acc, key, index) => {
+            // "G722/16000/1"
+            const codecNameParts = key.split('/');
+            const kHz = codecNameParts[1]
+
+            acc[index] = {
+                id: index,
+                name: `${codecNameParts[0]} ${kHz.substr(0, kHz.length-3)}kHz`,
+                [key]: codecs[key],
+                toggled: false,
+            }
+
+            return acc
+
+        }, [])
+    }
+
+    toggleSwitch = (switchValue) => {
+        const mediaCodecs = [...this.state.mediaCodecs]
+        mediaCodecs[index].toggled = !mediaCodecs[index].toggled
+
+        this.setState({ mediaCodecs })
+    }
+
+    renderSwitchCodecs(mediaCodecs) {
+
+       return  mediaCodecs.map( (item, index) => (
+            <View key={item.id} style={{padding: 10, borderBottomWidth: 1, borderColor: '#E0E7EA'}}>
+                <SwitchItem
+                    switchName={item.name}
+                    onToggleSwitch = { (switchValue) => {
+                        const mediaCodecs = [...this.state.mediaCodecs]
+                        mediaCodecs[index].toggled = switchValue
+
+                        this.setState({ mediaCodecs })
+                    } }
+                    switchValue = { item.toggled }/>
+            </View>
+        ))
     }
 
     render() {
@@ -41,6 +93,8 @@ class MediaSettingsScreen extends Component {
             onPress: () => {}
         }
 
+        const { mediaCodecs } = this.state
+
         return (
             <View style={sc.mainContainer}>
                 <Header title={"Media settings"} {...platformHeaderProps} />
@@ -48,13 +102,15 @@ class MediaSettingsScreen extends Component {
                 <ScrollView style={sc.mainContainer}>
                     <ListSection title="General"/>
                     <View style={{padding: 10}}>
-                        <Text>Por implementar</Text>
+                        <Text style={{fontSize: 18}}>Por implementar</Text>
                     </View>
 
                     <ListSection title="Avanzado"/>
                     <View style={{padding: 10}}>
-                        <Text>Por implementar</Text>
+                        <Text style={{fontSize: 18}}>Por implementar</Text>
                     </View>
+                    <ListSection title="Codecs"/>
+                    { this.renderSwitchCodecs(mediaCodecs) }
                 </ScrollView>
             </View>
         )
@@ -62,11 +118,13 @@ class MediaSettingsScreen extends Component {
 }
 
 MediaSettingsScreen.propTypes = {
-
+    codecs: PropTypes.object
 }
 
 const mapStateToProps = (state) => {
-    return {}
+    return {
+        codecs: state.pjsip.endpointSettings.codecs
+    }
 }
 
 const mapDispatchToProps = (dispatch) => {
