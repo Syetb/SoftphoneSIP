@@ -32,7 +32,8 @@ class AccountScreen extends Component {
                 }
             },
             bottomTabs: {
-                visible: false
+                visible: false,
+                drawBehind: true,
             }
         }
     }
