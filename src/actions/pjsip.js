@@ -1,6 +1,6 @@
-import { Platform } from 'react-native'
+import { Platform, Alert } from 'react-native'
 import { Navigation } from 'react-native-navigation'
-import {goBack, goTo} from "./navigate";
+import { goBack, goTo } from "./navigate";
 
 export const ACCOUNT_CREATED = 'pjsip/ACCOUNT_CREATED'
 export const ACCOUNT_DELETED = 'pjsip/ACCOUNT_DELETED'
@@ -137,7 +137,7 @@ export function hangupCall(call) {
         try {
             await  endpoint.hangupCall(call)
         } catch (e) {
-            alert('Error al colgar la llamada!')
+            Alert.alert('Advertencia', 'Error al colgar la llamada!')
             return dispatch(goBack())
         }
     }
@@ -150,7 +150,7 @@ export function declineCall(call) {
         try {
             await endpoint.declineCall(call)
         } catch (e) {
-            alert('Error al declineCall la llamada!')
+            Alert.alert('Advertencia', 'Error al declineCall la llamada!')
             return dispatch(goBack())
         }
     }
@@ -165,7 +165,7 @@ export function answerCall(call) {
         try {
             await endpoint.answerCall(call)
         } catch (e) {
-            alert('Error al responder la llamada! es: ' + e)
+            Alert.alert('Advertencia', 'Error al responder la llamada! es: ' + e)
             return dispatch(goBack())
         }
     }
