@@ -105,84 +105,10 @@ export const goHome = async () => {
                                     children: [
                                         {
                                             component: {
-                                                id: 'ContactsScreenId',
-                                                name: 'ContactsScreen',
-                                                passProps: {
-                                                    text: 'This is tab 2'
-                                                },
-                                                options: {
-                                                    topBar: {
-                                                        visible: true,
-                                                        animate: false,
-                                                        title: {
-                                                            text: 'Contactos'
-                                                        }
-                                                    },
-                                                    sideMenu: {
-                                                        left: {
-                                                            enabled: true
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    ],
-                                    options: {
-                                        bottomTab: {
-                                            text: 'Contactos',
-                                            icon: require('./assets/images/bottomtabs/contacts-icon.png'),
-                                            selectedIcon: require('./assets/images/bottomtabs/contacts-active-icon.png'),
-                                            testID: 'SECOND_TAB_BAR_BUTTON'
-                                        }
-                                    }
-                                }
-                            },
-                            {
-                                stack: {
-                                    id: 'tab3',
-                                    children: [
-                                        {
-                                            component: {
-                                                id: 'HistoryScreenId',
-                                                name: 'HistoryScreen',
-                                                passProps: {
-                                                    text: 'This is tab 3',
-                                                    myFunction: () => 'Hello from a function!'
-                                                },
-                                                options: {
-                                                    // topBar: {
-                                                    //     visible: true,
-                                                    //     animate: false,
-                                                    //     title: {
-                                                    //         text: 'Recents!',
-                                                    //         color: "#0f0f0f"
-                                                    //     },
-                                                    //     leftButtons: {
-                                                    //         id: 'toggleButtom',
-                                                    //         icon: require('./assets/images/history-icon.png')
-                                                    //     }
-                                                    // },
-                                                    bottomTab: {
-                                                        text: 'Historial',
-                                                        icon: require('./assets/images/bottomtabs/history-icon.png'),
-                                                        selectedIcon: require('./assets/images/bottomtabs/history-active-icon.png'),
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    ]
-                                }
-                            },
-                            {
-                                stack: {
-                                    id: 'tab4',
-                                    children: [
-                                        {
-                                            component: {
                                                 id: 'SettingsScreenId',
                                                 name: 'SettingsScreen',
                                                 passProps: {
-                                                    text: 'This is tab 4'
+                                                    text: 'This is tab 2'
                                                 }
                                             }
                                         }

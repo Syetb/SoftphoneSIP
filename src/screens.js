@@ -13,7 +13,7 @@ store.dispatch(async (dispatch, getState) => {
     await dispatch(init())
 
     // Render
-    let route = { name: 'SettingsScreenId', index: 3 }
+    let route = { name: 'SettingsScreenId', index: 1 }
     const { calls, accounts } = getState().pjsip
     let isGoTo = false
 
@@ -45,8 +45,6 @@ export function registerScreens() {
     Navigation.registerComponentWithRedux('About', () => require('./screens/About').default, Provider, store);
 
     Navigation.registerComponentWithRedux('DialerScreen', () => require('./containers/dialer/DialerScreen').default, Provider, store);
-    Navigation.registerComponentWithRedux('ContactsScreen', () => require('./containers/contacts/ContactsScreen').default, Provider, store);
-    Navigation.registerComponentWithRedux('HistoryScreen', () => require('./containers/history/HistoryScreen').default, Provider, store);
     Navigation.registerComponentWithRedux('SettingsScreen', () => require('./containers/settings/SettingsScreen').default, Provider, store);
 
     Navigation.registerComponentWithRedux('AccountScreen', () => require('./screens/AccountScreen').default, Provider, store);
