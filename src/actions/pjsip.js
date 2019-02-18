@@ -137,7 +137,7 @@ export function hangupCall(call) {
         try {
             await  endpoint.hangupCall(call)
         } catch (e) {
-            Alert.alert('Advertencia', 'Error al colgar la llamada!')
+            Alert.alert('Advertencia', 'Error al colgar la llamada!' + e)
             return dispatch(goBack())
         }
     }
@@ -150,7 +150,7 @@ export function declineCall(call) {
         try {
             await endpoint.declineCall(call)
         } catch (e) {
-            Alert.alert('Advertencia', 'Error al declineCall la llamada!')
+            Alert.alert('Advertencia', 'Error al declineCall la llamada!' + e)
             return dispatch(goBack())
         }
     }
