@@ -13,6 +13,8 @@
   
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
   
+  // jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+  
   [ReactNativeNavigation bootstrap:jsCodeLocation launchOptions:launchOptions];
   
   return YES;
