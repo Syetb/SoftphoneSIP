@@ -42,7 +42,7 @@ export function registerScreens() {
     Navigation.registerComponentWithRedux('LaunchScreen', (sc) => require('./screens/LaunchScreen').default, Provider, store);
 
     Navigation.registerComponentWithRedux('SideMenu', () => require('./screens/SideMenu').default, Provider, store);
-    Navigation.registerComponentWithRedux('About', () => require('./screens/About').default, Provider, store);
+    Navigation.registerComponentWithRedux('AboutScreen', () => require('./screens/AboutScreen').default, Provider, store);
 
     Navigation.registerComponentWithRedux('DialerScreen', () => require('./containers/dialer/DialerScreen').default, Provider, store);
     Navigation.registerComponentWithRedux('SettingsScreen', () => require('./containers/settings/SettingsScreen').default, Provider, store);
