@@ -49,8 +49,6 @@
 		<string>fetch</string>
 		<string>voip</string>
 	</array>
-	
-	
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
