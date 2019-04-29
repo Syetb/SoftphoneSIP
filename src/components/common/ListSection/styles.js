@@ -6,7 +6,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     paddingLeft: 10,
     paddingRight: 10,
-    paddingTop: 6,
+    paddingTop: 14,
     paddingBottom: 6
   },
   text: {
