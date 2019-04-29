@@ -52,10 +52,18 @@ subprojects { subproject ->
             android {
                 variantFilter { variant ->
                     def names = variant.flavors*.name
-                    if (names.contains("reactNative51") || names.contains("reactNative55") || names.contains("reactNative56")) {
+                    if (names.contains("reactNative51") || names.contains("reactNative55") || names.contains("reactNative56") || names.contains("reactNative57_5")) {
                         setIgnore(true)
                     }
                 }
+            }
+        }
+
+        // force libs to use recent buildtools
+        if (project.hasProperty("android")) {
+            android {
+                compileSdkVersion = 27  // change to match your desired version
+                buildToolsVersion = "27.0.3" // ....
             }
         }
     }
