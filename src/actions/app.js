@@ -83,7 +83,7 @@ export function init() {
                                 await endpoint.registerAccount(accounts[id], nextAppState === 'active')
                             } catch (e) {
                                 // console.warn('error es: ' , e)
-                                console.log('error es: ' , e)
+                                // console.log('error es: ' , e)
                             }
                         }
                     }
@@ -98,7 +98,7 @@ export function init() {
             const defaultAccount = {
                 'name': 'Jhonatan',
                 'username': 'jhona',
-                'domain': '192.168.0.133',
+                'domain': '192.168.1.133',
                 'password': 'pwd_100',
                 'proxy': '',
                 'transport':'UDP',
@@ -116,7 +116,7 @@ export function init() {
             } else {
                 defaultAccount.name = 'Betsy'
                 defaultAccount.username = 'betsy'
-                defaultAccount.password = 'pwd_102'
+                defaultAccount.password = 'pwd_122'
 
                 const account = await endpoint.createAccount({
                     ...defaultAccount,
@@ -157,7 +157,7 @@ function initCallKitIntegration() {
             await RNCallKit.setup(options);
             RNCallKit.setAvailable(true); // Only used for Android, see doc above.
         } catch (err) {
-            console.error('initializeCallKeep error:', err.message);
+            // console.error('initializeCallKeep error:', err.message);
         }
 
         const { endpoint } = getState().pjsip
