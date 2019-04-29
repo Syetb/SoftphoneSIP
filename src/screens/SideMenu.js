@@ -53,25 +53,41 @@ export default class SideMenu extends React.Component {
         // });
     }
 
-    navigateToScreen = (screenName) => () => {
-        console.log('navigateToScreen executed! :)')
+    navigateToScreen = (screenName) => async () => {
+        // console.log('navigateToScreen executed! :)')
 
         // Navega entre pantallas
-        Navigation.push(this.props.componentId, {
+        await Navigation.push('DialerScreenId', {
             component: {
                 name: screenName,
             }
         });
+
+        await Navigation.mergeOptions('SideMenuId', {
+            sideMenu: {
+                left: {
+                    visible: false,
+                },
+            },
+        });
     }
 
-    goToAccountsScreen = () => {
-        console.log('goToAccountsScreen executed! :)')
-        console.log(this.props.componentId)
-        Navigation.push(this.props.componentId, {
+    goToAccountsScreen = async () => {
+        // console.log('goToAccountsScreen executed! :)')
+        // console.log(this.props.componentId)
+        await Navigation.push('DialerScreenId', {
             component: {
                 name: 'AccountScreen',
             }
         })
+
+        await Navigation.mergeOptions('SideMenuId', {
+            sideMenu: {
+                left: {
+                    visible: false,
+                },
+            },
+        });
     }
 
     render () {
@@ -80,40 +96,45 @@ export default class SideMenu extends React.Component {
                 <ScrollView>
                     <View>
                         <Text style={styles.sectionHeadingStyle}>
-                            Section 1
+                            Cuentas SIP registradas
                         </Text>
                         <View style={styles.navSectionStyle}>
                             <Text style={styles.navItemStyle}>
-                                Page1
+                                Cuenta 1
+                            </Text>
+                        </View>
+                        <View style={styles.navSectionStyle}>
+                            <Text style={styles.navItemStyle}>
+                                Cuenta 2
+                            </Text>
+                        </View>
+                        <View style={styles.navSectionStyle}>
+                            <Text style={styles.navItemStyle}>
+                                Cuenta 3
+                            </Text>
+                        </View>
+                        <View style={styles.navSectionStyle}>
+                            <Text style={styles.navItemStyle}>
+                                Cuenta 4
                             </Text>
                         </View>
                     </View>
                     <View>
                         <Text style={styles.sectionHeadingStyle}>
-                            Section 2
+                            Otros
                         </Text>
                         <View style={styles.navSectionStyle}>
-                            <Text style={styles.navItemStyle} onPress={this.goToAccountsScreen}>
-                                Settings
+                            <Text style={styles.navItemStyle} onPress={this.navigateToScreen('AccountScreen')}>
+                                Ajustes
                             </Text>
-                            <Text style={styles.navItemStyle}>
-                                Others
-                            </Text>
-                        </View>
-                    </View>
-                    <View>
-                        <Text style={styles.sectionHeadingStyle}>
-                            Section 3
-                        </Text>
-                        <View style={styles.navSectionStyle}>
-                            <Text style={styles.navItemStyle} onPress={this.navigateToScreen('About')}>
-                                About
+                            <Text style={styles.navItemStyle} onPress={this.navigateToScreen('AboutScreen')}>
+                                Acerca de
                             </Text>
                         </View>
                     </View>
                 </ScrollView>
                 <View style={styles.footerContainer}>
-                    <Text>This is my fixed footer</Text>
+                    <Text>2019 Todos los Derechos Reservados</Text>
                 </View>
             </View>
         );
