@@ -98,6 +98,18 @@ class DialerScreen extends Component {
 
         this.props.onDestroy && this.props.onDestroy()
     }
+
+    componentDidAppear() {
+        // console.log('Dialer Aparece!!! :)')
+
+        Navigation.mergeOptions(this.props.componentId, {
+            sideMenu: {
+                left: {
+                    enabled: true
+                }
+            },
+        });
+    }
 }
 
 DialerScreen.propTypes = {
