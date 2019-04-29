@@ -68,7 +68,7 @@ export function init() {
         })
 
         // CallKit
-        dispatch(initCallKitIntegration())
+        //dispatch(initCallKitIntegration())
 
         if ( isiOS ) {
             // Register / unregister when app in background or foreground
