@@ -160,7 +160,7 @@ export function answerCall(call) {
     return async function (dispatch, getState) {
         const endpoint = getState().pjsip.endpoint
 
-        console.log('answerCall(call) executed!')
+        // console.log('answerCall(call) executed!')
 
         try {
             await endpoint.answerCall(call)
