@@ -12,7 +12,7 @@ export default class Initialising extends Component {
         try {
             await goHome()
         } catch (err) {
-            console.log('error: ', err)
+            // console.log('error: ', err)
         }
     }
 

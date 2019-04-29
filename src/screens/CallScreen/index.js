@@ -116,7 +116,7 @@ class CallScreen extends Component {
 
         // When user makes call
         if (call instanceof Promise) {
-            console.log('call es instanceof Promise')
+            // console.log('call es instanceof Promise')
             call
                 .then(
                     call => this.onInitializationResponse(call),
@@ -125,7 +125,7 @@ class CallScreen extends Component {
                 )
 
             call = null
-            console.log('call ahora es null')
+            // console.log('call ahora es null')
         }
         return call
     }
@@ -604,7 +604,7 @@ const mapDispatchToProps = (dispatch) => {
                     if (route.name !== 'CallScreen') {
                         return
                     }
-                    
+
                     if (route.call instanceof Promise) {
                         route.call.then(doRoute, doDirectRoute)
 

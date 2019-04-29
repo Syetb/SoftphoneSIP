@@ -44,6 +44,7 @@ class MediaSettingsScreen extends Component {
                 name: `${codecNameParts[0]} ${kHz.substr(0, kHz.length-3)}kHz`,
                 [key]: codecs[key],
                 toggled: false,
+                priority: codecs[key]
             }
 
             return acc
@@ -58,7 +59,7 @@ class MediaSettingsScreen extends Component {
         this.setState({ mediaCodecs })
     }
 
-    renderSwitchCodecs(mediaCodecs) {
+    renderSwitchCodecs(mediaCodecs, codecs) {
 
        return  mediaCodecs.map( (item, index) => (
             <View key={item.id} style={{padding: 10, borderBottomWidth: 1, borderColor: '#E0E7EA'}}>
@@ -68,7 +69,11 @@ class MediaSettingsScreen extends Component {
                         const mediaCodecs = [...this.state.mediaCodecs]
                         mediaCodecs[index].toggled = switchValue
 
+                        const codecs = [...this.state.codecs]
+                        codecs[index].toggled = switchValue
+
                         this.setState({ mediaCodecs })
+                        this.setState({ codecs })
                     } }
                     switchValue = { item.toggled }/>
             </View>

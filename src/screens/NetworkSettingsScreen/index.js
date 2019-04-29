@@ -28,12 +28,12 @@ class NetworkSettingsScreen extends Component {
         super(props)
 
         // debugging
-        console.log('NetworkSettingsScreen executed')
-        console.log('this.props es: ', this.props)
-        console.log('this.props.settings es: ', this.props.settings)
+        // console.log('NetworkSettingsScreen executed')
+        // console.log('this.props es: ', this.props)
+        // console.log('this.props.settings es: ', this.props.settings)
 
-        console.log('this.props.settings === undefined es: ', this.props.settings === undefined)
-        console.log('this.props.settings === null es: ', this.props.settings === null)
+        // console.log('this.props.settings === undefined es: ', this.props.settings === undefined)
+        // console.log('this.props.settings === null es: ', this.props.settings === null)
 
         // handling exceptions
         let thisPropsSettings = this.props.settings
