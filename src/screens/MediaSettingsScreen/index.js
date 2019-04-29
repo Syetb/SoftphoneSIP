@@ -61,6 +61,7 @@ class MediaSettingsScreen extends Component {
 
     renderSwitchCodecs(mediaCodecs, codecs) {
 
+        // Renderizado de todos los codecs disponibles dentro de la app
        return  mediaCodecs.map( (item, index) => (
             <View key={item.id} style={{padding: 10, borderBottomWidth: 1, borderColor: '#E0E7EA'}}>
                 <SwitchItem
