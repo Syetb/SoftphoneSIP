@@ -94,7 +94,7 @@ export function init() {
         }
 
         // Cuenta SIP por defecto para pruebas
-        if (accounts.length === 0) {
+        /*if (accounts.length === 0) {
             const defaultAccount = {
                 'name': 'Jhonatan',
                 'username': 'jhona',
@@ -124,7 +124,7 @@ export function init() {
                 })
                 dispatch( { type: ACCOUNT_CREATED, payload: { account } } )
             }
-        }
+        }*/
     }
 }
 
