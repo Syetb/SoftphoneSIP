@@ -87,7 +87,7 @@ export default class AboutScreen extends React.Component {
         return (
             <View style={styles.container}>
                 {/*<Text style={styles.welcome}>About Screen :)</Text>*/}
-                <Header title='ABOUT ' {...platformHeaderProps} fontSizeTitle={correctFontSizeForScreen(28)} />
+                <Header title='Acerca de ' {...platformHeaderProps} fontSizeTitle={correctFontSizeForScreen(28)} />
 
                 <Image
                     source={require('../../assets/images/about/sip_about.png')}
