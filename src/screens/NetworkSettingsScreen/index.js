@@ -139,15 +139,15 @@ class NetworkSettingsScreen extends Component {
                 <Header title={"Ajustes de Red"} {...platformHeaderProps} />
 
                 <ScrollView style={cs.mainContainer}>
-                    <ListSection title="Configuraciones de Conectividad"/>
+                    /*<ListSection title="Configuraciones de Conectividad"/>
 
                     <ListCheckbox
                         disabled={this.state.wifiDisabled}
                         onChange={this._onWifiChange}
-                        value={true} /*this.state.useWifi*/
+                        value={this.state.useWifi}
                         title="Usar WiFi"
                         description="Usa WiFi para llamadas entrantes y salientes"
-                    />
+                    />*/
 
                     <ListSection title="Conexion en Background"/>
 
