@@ -91,12 +91,12 @@ class SettingsViewport extends Component {
                 <ListSection title="Avanzado"/>
                 <ListConfigurationInfo
                     onPress={this.onNetworkSettingsPress}
-                    title="Network"
+                    title="Ajustes de Red"
                     description="Ajustes de como la aplicacion puede ser conectada a la red"
                 />
                 <ListConfigurationInfo
                     onPress={this.onMediaSettingsPress}
-                    title="Media"
+                    title="Ajustes de Audio"
                     description="Seleccion de Codecs para el funcionamiento de sonido en llamadas en curso"
                 />
             </View>

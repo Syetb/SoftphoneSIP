@@ -136,7 +136,7 @@ class NetworkSettingsScreen extends Component {
 
         return(
             <View style={cs.mainContainer}>
-                <Header title={"Network settings"} {...platformHeaderProps} />
+                <Header title={"Ajustes de Red"} {...platformHeaderProps} />
 
                 <ScrollView style={cs.mainContainer}>
                     <ListSection title="Configuraciones de Conectividad"/>
