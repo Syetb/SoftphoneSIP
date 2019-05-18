@@ -76,7 +76,7 @@ class MediaSettingsScreen extends Component {
                         this.setState({ mediaCodecs })
                         this.setState({ codecs })
                     } }
-                    switchValue = { item.toggled }/>
+                    switchValue = { true }/> /* item.toggled */
             </View>
         ))
     }
@@ -103,19 +103,20 @@ class MediaSettingsScreen extends Component {
 
         return (
             <View style={sc.mainContainer}>
-                <Header title={"Media settings"} {...platformHeaderProps} />
+                <Header title={"Ajuste de Audio"} {...platformHeaderProps} />
 
                 <ScrollView style={sc.mainContainer}>
-                    <ListSection title="General"/>
-                    <View style={{padding: 10}}>
-                        <Text style={{fontSize: 18}}>Por implementar</Text>
-                    </View>
+                    {/*<ListSection title="General"/>*/}
+                    {/*<View style={{padding: 10}}>*/}
+                        {/*<Text style={{fontSize: 18}}>Por implementar</Text>*/}
+                    {/*</View>*/}
 
-                    <ListSection title="Avanzado"/>
-                    <View style={{padding: 10}}>
-                        <Text style={{fontSize: 18}}>Por implementar</Text>
-                    </View>
-                    <ListSection title="Codecs"/>
+                    {/*<ListSection title="Avanzado"/>*/}
+                    {/*<View style={{padding: 10}}>*/}
+                        {/*<Text style={{fontSize: 18}}>Por implementar</Text>*/}
+                    {/*</View>*/}
+
+                    <ListSection title="Codecs Utilizados"/>
                     { this.renderSwitchCodecs(mediaCodecs) }
                 </ScrollView>
             </View>
