@@ -44,6 +44,7 @@ class AccountScreen extends Component {
         if (this.props.account) {
             this.state = {
                 addable: true,
+                value: '',
 
                 name: this.props.account.getName(),
                 username: this.props.account.getUsername(),
@@ -58,6 +59,7 @@ class AccountScreen extends Component {
         } else {
             this.state = {
                 addable: false,
+                value: '',
 
                 name: "",
                 username: "",
@@ -87,7 +89,43 @@ class AccountScreen extends Component {
         const s = {...this.state, [name]: value}
         const addable = s.name.length > 0 && s.username.length > 0 && s.domain.length > 0 && s.password.length > 0
 
+        console.log('onFieldChanged() executed!')
+        // console.log('event es: ', event)
+        console.log('name es: ', name)
+        console.log('value es: ', value)
+
+        // if( name === 'domain') {
+        //     value = this.onHandleDomainChanged(value)
+        // }
+
         this.setState({[name]: value, addable: addable})
+    }
+
+    onHandleDomainChanged(newValue) {
+        console.log('onHandleDomainChanged() excuted!!')
+        console.log('newValue es: ', newValue)
+
+        let length = newValue.length
+        console.log('length es: ', length)
+        let index = newValue.lastIndexOf('.') + 1
+        console.log('index es: ', index)
+        let noOfDots = newValue.split('.').length - 1
+        console.log('noOfDots es: ', noOfDots)
+        let updatedVal = ''
+
+        if(length !== index && noOfDots < 3 && this.state.value.length < length && (length - index) % 3 === 0) {
+            updatedVal = `${newValue}.`
+
+        } else if( noOfDots > 3 || length - index > 3 ) {
+            let newString = newValue.substring(0, length-1)
+            updatedVal =  newString
+
+        } else {
+            updatedVal = newValue
+        }
+
+        return updatedVal
+
     }
 
     onSubmitPress() {
@@ -160,7 +198,7 @@ class AccountScreen extends Component {
                     />
                     <ListFieldSeparator />
                     <ListTextField
-                        inputProps={{autoCapitalize: "none", autoCorrect: false, secureTextEntry: true}}
+                        inputProps={{autoCapitalize: "none", autoCorrect: false, secureTextEntry: true, keyboardType: 'decimal-pad', maxLength: 15}}
                         title="Password"
                         placeholder="SIP password" value={this.state.password}
                         valueType="password"
@@ -168,7 +206,7 @@ class AccountScreen extends Component {
                     />
                     <ListFieldSeparator />
                     <ListTextField
-                        inputProps={{autoCapitalize: "none", autoCorrect: false}}
+                        inputProps={{autoCapitalize: "none", autoCorrect: false, keyboardType: 'decimal-pad', maxLength: 15}}
                         title="Servidor"
                         placeholder="Servidor SIP / Dominio"
                         value={this.state.domain}
@@ -178,35 +216,27 @@ class AccountScreen extends Component {
                     <ListFieldSeparator />
                     <ListSection title="Avanzado"/>
                     <ListFieldSeparator />
-                    <ListTextField
-                        inputProps={{autoCapitalize: "none", autoCorrect: false}}
-                        title="Proxy"
-                        description="Dominio Proxy/ip y puerto"
-                        placeholder="Dominio Proxy/ip y puerto"
-                        value={this.state.proxy}
-                        onChange={this._onProxyChanged}
-                    />
-                    <ListFieldSeparator />
                     <ListSelectField
-                        options={["UDP", "TCP", "TLS"]}
-                        title="Transport"
-                        placeholder="Conexion de transport UDP, TCP, TLS"
+                        options={["UDP", "TCP"]}
+                        title="Transporte"
+                        placeholder="Conexion de transporte UDP o TCP"
                         value={this.state.transport}
                         onChange={this._onTransportChanged}
                     />
                     <ListFieldSeparator />
                     <ListTextField
                         inputProps={{autoCapitalize: "none", autoCorrect: false}}
-                        title="Registry server / Realm"
-                        placeholder="URL to be put in the request URI for the registration"
-                        value={this.state.regServer}
-                        onChange={this._onRegServerChanged}
+                        title="Proxy"
+                        description="Dominio Proxy / IP y puerto"
+                        placeholder="Dominio Proxy / IP y puerto"
+                        value={this.state.proxy}
+                        onChange={this._onProxyChanged}
                     />
                     <ListFieldSeparator />
                     <ListTextField
                         inputProps={{autoCapitalize: "none", autoCorrect: false, keyboardType: "numeric"}}
-                        title="Registration Timeout"
-                        placeholder="Interval for registration, in seconds"
+                        title="Timeout de Registro"
+                        placeholder="Intervalo de tiempo para el registro, en segundos"
                         value={this.state.regTimeout} onChange={this._onRegTimeoutChanged}
                     />
                 </ScrollView>
