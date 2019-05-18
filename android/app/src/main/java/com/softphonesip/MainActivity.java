@@ -38,6 +38,6 @@ public class MainActivity extends NavigationActivity {
         Drawable launch_screen_bitmap = ContextCompat.getDrawable(getApplicationContext(), R.drawable.launch_screen);
         splash.setBackground(launch_screen_bitmap);
         setContentView(splash);
-        //SystemClock.sleep(1000 * 5);
+        SystemClock.sleep(1000 * 3);
     }
 }
