@@ -33,15 +33,15 @@ class CallState extends Component {
 
         switch (call.getState()) {
             case 'PJSIP_INV_STATE_NULL':
-                description = "initializing"
+                description = "Inicializando"
                 break
             case 'PJSIP_INV_STATE_CALLING':
             case 'PJSIP_INV_STATE_EARLY':
             case 'PJSIP_INV_STATE_CONNECTING':
-                description = "ringing"
+                description = "Llamando"
                 break
             case 'PJSIP_INV_STATE_INCOMING':
-                description = "calling"
+                description = "Llamada entrante"
                 break
             case 'PJSIP_INV_STATE_DISCONNECTED':
                 if (call.getLastStatusCode() != "PJSIP_SC_OK") {
