@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { TouchableOpacity, View, Text, Image, TextInput } from 'react-native'
+import { TouchableOpacity, View, Text, Image } from 'react-native'
 
 import skit from './styles'
 
@@ -8,12 +8,12 @@ const KeypadInputText = ({ style, textStyle, value, editable, onBackspacePress, 
 
     return (
         <View style={[skit.container, style]}>
-            <TextInput
+            <Text
                 numberOfLines={1} ellipsizeMode="head"
                 style={[skit.inputText, (editable === false ? skit.textNotEditable : null), textStyle]}
             >
                 {value}
-            </TextInput>
+            </Text>
 
             {
                 !value || value.length === 0 || editable === false ? null :
