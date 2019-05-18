@@ -144,7 +144,7 @@ class NetworkSettingsScreen extends Component {
                     <ListCheckbox
                         disabled={this.state.wifiDisabled}
                         onChange={this._onWifiChange}
-                        value={this.state.useWifi}
+                        value={true} /*this.state.useWifi*/
                         title="Usar WiFi"
                         description="Usa WiFi para llamadas entrantes y salientes"
                     />
@@ -161,12 +161,12 @@ class NetworkSettingsScreen extends Component {
                     <ListSection title="Nat traversal"/>
 
                     <ListCheckbox
-                        value={false}
+                        value={true}
                         title="Habilitar ICE"
                         description="Activar ICE feature"
                     />
                     <ListCheckbox
-                        value={false}
+                        value={true}
                         title="Habilitar STUN"
                         description="Activar STUN feature"
                     />
