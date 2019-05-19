@@ -106,16 +106,6 @@ class MediaSettingsScreen extends Component {
                 <Header title={"Ajuste de Audio"} {...platformHeaderProps} />
 
                 <ScrollView style={sc.mainContainer}>
-                    {/*<ListSection title="General"/>*/}
-                    {/*<View style={{padding: 10}}>*/}
-                        {/*<Text style={{fontSize: 18}}>Por implementar</Text>*/}
-                    {/*</View>*/}
-
-                    {/*<ListSection title="Avanzado"/>*/}
-                    {/*<View style={{padding: 10}}>*/}
-                        {/*<Text style={{fontSize: 18}}>Por implementar</Text>*/}
-                    {/*</View>*/}
-
                     <ListSection title="Codecs Utilizados"/>
                     { this.renderSwitchCodecs(mediaCodecs) }
                 </ScrollView>
