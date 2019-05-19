@@ -7,8 +7,8 @@ import slci from './styles'
 const ListConfigurationInfo = ({ style, icon, title, description, onPress }) => {
     return (
         <TouchableOpacity onPress={onPress} style={ [slci.container, style] }>
-            <View style={slci.iconContainer}>
-                <Image icon={icon}/>
+            <View >
+                <Image style={slci.iconContainer} source={icon}/>
             </View>
 
             <View style={slci.descriptionContainer}>

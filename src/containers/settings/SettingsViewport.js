@@ -93,11 +93,13 @@ class SettingsViewport extends Component {
                     onPress={this.onNetworkSettingsPress}
                     title="Ajustes de Red"
                     description="Ajustes de como la aplicacion puede ser conectada a la red"
+                    icon={ require('../../assets/images/settings/network-settings.png') }
                 />
                 <ListConfigurationInfo
                     onPress={this.onMediaSettingsPress}
                     title="Ajustes de Audio"
                     description="Seleccion de Codecs para el funcionamiento de sonido en llamadas en curso"
+                    icon={ require('../../assets/images/settings/media-settings.png') }
                 />
             </View>
         )

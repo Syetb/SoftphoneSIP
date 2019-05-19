@@ -13,7 +13,8 @@ export default StyleSheet.create({
     width: 48,
     backgroundColor: "#333",
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginTop: 12
   },
   descriptionContainer: {
     flex: 1,
