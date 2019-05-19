@@ -50,7 +50,7 @@ class AccountScreen extends Component {
                 username: this.props.account.getUsername(),
                 domain: this.props.account.getDomain(),
                 password: this.props.account.getPassword(),
-
+                regServer: this.props.account.getRegServer(),
                 proxy: this.props.account.getProxy(),
                 transport: this.props.account.getTransport(),
                 regTimeout: this.props.account.getRegTimeout()
@@ -64,7 +64,7 @@ class AccountScreen extends Component {
                 username: "",
                 domain: "",
                 password: "",
-
+                regServer: "",
                 proxy: "",
                 transport: "",
                 regTimeout: ""
@@ -137,8 +137,8 @@ class AccountScreen extends Component {
             username: this.state.username,
             domain,
             password: this.state.password,
-
-            proxy: `${domain}:${this.state.proxy}`,
+            regServer: this.state.regServer,
+            proxy: this.state.proxy ? `${domain}:${this.state.proxy}` : '',
             transport: this.state.transport,
             regTimeout: this.state.regTimeout
         }
