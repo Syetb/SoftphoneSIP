@@ -53,7 +53,6 @@ class AccountScreen extends Component {
 
                 proxy: this.props.account.getProxy(),
                 transport: this.props.account.getTransport(),
-                regServer: this.props.account.getRegServer(),
                 regTimeout: this.props.account.getRegTimeout()
             }
         } else {
@@ -68,7 +67,6 @@ class AccountScreen extends Component {
 
                 proxy: "",
                 transport: "",
-                regServer: "",
                 regTimeout: ""
             }
         }
@@ -79,7 +77,6 @@ class AccountScreen extends Component {
         this._onDomainChanged = this.onFieldChanged.bind(this, "domain")
         this._onProxyChanged = this.onFieldChanged.bind(this, "proxy")
         this._onTransportChanged = this.onFieldChanged.bind(this, "transport")
-        this._onRegServerChanged = this.onFieldChanged.bind(this, "regServer")
         this._onRegTimeoutChanged = this.onFieldChanged.bind(this, "regTimeout")
         this._onSubmitPress = this.onSubmitPress.bind(this)
         this._onDeletePress = this.onDeletePress.bind(this)
@@ -133,15 +130,16 @@ class AccountScreen extends Component {
             return alert("Por favor llena todos los campos requeridos!")
         }
 
+        const domain = this.state.domain
+
         const credentials = {
             name: this.state.name,
             username: this.state.username,
-            domain: this.state.domain,
+            domain,
             password: this.state.password,
 
-            proxy: this.state.proxy,
+            proxy: `${domain}:${this.state.proxy}`,
             transport: this.state.transport,
-            regServer: this.state.regServer,
             regTimeout: this.state.regTimeout
         }
 
@@ -185,7 +183,7 @@ class AccountScreen extends Component {
                     <ListFieldSeparator />
                     <ListTextField
                         title="Nombre Completo"
-                        placeholder="Display name"
+                        placeholder="Nombre a mostrar"
                         value={this.state.name}
                         onChange={this._onNameChanged}
                     />
@@ -193,14 +191,14 @@ class AccountScreen extends Component {
                     <ListTextField
                         inputProps={{autoCapitalize: "none", autoCorrect: false}}
                         title="Usuario"
-                        placeholder="SIP username" value={this.state.username}
+                        placeholder="Usuario SIP" value={this.state.username}
                         onChange={this._onUsernameChanged}
                     />
                     <ListFieldSeparator />
                     <ListTextField
-                        inputProps={{autoCapitalize: "none", autoCorrect: false, secureTextEntry: true, keyboardType: 'decimal-pad', maxLength: 15}}
-                        title="Password"
-                        placeholder="SIP password" value={this.state.password}
+                        inputProps={{autoCapitalize: "none", autoCorrect: false, secureTextEntry: true}}
+                        title="Contraseña"
+                        placeholder="Contraseña SIP" value={this.state.password}
                         valueType="password"
                         onChange={this._onPasswordChanged}
                     />
@@ -225,10 +223,10 @@ class AccountScreen extends Component {
                     />
                     <ListFieldSeparator />
                     <ListTextField
-                        inputProps={{autoCapitalize: "none", autoCorrect: false}}
-                        title="Proxy"
-                        description="Dominio Proxy / IP y puerto"
-                        placeholder="Dominio Proxy / IP y puerto"
+                        inputProps={{autoCapitalize: "none", autoCorrect: false, keyboardType: 'decimal-pad', maxLength: 6}}
+                        title="Puerto"
+                        description="Para cambiar el número puerto SIP por defecto (5060)"
+                        placeholder="Número de Puerto"
                         value={this.state.proxy}
                         onChange={this._onProxyChanged}
                     />
