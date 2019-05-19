@@ -86,10 +86,10 @@ class AccountScreen extends Component {
         const s = {...this.state, [name]: value}
         const addable = s.name.length > 0 && s.username.length > 0 && s.domain.length > 0 && s.password.length > 0
 
-        console.log('onFieldChanged() executed!')
+        // console.log('onFieldChanged() executed!')
         // console.log('event es: ', event)
-        console.log('name es: ', name)
-        console.log('value es: ', value)
+        // console.log('name es: ', name)
+        // console.log('value es: ', value)
 
         // if( name === 'domain') {
         //     value = this.onHandleDomainChanged(value)
