@@ -37,7 +37,7 @@ export const goHome = async () => {
             },
             leftButtons: {
                 id: 'toggleButtom',
-                icon: require('./assets/images/settings/side-menu.png'),
+                icon: require('./assets/images/settings/hamburguer-buttom.png'),
                 text: 'Menu',
                 color: "#0f0f0f"
             },
