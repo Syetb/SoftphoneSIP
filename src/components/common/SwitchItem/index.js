@@ -9,8 +9,6 @@ const SwitchItem = (props) => {
         <View style = {ssi.container}>
             <Text style={ssi.switchText}>{props.switchName}</Text>
             <Switch
-                disabled
-                onValueChange = {props.onToggleSwitch}
                 value = {props.switchValue}/>
         </View>
     )

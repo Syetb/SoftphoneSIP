@@ -19,7 +19,8 @@ class MediaSettingsScreen extends Component {
                 drawBehind: true,
             },
             bottomTabs: {
-                visible: false
+                visible: false,
+                drawBehind: true,
             },
         };
     }
@@ -76,7 +77,7 @@ class MediaSettingsScreen extends Component {
                         this.setState({ mediaCodecs })
                         this.setState({ codecs })
                     } }
-                    switchValue = { true }/> /* item.toggled */
+                    switchValue = { true }/>
             </View>
         ))
     }
@@ -101,11 +102,13 @@ class MediaSettingsScreen extends Component {
 
         const { mediaCodecs } = this.state
 
+
         return (
             <View style={sc.mainContainer}>
                 <Header title={"Ajuste de Audio"} {...platformHeaderProps} />
 
                 <ScrollView style={sc.mainContainer}>
+
                     <ListSection title="Codecs Utilizados"/>
                     { this.renderSwitchCodecs(mediaCodecs) }
                 </ScrollView>
