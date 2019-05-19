@@ -223,7 +223,7 @@ class AccountScreen extends Component {
                     />
                     <ListFieldSeparator />
                     <ListTextField
-                        inputProps={{autoCapitalize: "none", autoCorrect: false, keyboardType: 'decimal-pad', maxLength: 6}}
+                        inputProps={{autoCapitalize: "none", autoCorrect: false, keyboardType: 'numeric', maxLength: 6}}
                         title="Puerto"
                         description="Para cambiar el número puerto SIP por defecto (5060)"
                         placeholder="Número de Puerto"
@@ -232,7 +232,7 @@ class AccountScreen extends Component {
                     />
                     <ListFieldSeparator />
                     <ListTextField
-                        inputProps={{autoCapitalize: "none", autoCorrect: false, keyboardType: "numeric"}}
+                        inputProps={{autoCapitalize: "none", autoCorrect: false, keyboardType: "numeric", maxLength: 8}}
                         title="Timeout de Registro"
                         placeholder="Intervalo de tiempo para el registro, en segundos"
                         value={this.state.regTimeout} onChange={this._onRegTimeoutChanged}
