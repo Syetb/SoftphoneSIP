@@ -226,7 +226,7 @@ class AccountScreen extends Component {
                         inputProps={{autoCapitalize: "none", autoCorrect: false, keyboardType: 'numeric', maxLength: 6}}
                         title="Puerto"
                         description="Para cambiar el número puerto SIP por defecto (5060)"
-                        placeholder="Número de Puerto"
+                        placeholder="Número de Puerto, por defecto 5060"
                         value={this.state.proxy}
                         onChange={this._onProxyChanged}
                     />
