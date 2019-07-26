@@ -120,9 +120,9 @@ export function makeCall(destination, account = null) {
         const endpoint = getState().pjsip.endpoint
 
         // TODO: Do not deactivateAudioSession if iOS version is not compatible with CallKit
-        if ( isiOS ) {
-            endpoint.deactivateAudioSession()
-        }
+        // if ( isiOS ) {
+        //     endpoint.deactivateAudioSession()
+        // }
 
         const call = endpoint.makeCall(account, destination)
 
