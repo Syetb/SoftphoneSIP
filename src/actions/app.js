@@ -1,4 +1,4 @@
-import { Platform, AppState } from 'react-native'
+import {Platform, AppState, AsyncStorage, Alert} from 'react-native'
 import { Endpoint } from 'react-native-pjsip'
 import RNCallKit  from 'react-native-callkeep'
 import uuid from 'uuid'
@@ -93,38 +93,43 @@ export function init() {
             })
         }
 
-        // Cuenta SIP por defecto para pruebas
-        /*if (accounts.length === 0) {
-            const defaultAccount = {
-                'name': 'Jhonatan',
-                'username': 'jhona',
-                'domain': '192.168.1.133',
-                'password': 'pwd_100',
-                'proxy': '',
-                'transport':'UDP',
-                'regServer': '',
-                'regTimeout': ''
+        let accountSIP = null;
+
+        try {
+            const accountSIPValue = await AsyncStorage.getItem('configuration');
+            if (accountSIPValue !== null) {
+                // We have data!!
+                accountSIP = JSON.parse(accountSIPValue);
+                console.log('accountSIP es: ', accountSIP);
+                console.log('accountSIP.name es: ', accountSIP.name);
+
+                console.log('accountSIP.length es: ', accountSIP.length);
+                console.log(accountSIP && accountSIP.length > 0);
             }
+        } catch (error) {
+            // Error retrieving data
+        }
+
+        // Cuenta SIP
+        if (accountSIP && accountSIP.name && accountSIP.username && accountSIP.password && accountSIP.domain && accountSIP.transport) {
 
             if( isiOS ) {
                 const account = await endpoint.createAccount({
-                    ...defaultAccount,
+                    ...accountSIP,
                     contactUriParams: ';app-id=com.softphoneSIP.mobile.app'
                 })
+
                 dispatch( { type: ACCOUNT_CREATED, payload: { account } } )
 
             } else {
-                defaultAccount.name = 'Betsy'
-                defaultAccount.username = 'betsy'
-                defaultAccount.password = 'pwd_122'
-
                 const account = await endpoint.createAccount({
-                    ...defaultAccount,
+                    ...accountSIP,
                     contactUriParams: ';im-type=sip'
                 })
+
                 dispatch( { type: ACCOUNT_CREATED, payload: { account } } )
             }
-        }*/
+        }
     }
 }
 

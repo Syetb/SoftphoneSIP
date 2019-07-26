@@ -1,4 +1,4 @@
-import { Platform, Alert } from 'react-native'
+import { Platform, Alert, AsyncStorage } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 import { goBack, goTo } from "./navigate";
 
@@ -6,6 +6,26 @@ export const ACCOUNT_CREATED = 'pjsip/ACCOUNT_CREATED'
 export const ACCOUNT_DELETED = 'pjsip/ACCOUNT_DELETED'
 
 export const isiOS = Platform.OS === 'ios'
+
+const _storeData = async (configure) => {
+    try {
+        await AsyncStorage.setItem('configuration', JSON.stringify(configure));
+
+    } catch (error) {
+        // Error saving data
+        Alert.alert('Advertencia', 'Error al crear la cuenta!\n' + error)
+    }
+}
+
+const _removeData = async () => {
+    try {
+        await AsyncStorage.removeItem('configuration');
+        Alert.alert('Aviso', 'Eliminado exitosamente!');
+    } catch (error) {
+        // Error saving data
+        Alert.alert('Advertencia', 'Error al eliminar la cuenta!\n' + error)
+    }
+}
 
 /**
  * Creates new account based on provided configuration.
@@ -27,6 +47,8 @@ export function createAccount(configuration) {
             transport: configuration.transport ? configuration.transport : "UDP",
             contactUriParams
         })
+
+        await _storeData(configuration);
 
         dispatch( { type: ACCOUNT_CREATED, payload: { account } } )
 
@@ -60,6 +82,8 @@ export function deleteAccount(account) {
     return async function (dispatch, getState) {
         const endpoint = getState().pjsip.endpoint
         await endpoint.deleteAccount(account)
+
+        await _removeData();
 
         dispatch( { type: ACCOUNT_DELETED, payload: { account } } )
 
