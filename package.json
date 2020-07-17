@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "jssip": "^3.2.16",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "prop-types": "^15.6.2",
     "react": "16.6.0-alpha.8af6728",
     "react-native": "0.57.4",
